@@ -91,9 +91,9 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\Kurs_project_web\Kurs_project_web.csproj">
+    <ProjectReference Include="..\Kurs_project_web\WebUI.csproj">
       <Project>{7C173941-7346-44E9-B635-EC8CBDD9BB22}</Project>
-      <Name>Kurs_project_web</Name>
+      <Name>WebUI</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />

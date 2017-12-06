@@ -18,8 +18,8 @@ namespace DAL.EF
         public DbSet<Group> Groups{ get; set; }
         public DbSet<Job> Jobs { get; set; }
         public DbSet<Schedule> Schedules { get; set; }
-        public DbSet<Student> Students { get; set; }
-        public DbSet<Study> Studys { get; set; }
+      //  public DbSet<Student> Students { get; set; }
+     //   public DbSet<Study> Studys { get; set; }
         public DbSet<Teacher> Teachers { get; set; }
 
 

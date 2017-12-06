@@ -1,17 +1,52 @@
 ﻿<!DOCTYPE html>
 <html>
 <head>
-<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>@ViewBag.Title – приложение ASP.NET</title>
     @Styles.Render("~/Content/css")
     @Scripts.Render("~/bundles/modernizr")
+    @*Сюда нужно поместить регистрацию и логин @Html.Partial("_LoginPartial")*@
 </head>
-<body>
-    <div class="navbar navbar-inverse navbar-fixed-top">
-        <div class="container">
-            <div class="navbar-header">
+<body onload="menuInit();">
+    <input type="checkbox" id="hmt" class="hidden-menu-ticker">
+    <label class="btn-menu" for="hmt">
+        <span class="first"></span>
+        <span class="second"></span>
+        <span class="third"></span>
+    </label>
+    <div class="sidebar">   
+        <nav id="navbar">
+            <ul id="main-menu">
+                <li><a href="#" target="_blank"><i class="fa fa-home"></i>Home</a></li>
+                <li><a href="#" target="_blank"><i class="fa fa-list-alt"></i>@Html.ActionLink("ABOUT US", "About", "Home")</a></li>
+                <li><a href="#" target="_blank"><i class="fa fa-list-alt"></i>About</a></li>
+                <li><a href="#" target="_blank"><i class="fa fa-list-alt"></i>About</a></li>
+                <li><a href="#" target="_blank"><i class="fa fa-list-alt"></i>About</a></li>
+                <li id="dropdown-item"><a href="#"><i class="fa fa-coffee"></i>Work With Me</a></li>
+                <ul id="submenu" class="hide-submenu">
+                    <li>AngularJS</li>
+                    <li>JavaScript</li>
+                    <li>HTML5</li>
+                    <li>CSS3</li>
+                </ul>
+                <li><a href="#" target="_blank"><i class="fa fa-quote-left"></i>Testimonials</a></li>
+                <li><a href="#" target="_blank"><i class="fa fa-user"></i>Contact</a></li>
+            </ul><!-- main-menu -->
+        </nav><!-- navbar -->
+    </div>
+
+    <div class="container">
+        <div class="hero-unit">
+            <h1>Marketing stuff!</h1>
+
+            <p>Cras justo odio, dapibus ac facilisis in, egestas eget quam. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus.</p>
+
+            <a href="#" class="btn btn-large btn-success">Get Started</a>
+        </div>
+
+        @* <div class="navbar-header">
                 <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
@@ -24,15 +59,14 @@
                     <li>@Html.ActionLink("Домашняя страница", "Index", "Home")</li>
                     <li>@Html.ActionLink("О программе", "About", "Home")</li>
                     <li>@Html.ActionLink("Контакт", "Contact", "Home")</li>
-                </ul>
-            </div>
-        </div>
+                </ul>*@
+
+        @RenderBody()
     </div>
     <div class="container body-content">
-        @RenderBody()
         <hr />
         <footer>
-            <p>&copy; @DateTime.Now.Year – приложение ASP.NET</p>
+            <p>&copy; @DateTime.Now.Year – Курсовой проект Банашко Александра по дисциплине "Веб-технологии"</p>
         </footer>
     </div>
 
@@ -41,3 +75,24 @@
     @RenderSection("scripts", required: false)
 </body>
 </html>
+
+<script>
+     function menuInit() {
+         var dropdown = document.getElementById("dropdown-item");
+         var submenu = document.getElementById("submenu");
+
+         dropdown.onmouseover = popOutMenu;
+         dropdown.onmouseout = hideDropdown;
+
+         submenu.onmouseover = popOutMenu;
+         submenu.onmouseout = hideDropdown;
+     }
+
+     function popOutMenu() {
+         submenu.className = "show-submenu";
+     }
+
+     function hideDropdown() {
+         submenu.className = "hide-submenu";
+     }
+</script>

@@ -25,7 +25,9 @@ namespace Kurs_project_web
 
             bundles.Add(new StyleBundle("~/Content/css").Include(
                       "~/Content/bootstrap.css",
-                      "~/Content/site.css"));
+                      "~/Content/site.css",
+                      "~/Content/simple-sidebar.css",
+                      "~/Content/stylesheet.css"));
         }
     }
 }

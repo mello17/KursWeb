@@ -1,0 +1,30 @@
+﻿body {
+    font: 14pt Arial, Helvetica, sans-serif; /* Шрифт теста */
+    background: #ffffff; /* Цвет фона */
+    padding-top: 50px;
+    padding-bottom: 20px;
+
+}
+
+/*
+.content {
+    margin-left: 130px;  Отступ слева 
+    padding: 10px;  Отступы внутри правого блока 
+    background: #fff;  Цвет фона правого блока 
+.container {
+    margin: 250px
+}
+
+}*/
+
+.container {
+    min-inline-size: 900px;
+    max-inline-size: 1200px;
+}
+
+.footer {
+    background: #8fa09b; /* Цвет фона нижнего блока-подвала */
+    color: #fff; /* Цвет текста подвала */
+    padding: 5px; /* Отступы внутри блока */
+    clear: left; /* Отменяем действие float */
+}

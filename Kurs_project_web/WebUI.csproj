@@ -198,8 +198,11 @@
     <Content Include="Views\Home\Contact.cshtml" />
     <Content Include="Views\Home\Index.cshtml" />
     <Content Include="Views\Shared\_Header.cshtml" />
-    <Content Include="Views\Home\Login.cshtml" />
-    <Content Include="Views\Home\Register.cshtml" />
+    <Content Include="Views\Manage\Login.cshtml" />
+    <Content Include="Views\Manage\Register.cshtml" />
+    <Content Include="Views\Home\TimeTableView.cshtml" />
+    <Content Include="Views\Home\TeachersView.cshtml" />
+    <Content Include="Views\Home\StudentsView.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

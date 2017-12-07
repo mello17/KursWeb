@@ -6,20 +6,18 @@
 
 }
 
-/*
+
 .content {
-    margin-left: 130px;  Отступ слева 
-    padding: 10px;  Отступы внутри правого блока 
-    background: #fff;  Цвет фона правого блока 
-.container {
-    margin: 250px
+    margin-left: 130px; /*Отступ слева */
+    padding: 10px; /*Отступы внутри правого блока */
+    background: #fff; /*Цвет фона правого блока */
 }
 
-}*/
-
 .container {
-    min-inline-size: 900px;
-    max-inline-size: 1200px;
+    background-color: #eee;
+    margin-left: 200px;
+    min-width: 900px;
+    max-width: 1200px;
 }
 
 .footer {

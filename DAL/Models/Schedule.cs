@@ -7,6 +7,7 @@ namespace DAL.Models
 {
     public class Schedule
     {
+        //График. Не лучше и не проще ли назвать timetable
         public int Id { get; set; }
         public int TeacherId { get; set; }
         public int GroupId { get; set; }

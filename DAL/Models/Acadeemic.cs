@@ -6,7 +6,7 @@ using System.Web;
 namespace DAL.Models
 {
     public class Acadeemic
-    {
+    {   //Академик
         public int Id { get; set; }
         public string Name { get; set; }
         public ICollection<Teacher> Teachers { get; set; }

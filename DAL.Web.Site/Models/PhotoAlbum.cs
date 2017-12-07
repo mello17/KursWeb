@@ -9,7 +9,7 @@ namespace DAL.Web.Site.Models
     {
         public int Id { get; set; }
         public string Path_To_Photo { get; set; }
-        public string Alt { get; set; }
-        public string Gallery { get; set; }
+        public string Alt { get; set; }// Что это?
+        public string Gallery { get; set; }// А это??
     }
 }

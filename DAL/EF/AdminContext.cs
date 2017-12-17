@@ -12,8 +12,10 @@ namespace DAL.EF
         public AdminContext() : base("SiteDB")
         { }
 
-        public DbSet<Acadeemic> Academics { get; set; }
-        public DbSet<Disciple> Disciples { get; set; }
+        public DbSet<Degree> Academics { get; set; }
+        public DbSet<Course> Courses { get; set; }
+        public DbSet<Degree> Degrees { get; set; }
+        public DbSet<ScienceWork> ScienceWorks { get; set; }
         public DbSet<Graduate> Graduates { get; set; }
         public DbSet<Group> Groups{ get; set; }
         public DbSet<Job> Jobs { get; set; }

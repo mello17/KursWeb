@@ -14,10 +14,16 @@ EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WebApi2", "WebApi2\WebApi2.csproj", "{2773C133-ABA7-4EAA-9D2A-A17EAEDA3A01}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DAL.Admin", "DAL\DAL.Admin.csproj", "{C1C2E8E8-5AF6-4FD5-8404-B8B5A668EF21}"
+	ProjectSection(ProjectDependencies) = postProject
+		{51B2E94D-018B-49F9-85EE-91B6CA59E5BE} = {51B2E94D-018B-49F9-85EE-91B6CA59E5BE}
+	EndProjectSection
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DAL.Web.Site", "DAL.Web.Site\DAL.Web.Site.csproj", "{51B2E94D-018B-49F9-85EE-91B6CA59E5BE}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WebUI.Admin", "WebUI.Admin\WebUI.Admin.csproj", "{5BDBABE9-5E87-4D2F-958C-B7EB3A475542}"
+	ProjectSection(ProjectDependencies) = postProject
+		{C1C2E8E8-5AF6-4FD5-8404-B8B5A668EF21} = {C1C2E8E8-5AF6-4FD5-8404-B8B5A668EF21}
+	EndProjectSection
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

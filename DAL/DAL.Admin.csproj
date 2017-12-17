@@ -109,14 +109,36 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="Models\Acadeemic.cs" />
-    <Compile Include="Models\Disciple.cs" />
+    <Compile Include="Interfaces\IAdminCRUD.cs" />
+    <Compile Include="Migrations\201712161822473_first_migration.cs" />
+    <Compile Include="Migrations\201712161822473_first_migration.Designer.cs">
+      <DependentUpon>201712161822473_first_migration.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201712162121375_2.cs" />
+    <Compile Include="Migrations\201712162121375_2.Designer.cs">
+      <DependentUpon>201712162121375_2.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201712162147576_three.cs" />
+    <Compile Include="Migrations\201712162147576_three.Designer.cs">
+      <DependentUpon>201712162147576_three.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\Configuration.cs" />
+    <Compile Include="Models\Degree.cs" />
+    <Compile Include="Models\Course.cs" />
     <Compile Include="Models\Graduate.cs" />
     <Compile Include="Models\Group.cs" />
     <Compile Include="Models\Job.cs" />
     <Compile Include="Models\Schedule.cs" />
+    <Compile Include="Models\ScienceWork.cs" />
     <Compile Include="Models\Teacher.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Repositories\ScienceWorkRepository.cs" />
+    <Compile Include="Repositories\ScheduleRepository.cs" />
+    <Compile Include="Repositories\JobRepository .cs" />
+    <Compile Include="Repositories\CourseRepository .cs" />
+    <Compile Include="Repositories\GroupRepository.cs" />
+    <Compile Include="Repositories\DegreeRepository.cs" />
+    <Compile Include="Repositories\GraduateRepository.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Views\web.config" />
@@ -130,6 +152,26 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Migrations\201712161822473_first_migration.resx">
+      <DependentUpon>201712161822473_first_migration.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201712162121375_2.resx">
+      <DependentUpon>201712162121375_2.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201712162147576_three.resx">
+      <DependentUpon>201712162147576_three.cs</DependentUpon>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <WCFMetadata Include="Connected Services\" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\DAL.Web.Site\DAL.Web.Site.csproj">
+      <Project>{51b2e94d-018b-49f9-85ee-91b6ca59e5be}</Project>
+      <Name>DAL.Web.Site</Name>
+    </ProjectReference>
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

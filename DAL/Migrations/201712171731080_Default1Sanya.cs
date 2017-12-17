@@ -3,10 +3,24 @@ namespace DAL.Migrations
     using System;
     using System.Data.Entity.Migrations;
     
-    public partial class first_migration : DbMigration
+    public partial class Default1Sanya : DbMigration
     {
         public override void Up()
         {
+            CreateTable(
+                "dbo.Courses",
+                c => new
+                    {
+                        Id = c.Int(nullable: false, identity: true),
+                        Name = c.String(nullable: false),
+                        CountOfSemester = c.Int(nullable: false),
+                        NumCourse = c.Int(nullable: false),
+                        Teacher_Id = c.Int(),
+                    })
+                .PrimaryKey(t => t.Id)
+                .ForeignKey("dbo.Teachers", t => t.Teacher_Id)
+                .Index(t => t.Teacher_Id);
+            
             CreateTable(
                 "dbo.Degrees",
                 c => new
@@ -24,29 +38,12 @@ namespace DAL.Migrations
                         FIO = c.String(nullable: false),
                         JobId = c.Int(nullable: false),
                         DegreeId = c.Int(nullable: false),
-                        Job_Id = c.Int(),
                     })
                 .PrimaryKey(t => t.Id)
                 .ForeignKey("dbo.Degrees", t => t.DegreeId, cascadeDelete: true)
-                .ForeignKey("dbo.Jobs", t => t.Job_Id)
                 .ForeignKey("dbo.Jobs", t => t.JobId, cascadeDelete: true)
                 .Index(t => t.JobId)
-                .Index(t => t.DegreeId)
-                .Index(t => t.Job_Id);
-            
-            CreateTable(
-                "dbo.Courses",
-                c => new
-                    {
-                        Id = c.Int(nullable: false, identity: true),
-                        Name = c.String(nullable: false),
-                        CountOfSemester = c.Int(nullable: false),
-                        NumCourse = c.Int(nullable: false),
-                        Teacher_Id = c.Int(),
-                    })
-                .PrimaryKey(t => t.Id)
-                .ForeignKey("dbo.Teachers", t => t.Teacher_Id)
-                .Index(t => t.Teacher_Id);
+                .Index(t => t.DegreeId);
             
             CreateTable(
                 "dbo.Graduates",
@@ -113,19 +110,14 @@ namespace DAL.Migrations
                     {
                         Id = c.Int(nullable: false, identity: true),
                         Name = c.String(nullable: false),
-                        Teacher_Id = c.Int(),
                     })
-                .PrimaryKey(t => t.Id)
-                .ForeignKey("dbo.Teachers", t => t.Teacher_Id)
-                .Index(t => t.Teacher_Id);
+                .PrimaryKey(t => t.Id);
             
         }
         
         public override void Down()
         {
-            DropForeignKey("dbo.Jobs", "Teacher_Id", "dbo.Teachers");
             DropForeignKey("dbo.Teachers", "JobId", "dbo.Jobs");
-            DropForeignKey("dbo.Teachers", "Job_Id", "dbo.Jobs");
             DropForeignKey("dbo.Groups", "Teacher_Id", "dbo.Teachers");
             DropForeignKey("dbo.Graduates", "TeacherId", "dbo.Teachers");
             DropForeignKey("dbo.Graduates", "Id", "dbo.ScienceWorks");
@@ -135,7 +127,6 @@ namespace DAL.Migrations
             DropForeignKey("dbo.Graduates", "GroupId", "dbo.Groups");
             DropForeignKey("dbo.Teachers", "DegreeId", "dbo.Degrees");
             DropForeignKey("dbo.Courses", "Teacher_Id", "dbo.Teachers");
-            DropIndex("dbo.Jobs", new[] { "Teacher_Id" });
             DropIndex("dbo.Schedules", new[] { "CourseId" });
             DropIndex("dbo.Schedules", new[] { "GroupId" });
             DropIndex("dbo.Schedules", new[] { "TeacherId" });
@@ -143,18 +134,17 @@ namespace DAL.Migrations
             DropIndex("dbo.Graduates", new[] { "GroupId" });
             DropIndex("dbo.Graduates", new[] { "TeacherId" });
             DropIndex("dbo.Graduates", new[] { "Id" });
-            DropIndex("dbo.Courses", new[] { "Teacher_Id" });
-            DropIndex("dbo.Teachers", new[] { "Job_Id" });
             DropIndex("dbo.Teachers", new[] { "DegreeId" });
             DropIndex("dbo.Teachers", new[] { "JobId" });
+            DropIndex("dbo.Courses", new[] { "Teacher_Id" });
             DropTable("dbo.Jobs");
             DropTable("dbo.ScienceWorks");
             DropTable("dbo.Schedules");
             DropTable("dbo.Groups");
             DropTable("dbo.Graduates");
-            DropTable("dbo.Courses");
             DropTable("dbo.Teachers");
             DropTable("dbo.Degrees");
+            DropTable("dbo.Courses");
         }
     }
 }

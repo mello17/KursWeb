@@ -110,17 +110,9 @@
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Interfaces\IAdminCRUD.cs" />
-    <Compile Include="Migrations\201712161822473_first_migration.cs" />
-    <Compile Include="Migrations\201712161822473_first_migration.Designer.cs">
-      <DependentUpon>201712161822473_first_migration.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201712162121375_2.cs" />
-    <Compile Include="Migrations\201712162121375_2.Designer.cs">
-      <DependentUpon>201712162121375_2.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201712162147576_three.cs" />
-    <Compile Include="Migrations\201712162147576_three.Designer.cs">
-      <DependentUpon>201712162147576_three.cs</DependentUpon>
+    <Compile Include="Migrations\201712171731080_Default1Sanya.cs" />
+    <Compile Include="Migrations\201712171731080_Default1Sanya.Designer.cs">
+      <DependentUpon>201712171731080_Default1Sanya.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\Degree.cs" />
@@ -154,17 +146,6 @@
     <Folder Include="App_Data\" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\201712161822473_first_migration.resx">
-      <DependentUpon>201712161822473_first_migration.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201712162121375_2.resx">
-      <DependentUpon>201712162121375_2.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201712162147576_three.resx">
-      <DependentUpon>201712162147576_three.cs</DependentUpon>
-    </EmbeddedResource>
-  </ItemGroup>
-  <ItemGroup>
     <WCFMetadata Include="Connected Services\" />
   </ItemGroup>
   <ItemGroup>
@@ -172,6 +153,11 @@
       <Project>{51b2e94d-018b-49f9-85ee-91b6ca59e5be}</Project>
       <Name>DAL.Web.Site</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Migrations\201712171731080_Default1Sanya.resx">
+      <DependentUpon>201712171731080_Default1Sanya.cs</DependentUpon>
+    </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

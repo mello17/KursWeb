@@ -9,8 +9,8 @@
     @Scripts.Render("~/bundles/modernizr")
     @*Сюда нужно поместить регистрацию и логин @Html.Partial("_LoginPartial")*@
 </head>
-<body onload="menuInit();">
-    <input type="checkbox" id="hmt" class="hidden-menu-ticker">
+<!--<body onload="menuInit();">
+     <input type="checkbox" id="hmt" class="hidden-menu-ticker">
     <label class="btn-menu" for="hmt">
         <span class="first"></span>
         <span class="second"></span>
@@ -33,21 +33,139 @@
                 </ul>
                 <li><a href="#" target="_blank"><i class="fa fa-quote-left"></i>Testimonials</a></li>
                 <li><a href="#" target="_blank"><i class="fa fa-user"></i>Contact</a></li>
-            </ul><!-- main-menu -->
-        </nav><!-- navbar -->
-    </div>
-    <!-- body -->
+            </ul>main-menu
+        </nav>
+    </div> -->
+
+    <!-- body 
     <div class="container">
       
 
-        @RenderBody()
+        
         <div class="container body-content">
             <hr />
             <footer>
-                <p>&copy; @DateTime.Now.Year – Курсовой проект Банашко Александра по дисциплине "Веб-технологии"</p>
+                <p>&copy;  – Курсовой проект Банашко Александра по дисциплине "Веб-технологии"</p>
             </footer>
         </div>
+    </div>-->
+<body> 
+ 
+    <div class="wrap">
+        <!-- header -->
+        <header>
+            <div class="container">
+                <h1><a href="index.html">Student's site</a></h1>
+                <nav>
+                    <ul>
+                        <li><a href="about-us.html" class="m2">About Us</a></li>
+                        <li><a href="contact-us.html" class="m4">Contact Us</a></li>
+                        <li class="last"><a href="sitemap.html" class="m5">Site Map</a></li>
+                    </ul>
+                </nav>
+                <form action="" id="search-form">
+                    <fieldset>
+                        <div class="rowElem">
+                            <input type="text">
+                            <a href="#" onClick="document.getElementById('search-form').submit()">Search</a>
+                        </div>
+                    </fieldset>
+                </form>
+            </div>
+        </header>
+        <div class="container">
+            <!--Боковое меню. Главное меню?-->
+            <aside>
+                <h3>Меню</h3>
+                <ul class="categories">
+                    <li><span><a href="#" target="_blank">@Html.ActionLink("Главная страница", "Index", "Home")</a></span></li>
+                    <li><span><a href="#" target="_blank">@Html.ActionLink("Новости", "About", "Home")</a></span></li>
+                    <li><span><a href="#" target="_blank">@Html.ActionLink("Архив публикаций", "About", "Home")</a></span></li>
+                    <li><span><a href="#" target="_blank">@Html.ActionLink("Учебные планы", "TimeTableView", "Home")</a></span></li>
+                    <li><span><a href="#" target="_blank">@Html.ActionLink("Выпускники", "StudentsView", "Home")</a></span></li>
+                    <li><span><a href="#" target="_blank">@Html.ActionLink("Сотрудники", "TeachersView", "Home")</a></span></li>
+                    <li><span><a href="#" target="_blank">@Html.ActionLink("О нас", "About", "Home")</a></span></li>
+                    <li><span><a href="#" target="_blank">@Html.ActionLink("Карта сайта", "About", "Home")</a></span></li>
+                    <li class="last"><span><a href="#">Calendar</a></span></li>
+                </ul>
+              <!--  <form action="" id="newsletter-form">
+                    <fieldset>
+                        <div class="rowElem">
+                            <h2>Newsletter</h2>
+                            <input type="email" value="Enter Your Email Here" onFocus="if(this.value=='Enter Your Email Here'){this.value=''}" onBlur="if(this.value==''){this.value='Enter Your Email Here'}">
+                            <div class="clear"><a href="#" class="fleft">Unsubscribe</a><a href="#" class="fright" onClick="document.getElementById('newsletter-form').submit()">Submit</a></div>
+                        </div>
+                    </fieldset>
+                </form>-->
+                <h2>Fresh <span>News</span></h2>
+                <ul class="news">
+                    <li>
+                        <strong>June 30, 2010</strong>
+                        <h4><a href="#">Sed ut perspiciatis unde</a></h4>
+                        Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque.
+                    </li>
+                    <li>
+                        <strong>June 14, 2010</strong>
+                        <h4><a href="#">Neque porro quisquam est</a></h4>
+                        Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit consequuntur magni.
+                    </li>
+                    <li>
+                        <strong>May 29, 2010</strong>
+                        <h4><a href="#">Minima veniam, quis nostrum</a></h4>
+                        Uis autem vel eum iure reprehenderit qui in ea voluptate velit esse quam nihil molestiae.
+                    </li>
+                </ul>
+            </aside>
+            <!-- content -->
+            <section id="content">
+                <div id="banner">
+                    <h2>Professional <span>Online Education <span>Since 1992</span></span></h2>
+                </div><div class="ic">More Website Templates at TemplateMonster.com!</div>
+                <div class="inside">
+                    <h2>Recent <span>Articles</span></h2>
+                    <ul class="list">
+                        <li>
+                            <span><img src="images/icon1.png"></span>
+                            <h4>About Template</h4>
+                            <p>Free 1028X768 Optimized Website Template from TemplateMonster.com! We hope that you like this tem- plate and will use for your websites.</p>
+                        </li>
+                        <li>
+                            <span><img src="images/icon2.png"></span>
+                            <h4>Branch Office</h4>
+                            <p>Sed ut perspiciatis unomnis iste natus error sit volup tatem accusantiu loremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore.</p>
+                        </li>
+                        <li class="last">
+                            <span><img src="images/icon3.png"></span>
+                            <h4>Student’s Time</h4>
+                            <p>Eque porro quisquam est, qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit, sed quia non numquam eius modi tempo- ra incidunt ut labore.</p>
+                        </li>
+                    </ul>
+                    <h2>Move Forward <span>With Your Education</span></h2>
+                    <p><span class="txt1">Student’s Site</span> is a free web template created by TemplateMonster.com team. This website template is optimized for 1024X768 screen resolution. </p>
+                    <div class="img-box"><img src="images/1page-img.jpg">This website template can be delivered in two packages - with PSD source files included and without them. If you need PSD source files, please go to the template download page at TemplateMonster to leave the e-mail address that you want the template ZIP package to be delivered to.</div>
+                    <p class="p0">This website template has several pages: <a href="index.html">Home</a>, <a href="about-us.html">About us</a>, <a href="articles.html">Articles</a> (with Article page), <a href="contact-us.html">Contact us</a> (note that contact us form – doesn’t work), <a href="sitemap.html">Site Map</a>.</p>
+                </div>
+            </section>
+        </div>
     </div>
+    <!-- footer -->
+    <footer>
+        @RenderBody()
+        <div class="container">
+            <div class="inside">
+                <div class="wrapper">
+                    <div class="fleft">24/7 Customer Service <span>8.800.146.56.7</span></div>
+                    <div class="aligncenter">
+                        <a rel="nofollow" href="http://www.templatemonster.com" class="new_window">Website template</a> designed by TemplateMonster.com<br>
+                        <a href="http://www.templates.com/product/3d-models/" class="new_window">3D Models</a> provided by Templates.com
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    @DateTime.Now.Year
+    
     @Scripts.Render("~/bundles/jquery")
     @Scripts.Render("~/bundles/bootstrap")
     @RenderSection("scripts", required: false)
@@ -74,6 +192,26 @@
          submenu.className = "hide-submenu";
      }
 </script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 @* <div class="navbar-header">
         <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
             <span class="icon-bar"></span>

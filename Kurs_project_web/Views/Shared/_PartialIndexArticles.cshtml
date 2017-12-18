@@ -1,0 +1,16 @@
+﻿@model IQueryable<DAL.Web.Site.Models.News>
+
+<div class="inside">
+    <h2>Recent <span>Articles</span></h2>
+    <div class="row">
+        @foreach (var item in Model)
+        {
+            <div class="col-md-4">
+                <span><img src="@Html.DisplayFor((modelItem => item.imgPath))"></span>
+                <h4>@Html.DisplayFor(modelItem => item.Header)</h4>
+                <p>@Html.DisplayFor(modelItem => item.Content)</p>
+            </div>
+        }
+    </div>
+</div>
+

@@ -10,9 +10,9 @@ namespace DAL.Web.Site.Models
     {
         [Key]
         public int Id { get; set; }//С чего бы это у новости нет ID?      
-        public string Content { get; set; }//
         public string Header { get; set; }
-        public DateTime CurrentDate { get; set; }
+        public string Content { get; set; }
+        public DateTime CurrentDate { get; set; }//Дата создания?
         public string Type { get; set; }//Тип - новость/статья/объявление     
         public string AuthorProfileId { get; set; } // Автор новости
         public News()

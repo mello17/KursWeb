@@ -1,6 +1,4 @@
-﻿@model IEnumerable<DAL.Web.Site.Models.News> 
-
-
+﻿@model IEnumerable<DAL.Web.Site.Models.News>
 @{ 
     ViewBag.Title = "Home Page";
     Layout = "~/Views/Shared/_Layout.cshtml";
@@ -41,21 +39,8 @@
         </a>
     </div>
     <div class="ic">Тут Была Невнятная Реклама, а что Должно Быть - не знаю.</div>
-    <div class="inside">
-        <h2>Recent <span>Articles</span></h2>
-        <div class="row">
-            
-           @foreach (var item in Model)
-           {
-               
-            <div class="col-md-4">
-                    <span><img src="images/icon3.png"></span>
-                    <h4>@Html.DisplayFor(modelItem => item.Header)</h4>
-                <p>@Html.DisplayFor(modelItem => item.Content)</p>
-            </div>
-           }
-        </div>              
-    </div>
+ 
+
                         <!--<ul class="list">
                         <li>
                         </li>
@@ -75,9 +60,9 @@
                     </li>
                     </ul>-->
 
-                    <h2>Move Forward <span>With Your Education</span></h2>
-                    <p><span class="txt1">Student’s Site</span> is a free web template created by TemplateMonster.com team. This website template is optimized for 1024X768 screen resolution. </p>
-                    <div class="img-box"><img src="images/1page-img.jpg">This website template can be delivered in two packages - with PSD source files included and without them. If you need PSD source files, please go to the template download page at TemplateMonster to leave the e-mail address that you want the template ZIP package to be delivered to.</div>
+                    <h2>Фиксированная статья<span>Не знаю зачем</span></h2>
+                    <p><span class="txt1">Пускай будет</span> Изменить её содержимое можно и потом </p>
+                    <div class="img-box"><img src="images/1page-img.jpg">Изображение, наверное, придется удалять. </div>
                     <p class="p0">This website template has several pages: <a href="index.html">Home</a>, <a href="about-us.html">About us</a>, <a href="articles.html">Articles</a> (with Article page), <a href="contact-us.html">Contact us</a> (note that contact us form – doesn’t work), <a href="sitemap.html">Site Map</a>.</p>
                 </div>
   <!--Here No-head-->

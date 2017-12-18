@@ -7,12 +7,13 @@ using DAL.Web.Site.Models;
 
 namespace DAL.Web.Site.Interfaces
 {
-    public interface IUnitOfWork : IDisposable
+    public interface IUnitOfWork 
     {
-        IRepository<Announce> User { get; }
-        IRepository<PhotoAlbum> Advertisement { get; }
+        IRepository<Announce> Announces { get; }
+        IRepository<PhotoAlbum> PhotoAlbums { get; }
         IRepository<News> News { get; }
-        int Save();
+        void Save();
+        void Dispose();
 
     }
 }

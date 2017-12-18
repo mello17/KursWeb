@@ -114,6 +114,7 @@
     <Compile Include="Repositories\NewsRepository.cs" />
     <Compile Include="Repositories\PhotoAlbumRepository.cs" />
     <Compile Include="Repositories\Repository.cs" />
+    <Compile Include="UnitOfWork.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Views\web.config" />

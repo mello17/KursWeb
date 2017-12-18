@@ -78,19 +78,6 @@ namespace DAL.Web.Site.Repositories
             _db.Entry(item).State = EntityState.Modified;
         }
 
-        public IQueryable<News> AllNewses()
-        {
-            return _db.Set<News>().Where(u => u.Type == "Новость");
-        }
-
-        public IQueryable<News> AllEvents()
-        {
-            return _db.Set<News>().Where(u => u.Type == "Мероприятия");
-        }
-
-        public IQueryable<News> AllArticle()
-        {
-            return _db.Set<News>().Where(u => u.Type == "Статьи");
-        }
+       
     }
 }

@@ -109,7 +109,8 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="Interfaces\IAdminCRUD.cs" />
+    <Compile Include="Interfaces\IRepository.cs" />
+    <Compile Include="Interfaces\IUnitOfWorkAdmin.cs" />
     <Compile Include="Migrations\201712161822473_first_migration.cs" />
     <Compile Include="Migrations\201712161822473_first_migration.Designer.cs">
       <DependentUpon>201712161822473_first_migration.cs</DependentUpon>
@@ -121,6 +122,10 @@
     <Compile Include="Migrations\201712162147576_three.cs" />
     <Compile Include="Migrations\201712162147576_three.Designer.cs">
       <DependentUpon>201712162147576_three.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201712171720169_df.cs" />
+    <Compile Include="Migrations\201712171720169_df.Designer.cs">
+      <DependentUpon>201712171720169_df.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\Degree.cs" />
@@ -162,6 +167,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201712162147576_three.resx">
       <DependentUpon>201712162147576_three.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201712171720169_df.resx">
+      <DependentUpon>201712171720169_df.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>

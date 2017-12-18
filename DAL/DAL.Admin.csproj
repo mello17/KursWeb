@@ -111,10 +111,6 @@
     </Compile>
     <Compile Include="Interfaces\IRepository.cs" />
     <Compile Include="Interfaces\IUnitOfWorkAdmin.cs" />
-    <Compile Include="Migrations\201712171720169_df.cs" />
-    <Compile Include="Migrations\201712171720169_df.Designer.cs">
-      <DependentUpon>201712171720169_df.cs</DependentUpon>
-    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\Degree.cs" />
     <Compile Include="Models\Course.cs" />
@@ -146,11 +142,6 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-  </ItemGroup>
-  <ItemGroup>
-    <EmbeddedResource Include="Migrations\201712171720169_df.resx">
-      <DependentUpon>201712171720169_df.cs</DependentUpon>
-    </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
     <WCFMetadata Include="Connected Services\" />

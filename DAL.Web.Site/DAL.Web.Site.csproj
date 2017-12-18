@@ -106,9 +106,12 @@
     <Compile Include="Interfaces\INewsRepository.cs" />
     <Compile Include="Interfaces\IRepository.cs" />
     <Compile Include="Interfaces\IUnitOfWork.cs" />
+    <Compile Include="Migrations\Configuration.cs" />
+    <Compile Include="Models\Announce.cs" />
     <Compile Include="Models\News.cs" />
     <Compile Include="Models\PhotoAlbum.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Repositories\AnnounceRepository.cs" />
     <Compile Include="Repositories\NewsRepository.cs" />
     <Compile Include="Repositories\PhotoAlbumRepository.cs" />
     <Compile Include="Repositories\Repository.cs" />

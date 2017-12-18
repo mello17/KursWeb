@@ -10,7 +10,7 @@ namespace DAL.Web.Site.EF
     public class SiteContext : DbContext
     {
 
-        public SiteContext() : base("SiteDB")
+        public SiteContext() : base("DBWebSite")
         { }
 
        // public DbSet<Announce> Announces { get; set; }

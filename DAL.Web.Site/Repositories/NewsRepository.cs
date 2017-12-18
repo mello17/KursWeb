@@ -16,6 +16,33 @@ namespace DAL.Web.Site.Repositories
         {
             _db = db;
         }
+        public void NewsRepositoryMock()
+        {
+           var _news = new List<News>
+            {
+                new News
+                {
+                    Id = 1,
+                    Header = "Новость 1",
+                    Content = "Описание новости 1",
+                    Type = "Новость"
+                },
+                new News
+                {
+                    Id = 2,
+                    Header = "Мероприятие 1",
+                    Content = "Описание мероприятия 2",
+                    Type = "Мероприятия"
+                },
+                new News
+                {
+                    Id = 3,
+                    Header = "Объявление 1",
+                    Content = "Описание объявления 3",
+                    Type = "Объявления"
+                }
+            };
+        }
 
         public void Create(News item)
         {
@@ -49,6 +76,21 @@ namespace DAL.Web.Site.Repositories
         public void Update(News item)
         {
             _db.Entry(item).State = EntityState.Modified;
+        }
+
+        public IQueryable<News> AllNewses()
+        {
+            return _db.Set<News>().Where(u => u.Type == "Новость");
+        }
+
+        public IQueryable<News> AllEvents()
+        {
+            return _db.Set<News>().Where(u => u.Type == "Мероприятия");
+        }
+
+        public IQueryable<News> AllArticle()
+        {
+            return _db.Set<News>().Where(u => u.Type == "Статьи");
         }
     }
 }

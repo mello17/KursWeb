@@ -1,35 +1,51 @@
-﻿
+﻿/* $activeColor: #c0392b; //red */
+$activeColor: #27ae60; //green $darkenColor: darken($activeColor, 20%);
+/* $background: url('https://s3-us-west-2.amazonaws.com/s.cdpn.io/13460/dark_wall.png'); */
+$background: #3498db;
 /* Set padding to keep content from hitting the edges */
 .body-content {
     padding-left: 15px;
     padding-right: 15px;
 }
-
 /* Override the default bootstrap behavior where horizontal description lists 
    will truncate terms that are too long to fit in the left column 
 */
 .dl-horizontal dt {
     white-space: normal;
 }
-
 /* Set width on the form input elements since they're 100% wide by default */
 input,
 select,
 textarea {
     max-width: 280px;
 }
-
 /* Carousel */
+.carousel {
+    position: relative;
+    width: 691px;
+    height: 299px;
+    background: no-repeat left top;
+}
 .carousel-caption p {
     font-size: 20px;
     line-height: 1.4;
 }
-
 /* Make .svg files in the carousel display properly in older browsers */
+/*Так же это тупой подгон под размеры слайдера. Пусть будет.*/
 .carousel-inner .item img[src$=".svg"] {
-    width: 100%;
+    width: 691px;
+    height: 299px;
 }
 
+.carousel-inner .item img[src$=".jpeg"] {
+    width: 691px;
+    height: 299px;
+}
+
+.carousel-inner .item img[src$=".jpg"] {
+    width: 691px;
+    height: 299px;
+}
 /* Hide/rearrange for smaller screens */
 @media screen and (max-width: 767px) {
     /* Hide captions */
@@ -37,3 +53,4 @@ textarea {
         display: none;
     }
 }
+

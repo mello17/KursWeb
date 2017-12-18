@@ -20,7 +20,5 @@ namespace DAL.EF
         public DbSet<Job> Jobs { get; set; }
         public DbSet<Schedule> Schedules { get; set; }
         public DbSet<Teacher> Teachers { get; set; }
-
-
     }
 }

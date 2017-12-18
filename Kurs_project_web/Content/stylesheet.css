@@ -411,7 +411,7 @@ p {
 #banner {
     width: 691px;
     height: 299px;
-    background: url(../images/banner-bg.jpg) no-repeat left top;
+    background: no-repeat left top;
 }
 
     #banner h2 {
@@ -451,12 +451,17 @@ h1 {
 }
 
     h1 a {
+        content: 'BIG BROTHER WATCHING';
+        font-style: oblique;
+        font-size: 42px;
+        text-transform: none;
         width: 473px;
         height: 63px;
         position: absolute;
         left: 0;
         top: 104px;
-        background: url(../images/logo.jpg) no-repeat left top;
+        background: url(../images/LogoCyber.png) no-repeat left top;
+        background-size: 30%;
     }
 
 h2 {

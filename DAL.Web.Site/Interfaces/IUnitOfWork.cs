@@ -9,7 +9,6 @@ namespace DAL.Web.Site.Interfaces
 {
     public interface IUnitOfWork 
     {
-        IRepository<Announce> Announces { get; }
         IRepository<PhotoAlbum> PhotoAlbums { get; }
         IRepository<News> News { get; }
         void Save();

@@ -111,9 +111,9 @@
     </Compile>
     <Compile Include="Interfaces\IRepository.cs" />
     <Compile Include="Interfaces\IUnitOfWorkAdmin.cs" />
-    <Compile Include="Migrations\201712171720169_df.cs" />
-    <Compile Include="Migrations\201712171720169_df.Designer.cs">
-      <DependentUpon>201712171720169_df.cs</DependentUpon>
+    <Compile Include="Migrations\201712182040118_newmigration.cs" />
+    <Compile Include="Migrations\201712182040118_newmigration.Designer.cs">
+      <DependentUpon>201712182040118_newmigration.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\Degree.cs" />
@@ -148,11 +148,6 @@
     <Folder Include="App_Data\" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\201712171720169_df.resx">
-      <DependentUpon>201712171720169_df.cs</DependentUpon>
-    </EmbeddedResource>
-  </ItemGroup>
-  <ItemGroup>
     <WCFMetadata Include="Connected Services\" />
   </ItemGroup>
   <ItemGroup>
@@ -160,6 +155,11 @@
       <Project>{51b2e94d-018b-49f9-85ee-91b6ca59e5be}</Project>
       <Name>DAL.Web.Site</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Migrations\201712182040118_newmigration.resx">
+      <DependentUpon>201712182040118_newmigration.cs</DependentUpon>
+    </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

@@ -76,8 +76,6 @@ namespace DAL.Web.Site.Repositories
         public void Update(News item)
         {
             _db.Entry(item).State = EntityState.Modified;
-        }
-
-       
+        }     
     }
 }

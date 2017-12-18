@@ -13,7 +13,7 @@ namespace DAL.Web.Site.EF
         public SiteContext() : base("SiteDB")
         { }
 
-        public DbSet<Announce> Announces { get; set; }
+       // public DbSet<Announce> Announces { get; set; }
         public DbSet<PhotoAlbum> PhotoAlbums { get; set; }
         public DbSet<News> News { get; set; }
     }

@@ -211,6 +211,8 @@
     <Content Include="Views\Manage\Login.cshtml" />
     <Content Include="Views\Manage\Register.cshtml" />
     <Content Include="Views\News\News.cshtml" />
+    <Content Include="Views\Shared\_PartialIndexArticles.cshtml" />
+    <Content Include="Views\Shared\_PartialLayoutNews.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -236,6 +238,14 @@
     <ProjectReference Include="..\DAL.Web.Site\DAL.Web.Site.csproj">
       <Project>{51B2E94D-018B-49F9-85EE-91B6CA59E5BE}</Project>
       <Name>DAL.Web.Site</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\DAL\DAL.Admin.csproj">
+      <Project>{c1c2e8e8-5af6-4fd5-8404-b8b5a668ef21}</Project>
+      <Name>DAL.Admin</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\WebApi2\WebApi2.csproj">
+      <Project>{2773c133-aba7-4eaa-9d2a-a17eaeda3a01}</Project>
+      <Name>WebApi2</Name>
     </ProjectReference>
   </ItemGroup>
   <PropertyGroup>

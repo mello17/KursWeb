@@ -15,8 +15,8 @@ namespace Kurs_project_web.Controllers
     public class HomeController : Controller
     {
         public SiteContext db = new SiteContext();
-
-      //  public NewsRepository repository = new NewsRepository(db);
+        //UnitOfWork work;
+        //  public NewsRepository repository = new NewsRepository(db);
 
         public ActionResult Index()
         {
@@ -65,7 +65,6 @@ namespace Kurs_project_web.Controllers
 
         public ActionResult News()
         {
-
             new News
             {
                 Id = 1,
@@ -87,8 +86,24 @@ namespace Kurs_project_web.Controllers
                 Content = "Описание объявления 3",
                 Type = "Объявления"
             };
-                var News = db.News.ToList();
+            var News = db.News.ToList();
+
             return View(News);
+        }
+        public ActionResult _PartialIndexArticles()
+        {
+            ViewBag.Message = "Это частичное представление - вывод колонки из 3-х статей.";
+            return PartialView();
+        }
+
+       
+
+        public ActionResult _PartialLayoutNews()
+        {   //work = new UnitOfWork();
+            ViewBag.Message = "Это частичное представление - вывод новостей для Layout-а";
+            // var News = db.News.ToList(); 
+           // var News = work.AllNews();
+            return PartialView();//return PartialView(News);
         }
     }
 }

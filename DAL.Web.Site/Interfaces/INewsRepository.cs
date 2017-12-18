@@ -6,9 +6,9 @@ using System.Web;
 
 namespace DAL.Web.Site.Interfaces
 {
-    public interface INewsRepository : IRepository<News>
+    public interface INewsRepository 
     {
-        IQueryable<News> AllNewses();
+        IQueryable<News> AllNews();
         IQueryable<News> AllEvents();
         IQueryable<News> AllArticle();
     }

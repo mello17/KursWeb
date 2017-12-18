@@ -6,7 +6,6 @@ using System.Web.Mvc;
 using DAL.Web.Site;
 using DAL.Web.Site.Repositories;
 using DAL.Web.Site.EF;
-using DAL.Web.Site.Repositories;
 using DAL.Web.Site.Models;
 //using DAL.Admin;
 
@@ -15,12 +14,18 @@ namespace Kurs_project_web.Controllers
     public class HomeController : Controller
     {
         public SiteContext db = new SiteContext();
-
+        UnitOfWork work;
+        public HomeController()
+        {
+            work = new UnitOfWork();
+        }
       //  public NewsRepository repository = new NewsRepository(db);
 
         public ActionResult Index()
         {
-            var News = db.News.ToList();
+
+            // var News = db.News.ToList();
+            var News = work.AllNews();
             return View(News);
         }
 

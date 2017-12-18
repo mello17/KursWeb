@@ -237,6 +237,10 @@
       <Project>{51B2E94D-018B-49F9-85EE-91B6CA59E5BE}</Project>
       <Name>DAL.Web.Site</Name>
     </ProjectReference>
+    <ProjectReference Include="..\WebUI.Admin\WebUI.Admin.csproj">
+      <Project>{5bdbabe9-5e87-4d2f-958c-b7eb3a475542}</Project>
+      <Name>WebUI.Admin</Name>
+    </ProjectReference>
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

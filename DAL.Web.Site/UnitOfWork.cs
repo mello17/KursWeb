@@ -8,7 +8,7 @@ using DAL.Web.Site.Models;
 using DAL.Web.Site.Repositories;
 namespace DAL.Web.Site
 {
-	public class UnitOfWork : IUnitOfWork
+	public class UnitOfWork : IUnitOfWork,INewsRepository
 	{
         
         private SiteContext site_db = new SiteContext();
@@ -68,6 +68,21 @@ namespace DAL.Web.Site
         {
             Dispose(true);
             GC.SuppressFinalize(this);
+        }
+
+        public IQueryable<News> AllNews()
+        {
+            return site_db.Set<News>().Where(u => u.Type == "Новость");
+        }
+
+        public IQueryable<News> AllEvents()
+        {
+            return site_db.Set<News>().Where(u => u.Type == "Мероприятия");
+        }
+
+        public IQueryable<News> AllArticle()
+        {
+            return site_db.Set<News>().Where(u => u.Type == "Статьи");
         }
 
     }

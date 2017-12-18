@@ -1,4 +1,6 @@
-﻿@model IEnumerable<DAL.Web.Site.Models.News>
+﻿@model IEnumerable<DAL.Web.Site.Models.News> 
+
+
 @{ 
     ViewBag.Title = "Home Page";
     Layout = "~/Views/Shared/_Layout.cshtml";
@@ -42,6 +44,7 @@
     <div class="inside">
         <h2>Recent <span>Articles</span></h2>
         <div class="row">
+            
            @foreach (var item in Model)
            {
                

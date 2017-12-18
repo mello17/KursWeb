@@ -11,8 +11,11 @@ namespace DAL.Interfaces
     {
         IRepository<Course> Courses { get; }
         IRepository<Degree> Degrees { get; }
-        IRepository<Graduate> Graduates { get; }
         IRepository<Group> Groups { get; }
+        IRepository<Graduate> Job { get; }
+        IRepository<Schedule> Schedules { get; }
+        IRepository<ScienceWork> ScienceWorks { get; }
+        IRepository<Teacher> Teachers { get; }
         void Save();
         void Dispose();
     }

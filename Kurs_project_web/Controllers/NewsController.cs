@@ -26,10 +26,11 @@ namespace Kurs_project_web.Controllers
             
             ViewBag.Message = "Fking news";
             var events = work.AllEvents();
-            return View();
+           
+            return View(events);
         }
 
-        [HttpPost]
+        
         public ActionResult AddNews()
         {
             

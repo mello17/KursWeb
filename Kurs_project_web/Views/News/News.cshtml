@@ -6,10 +6,19 @@
 
 <h2>News</h2>
 <ul>
-    @foreach (var item in Model)
-    {
+    @{
+        if (Model.Count() == 0)
+        {
+            <li>Новых новостей нет</li>
+        }
+        else
+        {
+        foreach (var item in Model)
+            {
         <li>@item.Content</li>
         <li>@item.imgPath</li>
         <li>@item.CurrentDate</li>
-    }
+                }
+            }
+        }
 </ul>

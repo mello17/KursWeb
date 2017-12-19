@@ -10,7 +10,6 @@ namespace DAL.Interfaces
     interface IUnitOfWorkAdmin 
     {
         IRepository<Course> Courses { get; }
-        IRepository<Degree> Degrees { get; }
         IRepository<Group> Groups { get; }
         IRepository<Graduate> Job { get; }
         IRepository<Schedule> Schedules { get; }

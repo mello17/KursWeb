@@ -13,9 +13,8 @@ namespace DAL.Models
         public int Id { get; set; }
         [Required]
         public string FIO { get; set; }
-        public int JobId { get; set; }
+        [Required]
         public Job Job { get; set; }
-        public int DegreeId { get; set; }
         public Degree Degree { get; set; }
 
         public ICollection<Group> Groups { get; set; }
@@ -26,7 +25,6 @@ namespace DAL.Models
         public Teacher()
         {
             Groups = new List<Group>();
-           
             Graduates = new List<Graduate>();
             Courses = new List<Course>();
         }

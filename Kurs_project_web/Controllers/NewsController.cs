@@ -26,7 +26,10 @@ namespace Kurs_project_web.Controllers
             
             ViewBag.Message = "Fking news";
             var events = work.AllEvents();
-           
+            if(events == null)
+            {
+                return View();
+            }
             return View(events);
         }
 

@@ -15,7 +15,6 @@ namespace DAL.Web.Site
         private bool disposed = false;
         private NewsRepository _newsRepository;
         private PhotoAlbumRepository _photoRepository;
-        private AnnounceRepository _announceRepository;
 
         public IRepository<News> News
         {
@@ -34,16 +33,6 @@ namespace DAL.Web.Site
                 if (_photoRepository == null)
                     _photoRepository = new PhotoAlbumRepository(site_db);
                 return _photoRepository;
-            }
-        }
-
-        public IRepository<Announce> Announces
-        {
-            get
-            {
-                if (_announceRepository == null)
-                    _announceRepository = new AnnounceRepository(site_db);
-                return _announceRepository;
             }
         }
 

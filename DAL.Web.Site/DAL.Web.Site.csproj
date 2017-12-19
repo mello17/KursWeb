@@ -106,6 +106,10 @@
     <Compile Include="Interfaces\INewsRepository.cs" />
     <Compile Include="Interfaces\IRepository.cs" />
     <Compile Include="Interfaces\IUnitOfWork.cs" />
+    <Compile Include="Migrations\201712191345475_dal.cs" />
+    <Compile Include="Migrations\201712191345475_dal.Designer.cs">
+      <DependentUpon>201712191345475_dal.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\News.cs" />
     <Compile Include="Models\PhotoAlbum.cs" />
@@ -131,6 +135,11 @@
   </ItemGroup>
   <ItemGroup>
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Migrations\201712191345475_dal.resx">
+      <DependentUpon>201712191345475_dal.cs</DependentUpon>
+    </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

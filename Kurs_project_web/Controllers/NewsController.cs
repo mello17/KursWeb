@@ -36,7 +36,7 @@ namespace Kurs_project_web.Controllers
            var model = new News
             {
                 
-                Header= "Мероприятие"
+                //Header= "Мероприятие"
                 
             };
             return View(model);

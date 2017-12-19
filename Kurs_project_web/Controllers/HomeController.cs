@@ -109,7 +109,7 @@ namespace Kurs_project_web.Controllers
             ViewBag.Message = "Частичное представление - вывод новостей в layout";
             // var News = db.News.ToList(); 
             var News = work.AllNews();
-            return PartialView(News);
+            return PartialView();
             //return PartialView();
         }
     }

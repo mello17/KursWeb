@@ -1,12 +1,13 @@
-﻿
+﻿@model IQueryable<DAL.Web.Site.Models.News>
 @{
     ViewBag.Title = "StudentsView";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 <body>
     <h2>Not Students. GraduateView</h2>
-    @*  Достало. У меня нет миграций, я не имею доступа к БД и все равно не могу извлечь данные. К дьяволу.
-
+   @* @Html.Action("_PartialIndexArticles", Model)*@
+   @* @Html.Action("_PartialLayoutNews")*@
+    @*  Достало. У меня нет миграций, я не имею доступа к БД и все равно не могу извлечь данные. 
 
         <table class="table">
             <tr>

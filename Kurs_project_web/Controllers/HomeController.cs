@@ -100,7 +100,7 @@ namespace Kurs_project_web.Controllers
         public ActionResult _PartialIndexArticles()
         {
             ViewBag.Message = "Частичное представление - вывод 3 cтатей на главную";
-            var News = work.AllArticle();
+           var News = work.AllArticle();
             return PartialView(News);
             //return PartialView();
         }

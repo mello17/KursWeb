@@ -1,5 +1,4 @@
-﻿@model IEnumerable<DAL.Web.Site.Models.News>
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html>
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
@@ -21,7 +20,7 @@
         <nav id="navbar">
             <ul id="main-menu">
                 <li><a href="#" target="_blank"><i class="fa fa-home"></i>Home</a></li>
-                <li><a href="#" target="_blank"><i class="fa fa-list-alt"></i>@**@@Html.ActionLink("ABOUT US", "About", "Home")</a></li>
+                <li><a href="#" target="_blank"><i class="fa fa-list-alt"></i>@*@Html.ActionLink("ABOUT US", "About", "Home")*@</a></li>
                 <li><a href="#" target="_blank"><i class="fa fa-list-alt"></i>About</a></li>
                 <li><a href="#" target="_blank"><i class="fa fa-list-alt"></i>About</a></li>
                 <li><a href="#" target="_blank"><i class="fa fa-list-alt"></i>About</a></li>
@@ -99,7 +98,7 @@
                     </fieldset>
                 </form>-->
                 <h2>Fresh <span>News</span></h2>
-                @{Html.RenderPartial("_PartialLayoutNews");}
+                @Html.Action("_PartialLayoutNews")
             </aside>
             <!-- content -->
             <section id="content">

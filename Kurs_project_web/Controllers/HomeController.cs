@@ -7,7 +7,7 @@ using DAL.Web.Site;
 using DAL.Web.Site.Repositories;
 using DAL.Web.Site.EF;
 using DAL.Web.Site.Models;
-//using DAL.Admin;
+using DAL.Models;
 
 namespace Kurs_project_web.Controllers
 {
@@ -60,7 +60,7 @@ namespace Kurs_project_web.Controllers
         public ActionResult TimeTableView()
         {
             ViewBag.Message = "Your applicaon page.";
-
+           // var  = db.Teacher.ToList();
             return View();
         }
 
@@ -109,7 +109,7 @@ namespace Kurs_project_web.Controllers
             ViewBag.Message = "Частичное представление - вывод новостей в layout";
             // var News = db.News.ToList(); 
             var News = work.AllNews();
-            return PartialView();
+            return PartialView(News);
             //return PartialView();
         }
     }

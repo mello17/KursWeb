@@ -1,4 +1,5 @@
-﻿
+﻿@model IEnumerable<DAL.Models.Teacher>
+
 @{
     ViewBag.Title = "TeachersView";
     Layout = "~/Views/Shared/_Layout.cshtml";
@@ -7,4 +8,32 @@
     <h2>TeachersView</h2>
 
     <h2>Тут будут выводиться преподы</h2>
+    <br />
+    <br />
+    <br />
+    <br />
+    <div class="row">
+        @foreach (var item in Model)
+        {
+
+            <div class="col-md-12 table-bordered">
+                <div class="col-md-2"></div>
+                <div class="col-md-4 text-center">
+                    <img src="@Html.DisplayFor(modelItem => item.imgPath)" height="300" />
+                </div>
+                <div class="col-md-4">
+                    @Html.DisplayFor(modelItem => item.FIO)
+                    <br />
+                    <p>Учёная степень: @Html.DisplayFor(modelItem => item.Degree) </p>
+                    <p>Должность: @Html.DisplayFor(modelItem => item.Job)</p>
+                    @Html.DisplayFor(modelItem => item.Information)
+                </div>
+                <div class="col-md-2"></div>
+
+            </div>
+            <br />
+            <br /><br />
+            <br />
+        }
+    </div>
 </body>

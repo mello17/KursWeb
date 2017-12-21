@@ -191,13 +191,22 @@
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\AdminController.cs" />
     <Compile Include="Controllers\CoursesController.cs" />
+    <Compile Include="Controllers\GraduatesController.cs" />
+    <Compile Include="Controllers\GroupsController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
+    <Compile Include="Controllers\SchedulesController.cs" />
+    <Compile Include="Controllers\ScienceWorksController.cs" />
+    <Compile Include="Controllers\TeachersController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Migrations\201712191337376_add_enum.cs" />
     <Compile Include="Migrations\201712191337376_add_enum.Designer.cs">
       <DependentUpon>201712191337376_add_enum.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201712211204476_four.cs" />
+    <Compile Include="Migrations\201712211204476_four.Designer.cs">
+      <DependentUpon>201712211204476_four.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
@@ -618,6 +627,31 @@
     <Content Include="Views\Courses\Details.cshtml" />
     <Content Include="Views\Courses\Edit.cshtml" />
     <Content Include="Views\Courses\Index.cshtml" />
+    <Content Include="Views\Graduates\Create.cshtml" />
+    <Content Include="Views\Graduates\Delete.cshtml" />
+    <Content Include="Views\Graduates\Details.cshtml" />
+    <Content Include="Views\Graduates\Edit.cshtml" />
+    <Content Include="Views\Graduates\Index.cshtml" />
+    <Content Include="Views\Groups\Create.cshtml" />
+    <Content Include="Views\Groups\Delete.cshtml" />
+    <Content Include="Views\Groups\Details.cshtml" />
+    <Content Include="Views\Groups\Edit.cshtml" />
+    <Content Include="Views\Groups\Index.cshtml" />
+    <Content Include="Views\Schedules\Create.cshtml" />
+    <Content Include="Views\Schedules\Delete.cshtml" />
+    <Content Include="Views\Schedules\Details.cshtml" />
+    <Content Include="Views\Schedules\Edit.cshtml" />
+    <Content Include="Views\Schedules\Index.cshtml" />
+    <Content Include="Views\ScienceWorks\Create.cshtml" />
+    <Content Include="Views\ScienceWorks\Delete.cshtml" />
+    <Content Include="Views\ScienceWorks\Details.cshtml" />
+    <Content Include="Views\ScienceWorks\Edit.cshtml" />
+    <Content Include="Views\ScienceWorks\Index.cshtml" />
+    <Content Include="Views\Teachers\Create.cshtml" />
+    <Content Include="Views\Teachers\Delete.cshtml" />
+    <Content Include="Views\Teachers\Details.cshtml" />
+    <Content Include="Views\Teachers\Edit.cshtml" />
+    <Content Include="Views\Teachers\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -641,8 +675,15 @@
     <EmbeddedResource Include="Migrations\201712191337376_add_enum.resx">
       <DependentUpon>201712191337376_add_enum.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201712211204476_four.resx">
+      <DependentUpon>201712211204476_four.cs</DependentUpon>
+    </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\DAL.Web.Site\DAL.Web.Site.csproj">
+      <Project>{51b2e94d-018b-49f9-85ee-91b6ca59e5be}</Project>
+      <Name>DAL.Web.Site</Name>
+    </ProjectReference>
     <ProjectReference Include="..\DAL\DAL.Admin.csproj">
       <Project>{c1c2e8e8-5af6-4fd5-8404-b8b5a668ef21}</Project>
       <Name>DAL.Admin</Name>

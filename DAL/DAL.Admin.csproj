@@ -126,6 +126,7 @@
     <Compile Include="Repositories\CourseRepository .cs" />
     <Compile Include="Repositories\GroupRepository.cs" />
     <Compile Include="Repositories\GraduateRepository.cs" />
+    <Compile Include="Repositories\TeacherRepository.cs" />
     <Compile Include="UnitOfWorkAdmin.cs" />
   </ItemGroup>
   <ItemGroup>

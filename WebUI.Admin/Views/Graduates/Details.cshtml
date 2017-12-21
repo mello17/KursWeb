@@ -1,0 +1,50 @@
+﻿@model DAL.Models.Graduate
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>Graduate</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Group.Group_Name)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Group.Group_Name)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ScienceWork.Theme)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ScienceWork.Theme)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Teacher.FIO)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Teacher.FIO)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.FIO)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.FIO)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.Id }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

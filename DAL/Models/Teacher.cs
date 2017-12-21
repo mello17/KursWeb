@@ -22,6 +22,8 @@ namespace DAL.Models
         public ICollection<Graduate> Graduates { get; set; }
         public ICollection<Course> Courses { get; set; }
 
+        public string imgPath { get; set; }//путь к фото
+        public string Information { get; set; }//Описание/информация/биография
         public Teacher()
         {
             Groups = new List<Group>();

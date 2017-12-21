@@ -7,7 +7,7 @@ using DAL.Web.Site;
 using DAL.Web.Site.Repositories;
 using DAL.Web.Site.EF;
 using DAL.Web.Site.Models;
-//using DAL.Admin;
+using DAL.Models;
 
 namespace Kurs_project_web.Controllers
 {
@@ -60,7 +60,7 @@ namespace Kurs_project_web.Controllers
         public ActionResult TimeTableView()
         {
             ViewBag.Message = "Your applicaon page.";
-
+           // var  = db.Teacher.ToList();
             return View();
         }
 

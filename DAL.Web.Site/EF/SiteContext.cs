@@ -4,6 +4,7 @@ using System.Linq;
 using System.Web;
 using System.Data.Entity;
 using DAL.Web.Site.Models;
+using Kurs_project_web.Models;
 
 namespace DAL.Web.Site.EF
 {
@@ -16,5 +17,6 @@ namespace DAL.Web.Site.EF
        // public DbSet<Announce> Announces { get; set; }
         public DbSet<PhotoAlbum> PhotoAlbums { get; set; }
         public DbSet<News> News { get; set; }
+        public DbSet<LangModel> LangModels { get; set; }
     }
 }

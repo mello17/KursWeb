@@ -54,6 +54,15 @@
     <div class="wrap">
         <!-- header -->
         <header>
+            @using (Html.BeginForm("ChangeCulture", "Home"))
+            {
+                <select name="lang">
+                    <option disabled selected>@Html.Raw(Resources.Resource.ChooseLang)</option>
+                    <option value="rus">Русский</option>
+                    <option value="eng">English</option>
+                </select>
+                <input type="submit" name="submit" value="@Resources.Resource.ChooseLang">
+            }
             <div class="container">
                 <h1><a href="#" target="_blank">@Html.ActionLink("Сайт кафедры магии и волшебства", "Index", "Home")</a></h1>
                 <nav>

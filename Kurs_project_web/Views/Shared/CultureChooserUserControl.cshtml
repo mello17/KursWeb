@@ -1,0 +1,8 @@
+﻿<div>
+    @{ 
+    @Html.ActionLink("English", "ChangeCulture", "Home",
+    new { lang = "en", returnUrl = this.Request.RawUrl }, null)
+    @Html.ActionLink("Русский", "ChangeCulture", "Home",
+    new { lang = "ru", returnUrl = this.Request.RawUrl }, null)
+    }
+</div>

@@ -8,15 +8,18 @@ using DAL.Web.Site.Repositories;
 using DAL.Web.Site.EF;
 using DAL.Web.Site.Models;
 using DAL.Models;
-using Kurs_project_web.Filters;
+
+using System.Resources;
+using System.Globalization;
 
 namespace Kurs_project_web.Controllers
 {
-    [Culture]
+
     public class HomeController : Controller
     {
         public SiteContext db = new SiteContext();
         UnitOfWork work;
+
         public HomeController()
         {
             work = new UnitOfWork();
@@ -25,7 +28,6 @@ namespace Kurs_project_web.Controllers
 
         public ActionResult Index()
         {
-
             // var News = db.News.ToList();
             var News = work.AllNews();
             return View(News);
@@ -114,28 +116,10 @@ namespace Kurs_project_web.Controllers
             return PartialView(News);
            
         }
-        public ActionResult ChangeCulture(string lang)
-        {
-            string returnUrl = Request.UrlReferrer.AbsolutePath;
-            // Список культур
-            List<string> cultures = new List<string>() { "rus", "eng"};
-            if (!cultures.Contains(lang))
-            {
-                lang = "rus";
-            }
-            // Сохраняем выбранную культуру в куки
-            HttpCookie cookie = Request.Cookies["lang"];
-            if (cookie != null)
-                cookie.Value = lang;   // если куки уже установлено, то обновляем значение
-            else
-            {
 
-                cookie = new HttpCookie("lang");
-                cookie.HttpOnly = false;
-                cookie.Value = lang;
-                cookie.Expires = DateTime.Now.AddYears(1);
-            }
-            Response.Cookies.Add(cookie);
+        public ActionResult ChangeCulture(string lang, string returnUrl)
+        {
+            Session["Culture"] = new CultureInfo(lang);
             return Redirect(returnUrl);
         }
     }

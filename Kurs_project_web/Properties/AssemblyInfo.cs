@@ -13,6 +13,7 @@ using System.Runtime.InteropServices;
 [assembly: AssemblyCopyright("© , 2017")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
+//[assembly: AssemblyCulture("Kurs_project_web.Resources")]
 
 // Установка значения False в параметре ComVisible делает типы в этой сборке невидимыми
 // для компонентов COM.  Если требуется обратиться к типу в этой сборке через

@@ -6,20 +6,19 @@ using System.Linq;
 using System.Net;
 using System.Web;
 using System.Web.Mvc;
-using DAL.EF;
+using DAL;
 using DAL.Models;
 
 namespace WebUI.Admin.Controllers
 {
     public class GraduatesController : Controller
     {
-        private AdminContext db = new AdminContext();
-
+        private UnitOfWorkAdmin work = new UnitOfWorkAdmin();
         // GET: Graduates
         public ActionResult Index()
         {
-            var graduates = db.Graduates.Include(g => g.Group).Include(g => g.ScienceWork).Include(g => g.Teacher);
-            return View(graduates.ToList());
+         
+            return View(work.Graduates.GetAll().ToList());
         }
 
         // GET: Graduates/Details/5
@@ -29,7 +28,7 @@ namespace WebUI.Admin.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Graduate graduate = db.Graduates.Find(id);
+            Graduate graduate = work.Graduates.Get(id.Value);
             if (graduate == null)
             {
                 return HttpNotFound();
@@ -40,29 +39,27 @@ namespace WebUI.Admin.Controllers
         // GET: Graduates/Create
         public ActionResult Create()
         {
-            ViewBag.GroupId = new SelectList(db.Groups, "Id", "Group_Name");
-            ViewBag.Id = new SelectList(db.ScienceWorks, "Id", "Theme");
-            ViewBag.TeacherId = new SelectList(db.Teachers, "Id", "FIO");
+            ViewBag.GroupId = new SelectList(work.Groups.GetAll(), "Id", "Group_Name");
+            ViewBag.Id = new SelectList(work.ScienceWorks.GetAll(), "Id", "Theme");
+            ViewBag.TeacherId = new SelectList(work.Teachers.GetAll(), "Id", "FIO");
             return View();
         }
 
         // POST: Graduates/Create
-        // Чтобы защититься от атак чрезмерной передачи данных, включите определенные свойства, для которых следует установить привязку. Дополнительные 
-        // сведения см. в статье https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult Create([Bind(Include = "Id,FIO,TeacherId,GroupId")] Graduate graduate)
         {
             if (ModelState.IsValid)
             {
-                db.Graduates.Add(graduate);
-                db.SaveChanges();
+                work.Graduates.Create(graduate);
+                work.Save();
                 return RedirectToAction("Index");
             }
 
-            ViewBag.GroupId = new SelectList(db.Groups, "Id", "Group_Name", graduate.GroupId);
-            ViewBag.Id = new SelectList(db.ScienceWorks, "Id", "Theme", graduate.Id);
-            ViewBag.TeacherId = new SelectList(db.Teachers, "Id", "FIO", graduate.TeacherId);
+            ViewBag.GroupId = new SelectList(work.Groups.GetAll(), "Id", "Group_Name");
+            ViewBag.Id = new SelectList(work.ScienceWorks.GetAll(), "Id", "Theme");
+            ViewBag.TeacherId = new SelectList(work.Teachers.GetAll(), "Id", "FIO");
             return View(graduate);
         }
 
@@ -73,33 +70,31 @@ namespace WebUI.Admin.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Graduate graduate = db.Graduates.Find(id);
+            Graduate graduate = work.Graduates.Get(id.Value);
             if (graduate == null)
             {
                 return HttpNotFound();
             }
-            ViewBag.GroupId = new SelectList(db.Groups, "Id", "Group_Name", graduate.GroupId);
-            ViewBag.Id = new SelectList(db.ScienceWorks, "Id", "Theme", graduate.Id);
-            ViewBag.TeacherId = new SelectList(db.Teachers, "Id", "FIO", graduate.TeacherId);
+            ViewBag.GroupId = new SelectList(work.Groups.GetAll(), "Id", "Group_Name", graduate.GroupId);
+            ViewBag.Id = new SelectList(work.ScienceWorks.GetAll(), "Id", "Theme", graduate.Id);
+            ViewBag.TeacherId = new SelectList(work.Teachers.GetAll(), "Id", "FIO", graduate.TeacherId);
             return View(graduate);
         }
 
         // POST: Graduates/Edit/5
-        // Чтобы защититься от атак чрезмерной передачи данных, включите определенные свойства, для которых следует установить привязку. Дополнительные 
-        // сведения см. в статье https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult Edit([Bind(Include = "Id,FIO,TeacherId,GroupId")] Graduate graduate)
         {
             if (ModelState.IsValid)
             {
-                db.Entry(graduate).State = EntityState.Modified;
-                db.SaveChanges();
+                work.Graduates.Update(graduate);
+                work.Save();
                 return RedirectToAction("Index");
             }
-            ViewBag.GroupId = new SelectList(db.Groups, "Id", "Group_Name", graduate.GroupId);
-            ViewBag.Id = new SelectList(db.ScienceWorks, "Id", "Theme", graduate.Id);
-            ViewBag.TeacherId = new SelectList(db.Teachers, "Id", "FIO", graduate.TeacherId);
+            ViewBag.GroupId = new SelectList(work.Groups.GetAll(), "Id", "Group_Name", graduate.GroupId);
+            ViewBag.Id = new SelectList(work.ScienceWorks.GetAll(), "Id", "Theme", graduate.Id);
+            ViewBag.TeacherId = new SelectList(work.Teachers.GetAll(), "Id", "FIO", graduate.TeacherId);
             return View(graduate);
         }
 
@@ -110,7 +105,7 @@ namespace WebUI.Admin.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Graduate graduate = db.Graduates.Find(id);
+            Graduate graduate = work.Graduates.Get(id.Value);
             if (graduate == null)
             {
                 return HttpNotFound();
@@ -123,9 +118,8 @@ namespace WebUI.Admin.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int id)
         {
-            Graduate graduate = db.Graduates.Find(id);
-            db.Graduates.Remove(graduate);
-            db.SaveChanges();
+            work.Graduates.Delete(id);
+            work.Save();
             return RedirectToAction("Index");
         }
 
@@ -133,7 +127,7 @@ namespace WebUI.Admin.Controllers
         {
             if (disposing)
             {
-                db.Dispose();
+                work.Dispose();
             }
             base.Dispose(disposing);
         }

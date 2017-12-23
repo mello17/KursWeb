@@ -12,7 +12,7 @@ using WebUI.Admin.Models;
 
 namespace WebUI.Admin.Controllers
 {
-    [Authorize]
+    [Authorize(Roles = "Admin")]
     public class AccountController : Controller
     {
         private ApplicationSignInManager _signInManager;
@@ -79,7 +79,7 @@ namespace WebUI.Admin.Controllers
             switch (result)
             {
                 case SignInStatus.Success:
-                    return RedirectToLocal(returnUrl);
+                    return RedirectToAction("Index","Manage");
                 case SignInStatus.LockedOut:
                     return View("Lockout");
                 case SignInStatus.RequiresVerification:

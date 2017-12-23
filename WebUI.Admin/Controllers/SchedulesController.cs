@@ -6,20 +6,20 @@ using System.Linq;
 using System.Net;
 using System.Web;
 using System.Web.Mvc;
-using DAL.EF;
+using DAL;
 using DAL.Models;
 
 namespace WebUI.Admin.Controllers
 {
     public class SchedulesController : Controller
     {
-        private AdminContext db = new AdminContext();
+        private UnitOfWorkAdmin work = new UnitOfWorkAdmin();
 
         // GET: Schedules
         public ActionResult Index()
         {
-            var schedules = db.Schedules.Include(s => s.Course).Include(s => s.Group).Include(s => s.Teacher);
-            return View(schedules.ToList());
+            
+            return View(work.Schedules.GetAll().ToList());
         }
 
         // GET: Schedules/Details/5
@@ -29,7 +29,7 @@ namespace WebUI.Admin.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Schedule schedule = db.Schedules.Find(id);
+            Schedule schedule = work.Schedules.Get(id.Value);
             if (schedule == null)
             {
                 return HttpNotFound();
@@ -40,29 +40,27 @@ namespace WebUI.Admin.Controllers
         // GET: Schedules/Create
         public ActionResult Create()
         {
-            ViewBag.CourseId = new SelectList(db.Courses, "Id", "Name");
-            ViewBag.GroupId = new SelectList(db.Groups, "Id", "Group_Name");
-            ViewBag.TeacherId = new SelectList(db.Teachers, "Id", "FIO");
+            ViewBag.CourseId = new SelectList(work.Courses.GetAll(), "Id", "Name");
+            ViewBag.GroupId = new SelectList(work.Groups.GetAll(), "Id", "Group_Name");
+            ViewBag.TeacherId = new SelectList(work.Teachers.GetAll(), "Id", "FIO");
             return View();
         }
 
         // POST: Schedules/Create
-        // Чтобы защититься от атак чрезмерной передачи данных, включите определенные свойства, для которых следует установить привязку. Дополнительные 
-        // сведения см. в статье https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult Create([Bind(Include = "Id,TeacherId,GroupId,CourseId,Time,Auditory")] Schedule schedule)
         {
             if (ModelState.IsValid)
             {
-                db.Schedules.Add(schedule);
-                db.SaveChanges();
+                work.Schedules.Create(schedule);
+                work.Save();
                 return RedirectToAction("Index");
             }
 
-            ViewBag.CourseId = new SelectList(db.Courses, "Id", "Name", schedule.CourseId);
-            ViewBag.GroupId = new SelectList(db.Groups, "Id", "Group_Name", schedule.GroupId);
-            ViewBag.TeacherId = new SelectList(db.Teachers, "Id", "FIO", schedule.TeacherId);
+            ViewBag.CourseId = new SelectList(work.Courses.GetAll(), "Id", "Name");
+            ViewBag.GroupId = new SelectList(work.Groups.GetAll(), "Id", "Group_Name");
+            ViewBag.TeacherId = new SelectList(work.Teachers.GetAll(), "Id", "FIO");
             return View(schedule);
         }
 
@@ -73,33 +71,31 @@ namespace WebUI.Admin.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Schedule schedule = db.Schedules.Find(id);
+            Schedule schedule = work.Schedules.Get(id.Value);
             if (schedule == null)
             {
                 return HttpNotFound();
             }
-            ViewBag.CourseId = new SelectList(db.Courses, "Id", "Name", schedule.CourseId);
-            ViewBag.GroupId = new SelectList(db.Groups, "Id", "Group_Name", schedule.GroupId);
-            ViewBag.TeacherId = new SelectList(db.Teachers, "Id", "FIO", schedule.TeacherId);
+            ViewBag.CourseId = new SelectList(work.Courses.GetAll(), "Id", "Name");
+            ViewBag.GroupId = new SelectList(work.Groups.GetAll(), "Id", "Group_Name");
+            ViewBag.TeacherId = new SelectList(work.Teachers.GetAll(), "Id", "FIO");
             return View(schedule);
         }
 
         // POST: Schedules/Edit/5
-        // Чтобы защититься от атак чрезмерной передачи данных, включите определенные свойства, для которых следует установить привязку. Дополнительные 
-        // сведения см. в статье https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult Edit([Bind(Include = "Id,TeacherId,GroupId,CourseId,Time,Auditory")] Schedule schedule)
         {
             if (ModelState.IsValid)
             {
-                db.Entry(schedule).State = EntityState.Modified;
-                db.SaveChanges();
+                work.Schedules.Update(schedule);
+                work.Save();
                 return RedirectToAction("Index");
             }
-            ViewBag.CourseId = new SelectList(db.Courses, "Id", "Name", schedule.CourseId);
-            ViewBag.GroupId = new SelectList(db.Groups, "Id", "Group_Name", schedule.GroupId);
-            ViewBag.TeacherId = new SelectList(db.Teachers, "Id", "FIO", schedule.TeacherId);
+            ViewBag.CourseId = new SelectList(work.Courses.GetAll(), "Id", "Name");
+            ViewBag.GroupId = new SelectList(work.Groups.GetAll(), "Id", "Group_Name");
+            ViewBag.TeacherId = new SelectList(work.Teachers.GetAll(), "Id", "FIO");
             return View(schedule);
         }
 
@@ -110,7 +106,7 @@ namespace WebUI.Admin.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Schedule schedule = db.Schedules.Find(id);
+            Schedule schedule = work.Schedules.Get(id.Value);
             if (schedule == null)
             {
                 return HttpNotFound();
@@ -123,9 +119,9 @@ namespace WebUI.Admin.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int id)
         {
-            Schedule schedule = db.Schedules.Find(id);
-            db.Schedules.Remove(schedule);
-            db.SaveChanges();
+         
+            work.Schedules.Delete(id);
+            work.Save();
             return RedirectToAction("Index");
         }
 
@@ -133,7 +129,7 @@ namespace WebUI.Admin.Controllers
         {
             if (disposing)
             {
-                db.Dispose();
+                work.Dispose();
             }
             base.Dispose(disposing);
         }

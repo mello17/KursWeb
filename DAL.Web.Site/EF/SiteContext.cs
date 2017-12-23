@@ -4,7 +4,7 @@ using System.Linq;
 using System.Web;
 using System.Data.Entity;
 using DAL.Web.Site.Models;
-using Kurs_project_web.Models;
+
 
 namespace DAL.Web.Site.EF
 {

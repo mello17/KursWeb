@@ -6,11 +6,14 @@ using System.Web.Mvc;
 using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.Owin;
 using Microsoft.Owin.Security;
+using PagedList.Mvc;
+using PagedList;
 using WebUI.Admin.Models;
+
 
 namespace WebUI.Admin.Controllers
 {
-    [Authorize]
+    [Authorize(Roles ="Admin")]
     public class ManageController : Controller
     {
      #region fields
@@ -59,18 +62,13 @@ namespace WebUI.Admin.Controllers
             ViewBag.StatusMessage =
                 message == ManageMessageId.ChangePasswordSuccess ? "Ваш пароль изменен."
                 : message == ManageMessageId.SetPasswordSuccess ? "Пароль задан."
-                : message == ManageMessageId.SetTwoFactorSuccess ? "Настроен поставщик двухфакторной проверки подлинности."
                 : message == ManageMessageId.Error ? "Произошла ошибка."
-                : message == ManageMessageId.AddPhoneSuccess ? "Ваш номер телефона добавлен."
-                : message == ManageMessageId.RemovePhoneSuccess ? "Ваш номер телефона удален."
                 : "";
 
             var userId = User.Identity.GetUserId();
             var model = new IndexViewModel
             {
                 HasPassword = HasPassword(),
-                PhoneNumber = await UserManager.GetPhoneNumberAsync(userId),
-                TwoFactor = await UserManager.GetTwoFactorEnabledAsync(userId),
                 Logins = await UserManager.GetLoginsAsync(userId),
                 BrowserRemembered = await AuthenticationManager.TwoFactorBrowserRememberedAsync(userId)
             };
@@ -99,6 +97,14 @@ namespace WebUI.Admin.Controllers
                 message = ManageMessageId.Error;
             }
             return RedirectToAction("ManageLogins", new { Message = message });
+        }
+
+        public ActionResult ManageAccount(int paginate=1, int pageSize = 5)
+        {
+            var count =  UserManager.Users.Count();
+            var users =  UserManager.Users.Take(count);
+
+            return View(users.ToPagedList(paginate, pageSize));
         }
 
         [HttpPost]

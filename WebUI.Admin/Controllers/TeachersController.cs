@@ -7,7 +7,6 @@ using System.Net;
 using System.Web;
 using DAL.Web.Site.Interfaces;
 using System.Web.Mvc;
-using DAL.EF;
 using DAL;
 using DAL.Models;
 
@@ -15,7 +14,7 @@ namespace WebUI.Admin.Controllers
 {
     public class TeachersController : Controller
     {
-        private AdminContext db = new AdminContext();
+        
         private UnitOfWorkAdmin work = new UnitOfWorkAdmin();
 
         // GET: Teachers
@@ -120,7 +119,7 @@ namespace WebUI.Admin.Controllers
         {
             if (disposing)
             {
-                db.Dispose();
+                work.Dispose();
             }
             base.Dispose(disposing);
         }

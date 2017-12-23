@@ -6,20 +6,21 @@ using System.Linq;
 using System.Net;
 using System.Web;
 using System.Web.Mvc;
-using DAL.EF;
+using DAL;
 using DAL.Models;
 
 namespace WebUI.Admin.Controllers
 {
     public class ScienceWorksController : Controller
     {
-        private AdminContext db = new AdminContext();
+
+        private UnitOfWorkAdmin work = new UnitOfWorkAdmin();
 
         // GET: ScienceWorks
         public ActionResult Index()
         {
-            var scienceWorks = db.ScienceWorks.Include(s => s.Graduate);
-            return View(scienceWorks.ToList());
+            
+            return View(work.ScienceWorks.GetAll().ToList());
         }
 
         // GET: ScienceWorks/Details/5
@@ -29,7 +30,7 @@ namespace WebUI.Admin.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            ScienceWork scienceWork = db.ScienceWorks.Find(id);
+            ScienceWork scienceWork = work.ScienceWorks.Get(id.Value);
             if (scienceWork == null)
             {
                 return HttpNotFound();
@@ -40,25 +41,23 @@ namespace WebUI.Admin.Controllers
         // GET: ScienceWorks/Create
         public ActionResult Create()
         {
-            ViewBag.Id = new SelectList(db.Graduates, "Id", "FIO");
+            ViewBag.Id = new SelectList(work.Graduates.GetAll(), "Id", "FIO");
             return View();
         }
 
         // POST: ScienceWorks/Create
-        // Чтобы защититься от атак чрезмерной передачи данных, включите определенные свойства, для которых следует установить привязку. Дополнительные 
-        // сведения см. в статье https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult Create([Bind(Include = "Id,Theme,ScienceDirection")] ScienceWork scienceWork)
         {
             if (ModelState.IsValid)
             {
-                db.ScienceWorks.Add(scienceWork);
-                db.SaveChanges();
+                work.ScienceWorks.Create(scienceWork);
+                work.Save();
                 return RedirectToAction("Index");
             }
 
-            ViewBag.Id = new SelectList(db.Graduates, "Id", "FIO", scienceWork.Id);
+            ViewBag.Id = new SelectList(work.Graduates.GetAll(), "Id", "FIO");
             return View(scienceWork);
         }
 
@@ -69,29 +68,27 @@ namespace WebUI.Admin.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            ScienceWork scienceWork = db.ScienceWorks.Find(id);
+            ScienceWork scienceWork = work.ScienceWorks.Get(id.Value);
             if (scienceWork == null)
             {
                 return HttpNotFound();
             }
-            ViewBag.Id = new SelectList(db.Graduates, "Id", "FIO", scienceWork.Id);
+            ViewBag.Id = new SelectList(work.Graduates.GetAll(), "Id", "FIO");
             return View(scienceWork);
         }
 
         // POST: ScienceWorks/Edit/5
-        // Чтобы защититься от атак чрезмерной передачи данных, включите определенные свойства, для которых следует установить привязку. Дополнительные 
-        // сведения см. в статье https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult Edit([Bind(Include = "Id,Theme,ScienceDirection")] ScienceWork scienceWork)
         {
             if (ModelState.IsValid)
             {
-                db.Entry(scienceWork).State = EntityState.Modified;
-                db.SaveChanges();
+                work.ScienceWorks.Update(scienceWork);
+                work.Save();
                 return RedirectToAction("Index");
             }
-            ViewBag.Id = new SelectList(db.Graduates, "Id", "FIO", scienceWork.Id);
+            ViewBag.Id = new SelectList(work.Graduates.GetAll(), "Id", "FIO");
             return View(scienceWork);
         }
 
@@ -102,7 +99,7 @@ namespace WebUI.Admin.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            ScienceWork scienceWork = db.ScienceWorks.Find(id);
+            ScienceWork scienceWork = work.ScienceWorks.Get(id.Value);
             if (scienceWork == null)
             {
                 return HttpNotFound();
@@ -115,9 +112,9 @@ namespace WebUI.Admin.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int id)
         {
-            ScienceWork scienceWork = db.ScienceWorks.Find(id);
-            db.ScienceWorks.Remove(scienceWork);
-            db.SaveChanges();
+            
+            work.ScienceWorks.Delete(id);
+            work.Save();
             return RedirectToAction("Index");
         }
 
@@ -125,7 +122,7 @@ namespace WebUI.Admin.Controllers
         {
             if (disposing)
             {
-                db.Dispose();
+                work.Dispose();
             }
             base.Dispose(disposing);
         }

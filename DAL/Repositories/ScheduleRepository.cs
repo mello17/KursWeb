@@ -44,7 +44,8 @@ namespace DAL.Repositories
 
         public IEnumerable<Schedule> GetAll()
         {
-            return _db.Schedules;
+            var schedules = _db.Schedules.Include(s => s.Course).Include(s => s.Group).Include(s => s.Teacher);
+            return schedules;
         }
 
         public void Update(Schedule item)

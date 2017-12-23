@@ -111,6 +111,10 @@
     </Compile>
     <Compile Include="Interfaces\IRepository.cs" />
     <Compile Include="Interfaces\IUnitOfWorkAdmin.cs" />
+    <Compile Include="Migrations\201712230143370_new.cs" />
+    <Compile Include="Migrations\201712230143370_new.Designer.cs">
+      <DependentUpon>201712230143370_new.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\Degree.cs" />
     <Compile Include="Models\Course.cs" />
@@ -150,6 +154,11 @@
       <Project>{51b2e94d-018b-49f9-85ee-91b6ca59e5be}</Project>
       <Name>DAL.Web.Site</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Migrations\201712230143370_new.resx">
+      <DependentUpon>201712230143370_new.cs</DependentUpon>
+    </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

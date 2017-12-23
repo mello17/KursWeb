@@ -6,7 +6,7 @@ using System.Linq;
 using System.Net;
 using System.Web;
 using System.Web.Mvc;
-using DAL.EF;
+using DAL;
 using DAL.Models;
 
 namespace WebUI.Admin.Controllers
@@ -14,12 +14,12 @@ namespace WebUI.Admin.Controllers
     [Authorize(Roles="Admin")]
     public class CoursesController : Controller
     {
-        private AdminContext db = new AdminContext();
-
+        private UnitOfWorkAdmin work = new UnitOfWorkAdmin();
+        
         // GET: Courses
         public ActionResult Index()
         {
-            return View(db.Courses.ToList());
+            return View(work.Courses.GetAll().ToList());
         }
 
         // GET: Courses/Details/5
@@ -29,7 +29,7 @@ namespace WebUI.Admin.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Course course = db.Courses.Find(id);
+            Course course =work.Courses.Get(id.Value);
             if (course == null)
             {
                 return HttpNotFound();
@@ -44,16 +44,14 @@ namespace WebUI.Admin.Controllers
         }
 
         // POST: Courses/Create
-        // Чтобы защититься от атак чрезмерной передачи данных, включите определенные свойства, для которых следует установить привязку. Дополнительные 
-        // сведения см. в статье https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult Create([Bind(Include = "Id,Name,CountOfSemester,NumCourse")] Course course)
         {
             if (ModelState.IsValid)
             {
-                db.Courses.Add(course);
-                db.SaveChanges();
+                work.Courses.Create(course);
+                work.Save();
                 return RedirectToAction("Index");
             }
 
@@ -67,7 +65,7 @@ namespace WebUI.Admin.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Course course = db.Courses.Find(id);
+            Course course = work.Courses.Get(id.Value);
             if (course == null)
             {
                 return HttpNotFound();
@@ -76,16 +74,14 @@ namespace WebUI.Admin.Controllers
         }
 
         // POST: Courses/Edit/5
-        // Чтобы защититься от атак чрезмерной передачи данных, включите определенные свойства, для которых следует установить привязку. Дополнительные 
-        // сведения см. в статье https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult Edit([Bind(Include = "Id,Name,CountOfSemester,NumCourse")] Course course)
         {
             if (ModelState.IsValid)
             {
-                db.Entry(course).State = EntityState.Modified;
-                db.SaveChanges();
+                work.Courses.Update(course);
+                work.Save();
                 return RedirectToAction("Index");
             }
             return View(course);
@@ -98,7 +94,7 @@ namespace WebUI.Admin.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Course course = db.Courses.Find(id);
+            Course course = work.Courses.Get(id.Value);
             if (course == null)
             {
                 return HttpNotFound();
@@ -111,9 +107,8 @@ namespace WebUI.Admin.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int id)
         {
-            Course course = db.Courses.Find(id);
-            db.Courses.Remove(course);
-            db.SaveChanges();
+            work.Courses.Delete(id);
+            work.Save();
             return RedirectToAction("Index");
         }
 
@@ -121,7 +116,7 @@ namespace WebUI.Admin.Controllers
         {
             if (disposing)
             {
-                db.Dispose();
+                work.Dispose();
             }
             base.Dispose(disposing);
         }

@@ -1,0 +1,74 @@
+﻿@model PagedList.IPagedList<WebUI.Admin.Models.ApplicationUser>
+@using PagedList.Mvc;
+
+@{
+    ViewBag.Title = "ManageAccount";
+}
+
+<h2>ManageAccount</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+          Email
+        </th>
+        <th>
+           Login
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.Email)
+        </td>
+        
+        <td>
+            @Html.DisplayFor(modelItem => item.UserName)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.Id }) |
+            @Html.ActionLink("Details", "Details", new { id=item.Id }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.Id })
+        </td>
+    </tr>
+}
+
+</table>
+<div class="dropdown">
+    <select id="select">
+        <option>5</option>
+        <option>10</option>
+        <option>15</option>
+    </select>
+</div>
+
+<script>
+    $(function () {
+        "use strict"
+        $(document).ready(function () {
+            $('#select').on('change', function () {
+                var select = $('#select  option:selected').val();
+                $.ajax(
+                    url: @Url.Action("ManageAccount","Manage"),
+                    method:"post",
+                    dataType: "html",
+                    data: { pageSize: select },
+                    success: function (data) {
+                        $('.table').html(data);
+                    }
+
+                );
+            });
+        });
+    })
+</script>
+
+<br />
+Страница @(Model.PageCount < Model.PageNumber ? 0 : Model.PageNumber) из @Model.PageCount
+
+@Html.PagedListPager(Model, paginate => Url.Action("Index", new { paginate }))

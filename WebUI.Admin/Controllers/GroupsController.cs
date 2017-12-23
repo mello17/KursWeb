@@ -4,6 +4,7 @@ using System.Data;
 using System.Data.Entity;
 using System.Linq;
 using System.Net;
+using DAL;
 using System.Web;
 using System.Web.Mvc;
 using DAL.EF;
@@ -11,14 +12,15 @@ using DAL.Models;
 
 namespace WebUI.Admin.Controllers
 {
+    [Authorize(Roles = "Admin")]
     public class GroupsController : Controller
     {
-        private AdminContext db = new AdminContext();
+        private UnitOfWorkAdmin work = new UnitOfWorkAdmin();
 
         // GET: Groups
         public ActionResult Index()
         {
-            return View(db.Groups.ToList());
+            return View(work.Groups.GetAll().ToList());
         }
 
         // GET: Groups/Details/5
@@ -28,7 +30,7 @@ namespace WebUI.Admin.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Group group = db.Groups.Find(id);
+            Group group = work.Groups.Get(id.Value);
             if (group == null)
             {
                 return HttpNotFound();
@@ -43,16 +45,14 @@ namespace WebUI.Admin.Controllers
         }
 
         // POST: Groups/Create
-        // Чтобы защититься от атак чрезмерной передачи данных, включите определенные свойства, для которых следует установить привязку. Дополнительные 
-        // сведения см. в статье https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult Create([Bind(Include = "Id,Group_Name,Count_Of_Student")] Group group)
         {
             if (ModelState.IsValid)
             {
-                db.Groups.Add(group);
-                db.SaveChanges();
+                work.Groups.Create(group);
+                work.Save();
                 return RedirectToAction("Index");
             }
 
@@ -66,7 +66,7 @@ namespace WebUI.Admin.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Group group = db.Groups.Find(id);
+            Group group = work.Groups.Get(id.Value);
             if (group == null)
             {
                 return HttpNotFound();
@@ -75,16 +75,14 @@ namespace WebUI.Admin.Controllers
         }
 
         // POST: Groups/Edit/5
-        // Чтобы защититься от атак чрезмерной передачи данных, включите определенные свойства, для которых следует установить привязку. Дополнительные 
-        // сведения см. в статье https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult Edit([Bind(Include = "Id,Group_Name,Count_Of_Student")] Group group)
         {
             if (ModelState.IsValid)
             {
-                db.Entry(group).State = EntityState.Modified;
-                db.SaveChanges();
+                work.Groups.Update(group);
+                work.Save();
                 return RedirectToAction("Index");
             }
             return View(group);
@@ -97,7 +95,7 @@ namespace WebUI.Admin.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Group group = db.Groups.Find(id);
+            Group group = work.Groups.Get(id.Value);
             if (group == null)
             {
                 return HttpNotFound();
@@ -110,9 +108,9 @@ namespace WebUI.Admin.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int id)
         {
-            Group group = db.Groups.Find(id);
-            db.Groups.Remove(group);
-            db.SaveChanges();
+            Group group = work.Groups.Get(id);
+            work.Groups.Delete(id);
+            work.Save();
             return RedirectToAction("Index");
         }
 
@@ -120,7 +118,7 @@ namespace WebUI.Admin.Controllers
         {
             if (disposing)
             {
-                db.Dispose();
+                work.Dispose();
             }
             base.Dispose(disposing);
         }

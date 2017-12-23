@@ -9,6 +9,7 @@
     @Scripts.Render("~/bundles/modernizr")
     @*Сюда нужно поместить регистрацию и логин @Html.Partial("_LoginPartial")*@
 </head>
+@using WebUI;
 <!--<body onload="menuInit();">
      <input type="checkbox" id="hmt" class="hidden-menu-ticker">
     <label class="btn-menu" for="hmt">
@@ -57,11 +58,11 @@
             @using (Html.BeginForm("ChangeCulture", "Home"))
             {
                 <select name="lang">
-                    <option disabled selected>@Html.Raw(Resources.Resource.ChooseLang)</option>
+                    <option disabled selected>@Html.Raw(Resources.Resource_rus.ChooseLang)</option>
                     <option value="rus">Русский</option>
                     <option value="eng">English</option>
                 </select>
-                <input type="submit" name="submit" value="@Resources.Resource.ChooseLang">
+                <input type="submit" name="submit">
             }
             <div class="container">
                 <h1><a href="#" target="_blank">@Html.ActionLink("Сайт кафедры магии и волшебства", "Index", "Home")</a></h1>

@@ -117,8 +117,19 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <data name="CourseWorkSite" xml:space="preserve">
+    <value>Сайт курсовой работы</value>
+  </data>
   <data name="Fresh" xml:space="preserve">
     <value>Cвежие</value>
+  </data>
+  <data name="GraduateView" xml:space="preserve">
+    <value>Таблица выпускников</value>
+  </data>
+  <data name="IndexFixedArticle" xml:space="preserve">
+    <value>Этот сайт был создан студентами Банашко Александром, Антипенко Василием, Гончаром Алексеем. 
+Сайт гипотетической кафедры магии и адаптирован под разрешения экрана от 900 до 1200 px.
+На сайте используется несколько страниц, используется фреймворк jquery, а так же Entity, Identity, и иные расширения, специфичные для платформы .Net</value>
   </data>
   <data name="IndexTitle1" xml:space="preserve">
     <value>Сайт кафедры магии и волшебства</value>

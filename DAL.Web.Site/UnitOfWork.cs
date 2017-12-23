@@ -66,10 +66,7 @@ namespace DAL.Web.Site
 
         public IQueryable<News> AllNews2()
         {
-            for (int i = 1; i < 3; i++) { 
-                 site_db.Set<News>().Where(u => u.Type == "Новость");
-                                        }
-            return site_db.Set<News>();
+            return site_db.Set<News>().Where(u => u.Id == 1);
         }
 
         public IQueryable<News> AllEvents()

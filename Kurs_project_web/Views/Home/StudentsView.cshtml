@@ -1,10 +1,37 @@
-﻿@model IQueryable<DAL.Web.Site.Models.News>
+﻿@model IEnumerable<DAL.Models.Graduate>
 @{
     ViewBag.Title = "StudentsView";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 <body>
-    <h2>Not Students. GraduateView</h2>
+    <h2>GraduateView</h2>
+
+        <br />
+        <br />
+        <br />
+        <br />
+        <div class="row">
+            @foreach (var item in Model)
+            {
+
+                <div class="col-md-12 table-bordered">
+                    <div class="col-md-2"></div> 
+                    <div class="col-md-4">
+                        <p>Выпускник: @Html.DisplayFor(modelItem => item.FIO)</p>
+                        <br />
+                        <p>Преподаватель: @Html.DisplayFor(modelItem => item.Teacher) </p>
+                        <p>Группа: @Html.DisplayFor(modelItem => item.Group)</p>
+                        <p>Научная работа: @Html.DisplayFor(modelItem => item.ScienceWork)</p>
+</div>
+                    <div class="col-md-2"></div>
+
+                </div>
+                <br />
+                <br /><br />
+                <br />
+            }
+        </div>
+    </body>
    @* @Html.Action("_PartialIndexArticles", Model)*@
    @* @Html.Action("_PartialLayoutNews")*@
     @*  Достало. У меня нет миграций, я не имею доступа к БД и все равно не могу извлечь данные. 

@@ -61,11 +61,40 @@ namespace ViewRes {
         }
         
         /// <summary>
+        ///   Ищет локализованную строку, похожую на Site of coursework..
+        /// </summary>
+        public static string CourseWorkSite {
+            get {
+                return ResourceManager.GetString("CourseWorkSite", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Ищет локализованную строку, похожую на Fresh.
         /// </summary>
         public static string Fresh {
             get {
                 return ResourceManager.GetString("Fresh", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Ищет локализованную строку, похожую на Table of graduates.
+        /// </summary>
+        public static string GraduateView {
+            get {
+                return ResourceManager.GetString("GraduateView", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Ищет локализованную строку, похожую на This site was created by students Banashko Alexander, Antipenko Vasily, Gonchar Alexei.
+        ///The site is a hypothetical department of magic and adapted for screen resolutions from 900 to 1200 px.
+        ///The site uses several pages, uses the jquery framework, as well as Entity, Identity, and other extensions specific to the .Net platform.
+        /// </summary>
+        public static string IndexFixedArticle {
+            get {
+                return ResourceManager.GetString("IndexFixedArticle", resourceCulture);
             }
         }
         

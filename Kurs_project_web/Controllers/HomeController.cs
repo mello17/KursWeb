@@ -36,35 +36,35 @@ namespace Kurs_project_web.Controllers
 
         public ActionResult About()
         {
-            ViewBag.Message = "Your application description page.";
+            
 
             return View();
         }
 
         public ActionResult Contact()
         {
-            ViewBag.Message = "Your contact page.";
+           
 
             return View();
         }
 
         public ActionResult StudentsView()
         {
-            ViewBag.Message = "Your ption page.";
-
-            return View();
+            
+            var students = admin_work.Graduates.GetAll();
+            return View(students);
         }
 
         public ActionResult TeachersView()
         {
-            ViewBag.Message = "Your application  page.";
+            
             var teachers = admin_work.Teachers.GetAll();
             return View(teachers);
         }
 
         public ActionResult TimeTableView()
         {
-            ViewBag.Message = "Your applicaon page.";
+           
            // var  = db.Teacher.ToList();
             return View();
         }
@@ -104,14 +104,12 @@ namespace Kurs_project_web.Controllers
 
         public ActionResult _PartialIndexArticles()
         {
-            ViewBag.Message = "Частичное представление - вывод 3 cтатей на главную";
             var News = work.AllArticle();
             return PartialView(News);
            
         }
         public ActionResult _PartialLayoutNews()
-        {
-            ViewBag.Message = "Частичное представление - вывод новостей в layout";
+        {  
             // var News = db.News.ToList(); 
             var News = work.AllNews2();
             return PartialView(News);

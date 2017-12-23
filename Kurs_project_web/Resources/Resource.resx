@@ -117,8 +117,19 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <data name="CourseWorkSite" xml:space="preserve">
+    <value>Site of coursework.</value>
+  </data>
   <data name="Fresh" xml:space="preserve">
     <value>Fresh</value>
+  </data>
+  <data name="GraduateView" xml:space="preserve">
+    <value>Table of graduates</value>
+  </data>
+  <data name="IndexFixedArticle" xml:space="preserve">
+    <value>This site was created by students Banashko Alexander, Antipenko Vasily, Gonchar Alexei.
+The site is a hypothetical department of magic and adapted for screen resolutions from 900 to 1200 px.
+The site uses several pages, uses the jquery framework, as well as Entity, Identity, and other extensions specific to the .Net platform</value>
   </data>
   <data name="IndexTitle1" xml:space="preserve">
     <value>The site of the department of magic and magic</value>

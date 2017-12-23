@@ -14,11 +14,14 @@
         else
         {
         foreach (var item in Model)
-            {
-        <li>@item.Content</li>
-        <li>@item.imgPath</li>
-        <li>@item.CurrentDate</li>
-                }
+                  {
+                <li>
+                    <span><img src=@Html.DisplayFor((modelItem => item.imgPath))></span>
+                    <strong>@Html.DisplayFor((modelItem => item.CurrentDate))</strong>
+                    <h4><a href="#">@Html.DisplayFor(modelItem => item.Header)</a></h4>
+                    @Html.DisplayFor(modelItem => item.Content)
+                </li>
+                  }
             }
         }
 </ul>

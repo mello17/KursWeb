@@ -35,7 +35,7 @@ namespace Kurs_project_web.Controllers
 
         public ActionResult _PartialLayoutNews()
         {
-            ViewBag.Message = "Частичное представление - вывод новостей в layout";
+            ViewBag.Message = "Полный список новостей";
             // Отстой. Дублированный код. Самому мерзко. 
             var News = work.AllNews();
             return PartialView(News);

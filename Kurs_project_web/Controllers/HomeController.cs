@@ -7,18 +7,17 @@ using DAL.Web.Site;
 using DAL.Web.Site.Repositories;
 using DAL.Web.Site.EF;
 using DAL.Web.Site.Models;
-using DAL.Models;
-
-using System.Resources;
 using System.Globalization;
+using DAL;
 
 namespace Kurs_project_web.Controllers
 {
 
     public class HomeController : Controller
-    {
+    {   
         public SiteContext db = new SiteContext();
         UnitOfWork work;
+        UnitOfWorkAdmin workadmin; //?? И чо дальше? Вот как например передать преподов в TeachersView()?
 
         public HomeController()
         {

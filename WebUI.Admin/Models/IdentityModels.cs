@@ -30,6 +30,6 @@ namespace WebUI.Admin.Models
             return new ApplicationDbContext();
         }
 
-        public System.Data.Entity.DbSet<WebUI.Admin.Models.ApplicationUser> ApplicationUsers { get; set; }
+       // public System.Data.Entity.DbSet<WebUI.Admin.Models.ApplicationUser> ApplicationUsers { get; set; }
     }
 }

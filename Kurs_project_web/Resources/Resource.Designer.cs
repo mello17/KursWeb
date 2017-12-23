@@ -61,11 +61,101 @@ namespace ViewRes {
         }
         
         /// <summary>
+        ///   Ищет локализованную строку, похожую на Fresh.
+        /// </summary>
+        public static string Fresh {
+            get {
+                return ResourceManager.GetString("Fresh", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Ищет локализованную строку, похожую на The site of the department of magic and magic.
+        /// </summary>
+        public static string IndexTitle1 {
+            get {
+                return ResourceManager.GetString("IndexTitle1", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Ищет локализованную строку, похожую на About.
+        /// </summary>
+        public static string MenuAbout {
+            get {
+                return ResourceManager.GetString("MenuAbout", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Ищет локализованную строку, похожую на News.
+        /// </summary>
+        public static string MenuNews {
+            get {
+                return ResourceManager.GetString("MenuNews", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Ищет локализованную строку, похожую на Site map.
+        /// </summary>
+        public static string MenuSiteMap {
+            get {
+                return ResourceManager.GetString("MenuSiteMap", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Ищет локализованную строку, похожую на Graduate.
+        /// </summary>
+        public static string MenuStudents {
+            get {
+                return ResourceManager.GetString("MenuStudents", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Ищет локализованную строку, похожую на Teachers.
+        /// </summary>
+        public static string MenuTeachers {
+            get {
+                return ResourceManager.GetString("MenuTeachers", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Ищет локализованную строку, похожую на Schedule.
+        /// </summary>
+        public static string MenuTimeTable {
+            get {
+                return ResourceManager.GetString("MenuTimeTable", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Ищет локализованную строку, похожую на  news.
+        /// </summary>
+        public static string news {
+            get {
+                return ResourceManager.GetString("news", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Ищет локализованную строку, похожую на Title.
         /// </summary>
         public static string Title {
             get {
                 return ResourceManager.GetString("Title", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Ищет локализованную строку, похожую на Home Page.
+        /// </summary>
+        public static string TitleMainPage {
+            get {
+                return ResourceManager.GetString("TitleMainPage", resourceCulture);
             }
         }
     }

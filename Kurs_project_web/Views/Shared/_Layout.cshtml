@@ -51,19 +51,11 @@
         </div>
     </div>-->
 <body> 
- 
     <div class="wrap">
         <!-- header -->
-        <header>
-            @using (Html.BeginForm("ChangeCulture", "Home"))
-            {
-                <select name="lang">
-                    <option disabled selected>@Html.Raw(Resources.Resource_rus.ChooseLang)</option>
-                    <option value="rus">Русский</option>
-                    <option value="eng">English</option>
-                </select>
-                <input type="submit" name="submit">
-            }
+        <h1><%=ViewRes.SharedStrings.Title%></h1>
+        @ViewRes.Resource.Title
+        <header>    
             <div class="container">
                 <h1><a href="#" target="_blank">@Html.ActionLink("Сайт кафедры магии и волшебства", "Index", "Home")</a></h1>
                 <nav>
@@ -71,6 +63,12 @@
                         <li><a href="about-us.html" class="m2">About Us</a></li>
                         <li><a href="contact-us.html" class="m4">Contact Us</a></li>
                         <li class="last"><a href="sitemap.html" class="m5">Site Map</a></li>
+                        @{
+                            @Html.ActionLink("English", "ChangeCulture", "Home",
+    new { lang = "en", returnUrl = this.Request.RawUrl }, null)
+                            @Html.ActionLink("Русский", "ChangeCulture", "Home",
+    new { lang = "ru", returnUrl = this.Request.RawUrl }, null)
+                        }
                     </ul>
                 </nav>
                 <form action="" id="search-form">

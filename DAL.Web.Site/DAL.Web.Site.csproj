@@ -111,7 +111,6 @@
       <DependentUpon>201712182118223_newmigration.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
-    <Compile Include="Models\LangModel.cs" />
     <Compile Include="Models\News.cs" />
     <Compile Include="Models\PhotoAlbum.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

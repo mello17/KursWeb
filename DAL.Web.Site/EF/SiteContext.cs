@@ -17,6 +17,6 @@ namespace DAL.Web.Site.EF
        // public DbSet<Announce> Announces { get; set; }
         public DbSet<PhotoAlbum> PhotoAlbums { get; set; }
         public DbSet<News> News { get; set; }
-        public DbSet<LangModel> LangModels { get; set; }
+        //public DbSet<LangModel> LangModels { get; set; }
     }
 }

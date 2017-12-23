@@ -97,6 +97,7 @@ namespace WebUI.Admin.Controllers
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
             Teacher teacher = work.Teachers.Get(id.Value);
+
             if (teacher == null)
             {
                 return HttpNotFound();

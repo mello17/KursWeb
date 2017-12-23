@@ -64,6 +64,14 @@ namespace DAL.Web.Site
             return site_db.Set<News>().Where(u => u.Type == "Новость");
         }
 
+        public IQueryable<News> AllNews2()
+        {
+            for (int i = 1; i < 3; i++) { 
+                 site_db.Set<News>().Where(u => u.Type == "Новость");
+                                        }
+            return site_db.Set<News>();
+        }
+
         public IQueryable<News> AllEvents()
         {
             return site_db.Set<News>().Where(u => u.Type == "Мероприятия");

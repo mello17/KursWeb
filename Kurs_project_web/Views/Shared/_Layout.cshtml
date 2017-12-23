@@ -54,7 +54,6 @@
     <div class="wrap">
         <!-- header -->
         <h1><%=ViewRes.SharedStrings.Title%></h1>
-        @ViewRes.Resource.Title
         <header>    
             <div class="container">
                 <h1><a href="#" target="_blank">@Html.ActionLink("Сайт кафедры магии и волшебства", "Index", "Home")</a></h1>
@@ -62,20 +61,14 @@
                     <ul>
                         <li><a href="about-us.html" class="m2">About Us</a></li>
                         <li><a href="contact-us.html" class="m4">Contact Us</a></li>
-                        <li class="last"><a href="sitemap.html" class="m5">Site Map</a></li>
-                        @{
-                            @Html.ActionLink("English", "ChangeCulture", "Home",
-    new { lang = "en", returnUrl = this.Request.RawUrl }, null)
-                            @Html.ActionLink("Русский", "ChangeCulture", "Home",
-    new { lang = "ru", returnUrl = this.Request.RawUrl }, null)
-                        }
-                    </ul>
+                        <li class="last"><a href="sitemap.html" class="m5">Site Map</a></li>                 
+</ul>
                 </nav>
                 <form action="" id="search-form">
                     <fieldset>
                         <div class="rowElem">
-                            <input type="text">
-                            <a href="#" onClick="document.getElementById('search-form').submit()">Search</a>
+                            @Html.ActionLink("English", "ChangeCulture", "Home", new { lang = "en", returnUrl = this.Request.RawUrl }, null)
+                            @Html.ActionLink("Русский", "ChangeCulture", "Home", new { lang = "ru", returnUrl = this.Request.RawUrl }, null)
                         </div>
                     </fieldset>
                 </form>
@@ -128,9 +121,7 @@
                 </div>
             </div>
         </div>
-    </footer>
-
-    
+    </footer>   
     
     @Scripts.Render("~/bundles/jquery")
     @Scripts.Render("~/bundles/bootstrap")

@@ -52,48 +52,40 @@
     </div>-->
 <body> 
     <div class="wrap">
-        <!-- header -->
-        <h1><%=ViewRes.SharedStrings.Title%></h1>
-        @ViewRes.Resource.Title
-        <header>    
+        <!-- header -->   
+        <header>
             <div class="container">
-                <h1><a href="#" target="_blank">@Html.ActionLink("Сайт кафедры магии и волшебства", "Index", "Home")</a></h1>
+                <h1><a href="#" target="_blank">@Html.ActionLink(ViewRes.Resource.IndexTitle1, "Index", "Home")</a></h1>
                 <nav>
                     <ul>
                         <li><a href="about-us.html" class="m2">About Us</a></li>
                         <li><a href="contact-us.html" class="m4">Contact Us</a></li>
-                        <li class="last"><a href="sitemap.html" class="m5">Site Map</a></li>
-                        @{
-                            @Html.ActionLink("English", "ChangeCulture", "Home",
-    new { lang = "en", returnUrl = this.Request.RawUrl }, null)
-                            @Html.ActionLink("Русский", "ChangeCulture", "Home",
-    new { lang = "ru", returnUrl = this.Request.RawUrl }, null)
-                        }
+                        <li class="last"><a href="sitemap.html" class="m5">Site Map</a></li>                 
                     </ul>
-                </nav>
-                <form action="" id="search-form">
-                    <fieldset>
-                        <div class="rowElem">
-                            <input type="text">
-                            <a href="#" onClick="document.getElementById('search-form').submit()">Search</a>
-                        </div>
-                    </fieldset>
-                </form>
-            </div>
+                    <form action="" id="search-form">
+                        <fieldset>
+                            <div class="rowElem">
+                                @Html.ActionLink("English", "ChangeCulture", "Home", new { lang = "en", returnUrl = this.Request.RawUrl }, null)
+                                @Html.ActionLink("Русский", "ChangeCulture", "Home", new { lang = "ru", returnUrl = this.Request.RawUrl }, null)
+                            </div>
+                        </fieldset>
+                    </form>
+                </nav>    
+   </div>
         </header>
         <div class="container">
             <!--Боковое меню. Главное меню?-->
             <aside>
                 <h3>Меню</h3>
                 <ul class="categories">
-                    <li><span><a href="#" target="_blank">@Html.ActionLink("Главная страница", "Index", "Home")</a></span></li>
-                    <li><span><a href="#" target="_blank">@Html.ActionLink("Новости", "News", "News")</a></span></li>
+                    <li><span><a href="#" target="_blank">@Html.ActionLink(ViewRes.Resource.TitleMainPage, "Index", "Home")</a></span></li>
+                    <li><span><a href="#" target="_blank">@Html.ActionLink(ViewRes.Resource.MenuNews, "News", "News")</a></span></li>
                     <li><span><a href="#" target="_blank">@Html.ActionLink("Архив публикаций", "About", "Home")</a></span></li>
-                    <li><span><a href="#" target="_blank">@Html.ActionLink("Учебные планы", "TimeTableView", "Home")</a></span></li>
-                    <li><span><a href="#" target="_blank">@Html.ActionLink("Выпускники", "StudentsView", "Home")</a></span></li>
-                    <li><span><a href="#" target="_blank">@Html.ActionLink("Сотрудники", "TeachersView", "Home")</a></span></li>
-                    <li><span><a href="#" target="_blank">@Html.ActionLink("О нас", "About", "Home")</a></span></li>
-                    <li><span><a href="#" target="_blank">@Html.ActionLink("Карта сайта", "About", "Home")</a></span></li>
+                    <li><span><a href="#" target="_blank">@Html.ActionLink(ViewRes.Resource.MenuTimeTable, "TimeTableView", "Home")</a></span></li>
+                    <li><span><a href="#" target="_blank">@Html.ActionLink(ViewRes.Resource.MenuStudents, "StudentsView", "Home")</a></span></li>
+                    <li><span><a href="#" target="_blank">@Html.ActionLink(ViewRes.Resource.MenuTeachers, "TeachersView", "Home")</a></span></li>
+                    <li><span><a href="#" target="_blank">@Html.ActionLink(ViewRes.Resource.MenuAbout, "About", "Home")</a></span></li>
+                    <li><span><a href="#" target="_blank">@Html.ActionLink(ViewRes.Resource.MenuSiteMap, "About", "Home")</a></span></li>
                     <li class="last"><span><a href="#">Calendar</a></span></li>
                 </ul>
               <!--  <form action="" id="newsletter-form">
@@ -105,7 +97,7 @@
                         </div>
                     </fieldset>
                 </form>-->
-                <h2>Fresh <span>News</span></h2>
+                <h2>@ViewRes.Resource.Fresh<span>@ViewRes.Resource.news</span></h2>
                 @Html.Action("_PartialLayoutNews")
             </aside>
             <!-- content -->
@@ -128,9 +120,7 @@
                 </div>
             </div>
         </div>
-    </footer>
-
-    
+    </footer>   
     
     @Scripts.Render("~/bundles/jquery")
     @Scripts.Render("~/bundles/bootstrap")

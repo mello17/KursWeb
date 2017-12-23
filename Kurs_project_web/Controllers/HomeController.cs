@@ -4,6 +4,7 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using DAL.Web.Site;
+using DAL;
 using DAL.Web.Site.Repositories;
 using DAL.Web.Site.EF;
 using DAL.Web.Site.Models;
@@ -19,10 +20,12 @@ namespace Kurs_project_web.Controllers
     {
         public SiteContext db = new SiteContext();
         UnitOfWork work;
+        UnitOfWorkAdmin admin_work;
 
         public HomeController()
         {
             work = new UnitOfWork();
+            admin_work = new UnitOfWorkAdmin();
         }
       //  public NewsRepository repository = new NewsRepository(db);
 
@@ -57,8 +60,8 @@ namespace Kurs_project_web.Controllers
         public ActionResult TeachersView()
         {
             ViewBag.Message = "Your application  page.";
-
-            return View();
+            var teachers = admin_work.Teachers.GetAll();
+            return View(teachers);
         }
 
         public ActionResult TimeTableView()

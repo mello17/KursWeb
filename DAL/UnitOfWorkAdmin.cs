@@ -3,10 +3,12 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 
-using DAL.Interfaces;
+//using DAL.Interfaces;
 using DAL.EF;
 using DAL.Models;
 using DAL.Repositories;
+using DAL.Web.Site.Repositories;
+using DAL.Web.Site.Interfaces;
 
 namespace DAL
 {
@@ -27,7 +29,7 @@ namespace DAL
             {
                 if (_teacherRepository == null)
                     _teacherRepository = new TeacherRepository(admin_db);
-                return (IRepository < Teacher>)_teacherRepository;
+                return _teacherRepository;
             }
         }
 

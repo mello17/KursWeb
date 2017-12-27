@@ -56,23 +56,22 @@
         <header>
             <div class="container">
                 <h1><a href="#" target="_blank">@Html.ActionLink(ViewRes.Resource.IndexTitle1, "Index", "Home")</a></h1>
+<form id="search-form">
+    <!-- <fieldset>
+        <div class="rowElem">
+            @*@Html.ActionLink("English", "ChangeCulture", "Home", new { lang = "en", returnUrl = this.Request.RawUrl }, null)
+            @Html.ActionLink("Русский", "ChangeCulture", "Home", new { lang = "ru", returnUrl = this.Request.RawUrl }, null)*@
+        </div>
+    </fieldset>-->  
+</form>         
                 <nav>
                     <ul>
-                        <li><a href="about-us.html" class="m2">About Us</a></li>
-                        <li><a href="contact-us.html" class="m4">Contact Us</a></li>
-                        <li class="last"><a href="sitemap.html" class="m5">Site Map</a></li>                 
-                    </ul>
-                    <form action="" id="search-form">
-                        <fieldset>
-                            <div class="rowElem">
-                                @Html.ActionLink("English", "ChangeCulture", "Home", new { lang = "en", returnUrl = this.Request.RawUrl }, null)
-                                @Html.ActionLink("Русский", "ChangeCulture", "Home", new { lang = "ru", returnUrl = this.Request.RawUrl }, null)
-                            </div>
-                        </fieldset>
-                    </form>
+                        <li class="m1">@Html.ActionLink("Русский", "ChangeCulture", "Home", new { lang = "ru", returnUrl = this.Request.RawUrl }, null)</a></li>
+                        <li class="m2">@Html.ActionLink("English", "ChangeCulture", "Home", new { lang = "en", returnUrl = this.Request.RawUrl }, null)</a></li>                
+                    </ul>                          
                 </nav>    
-   </div>
-        </header>
+            @Html.Partial("_LoginPartial")</div>
+        </header> 
         <div class="container">
             <!--Боковое меню. Главное меню?-->
             <aside>

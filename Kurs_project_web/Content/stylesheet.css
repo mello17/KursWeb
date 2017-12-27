@@ -536,21 +536,21 @@ header nav {
         }
 
         header nav ul li a {
-            color: #454545;
+            color: #000000;
             text-decoration: none;
             display: block;
             float: left;
             text-align: center;
-            padding: 18px 0 20px 0;
+            padding: 18px 15px 20px 20px;
             background-repeat: no-repeat;
             background-position: left top;
         }
 
-            header nav ul li.current a,
             header nav ul li a:hover {
-                color: #008cc4;
+                background-color: #0087c1;
+                color: #ffffff;
             }
-
+                     
             header nav ul li a.m1 {
                 width: 186px;
             }
@@ -601,7 +601,7 @@ header nav {
 /*===== content =====*/
 #content .inside {
     padding: 22px 20px 0 29px;
-    width: 940px;
+    width: 691px;
 }
 
 #content .ic,
@@ -609,7 +609,7 @@ header nav {
     border: 0;
     float: right;
     background: #000;
-    color: #ff7b01;
+    color: #008cc4;
     width: 100%;
     line-height: 10px;
     font-size: 10px;
@@ -644,10 +644,16 @@ footer .aligncenter {
 #search-form .rowElem {
     height: 28px;
     position: absolute;
+    left: 0;
+    float: left;
+    top: 13px;
+}
+/*#search-form .rowElem {
+    height: 28px;
+    position: absolute;
     right: 0;
     top: 113px;
-}
-
+}*/
 #search-form input {
     width: 205px;
     background: #fff;

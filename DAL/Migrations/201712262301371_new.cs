@@ -17,8 +17,8 @@ namespace DAL.Migrations
             AddColumn("dbo.Teachers", "Information", c => c.String());
             DropColumn("dbo.Teachers", "JobId");
             DropColumn("dbo.Teachers", "DegreeId");
-           // DropTable("dbo.Degrees");
-            //DropTable("dbo.Jobs");
+            DropTable("dbo.Degrees");
+            DropTable("dbo.Jobs");
         }
         
         public override void Down()

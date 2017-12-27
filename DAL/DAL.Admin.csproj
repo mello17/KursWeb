@@ -111,9 +111,9 @@
     </Compile>
     <Compile Include="Interfaces\IRepository.cs" />
     <Compile Include="Interfaces\IUnitOfWorkAdmin.cs" />
-    <Compile Include="Migrations\201712230143370_new.cs" />
-    <Compile Include="Migrations\201712230143370_new.Designer.cs">
-      <DependentUpon>201712230143370_new.cs</DependentUpon>
+    <Compile Include="Migrations\201712262301371_new.cs" />
+    <Compile Include="Migrations\201712262301371_new.Designer.cs">
+      <DependentUpon>201712262301371_new.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\Degree.cs" />
@@ -156,8 +156,8 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\201712230143370_new.resx">
-      <DependentUpon>201712230143370_new.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201712262301371_new.resx">
+      <DependentUpon>201712262301371_new.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

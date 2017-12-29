@@ -10,46 +10,6 @@
     @*Сюда нужно поместить регистрацию и логин @Html.Partial("_LoginPartial")*@
 </head>
 @using WebUI;
-<!--<body onload="menuInit();">
-     <input type="checkbox" id="hmt" class="hidden-menu-ticker">
-    <label class="btn-menu" for="hmt">
-        <span class="first"></span>
-        <span class="second"></span>
-        <span class="third"></span>
-    </label>
-    <div class="sidebar">   
-        <nav id="navbar">
-            <ul id="main-menu">
-                <li><a href="#" target="_blank"><i class="fa fa-home"></i>Home</a></li>
-                <li><a href="#" target="_blank"><i class="fa fa-list-alt"></i>@*@Html.ActionLink("ABOUT US", "About", "Home")*@</a></li>
-                <li><a href="#" target="_blank"><i class="fa fa-list-alt"></i>About</a></li>
-                <li><a href="#" target="_blank"><i class="fa fa-list-alt"></i>About</a></li>
-                <li><a href="#" target="_blank"><i class="fa fa-list-alt"></i>About</a></li>
-                <li id="dropdown-item"><a href="#"><i class="fa fa-coffee"></i>Work With Me</a></li>
-                <ul id="submenu" class="hide-submenu">
-                    <li>AngularJS</li>
-                    <li>JavaScript</li>
-                    <li>HTML5</li>
-                    <li>CSS3</li>
-                </ul>
-                <li><a href="#" target="_blank"><i class="fa fa-quote-left"></i>Testimonials</a></li>
-                <li><a href="#" target="_blank"><i class="fa fa-user"></i>Contact</a></li>
-            </ul>main-menu
-        </nav>
-    </div> -->
-
-    <!-- body 
-    <div class="container">
-      
-
-        
-        <div class="container body-content">
-            <hr />
-            <footer>
-                <p>&copy;  – Курсовой проект Банашко Александра по дисциплине "Веб-технологии"</p>
-            </footer>
-        </div>
-    </div>-->
 <body> 
     <div class="wrap">
         <!-- header -->   
@@ -57,12 +17,6 @@
             <div class="container">
                 <h1><a href="#" target="_blank">@Html.ActionLink(ViewRes.Resource.IndexTitle1, "Index", "Home")</a></h1>
 <form id="search-form">
-    <!-- <fieldset>
-        <div class="rowElem">
-            @*@Html.ActionLink("English", "ChangeCulture", "Home", new { lang = "en", returnUrl = this.Request.RawUrl }, null)
-            @Html.ActionLink("Русский", "ChangeCulture", "Home", new { lang = "ru", returnUrl = this.Request.RawUrl }, null)*@
-        </div>
-    </fieldset>-->  
 </form>         
                 <nav>
                     <ul>
@@ -70,7 +24,7 @@
                         <li class="m2">@Html.ActionLink("English", "ChangeCulture", "Home", new { lang = "en", returnUrl = this.Request.RawUrl }, null)</a></li>                
                     </ul>                          
                 </nav>    
-            @Html.Partial("_LoginPartial")</div>
+            @Html.Partial("_LoginPartialUser", "Account")</div>
         </header> 
         <div class="container">
             <!--Боковое меню. Главное меню?-->
@@ -79,13 +33,12 @@
                 <ul class="categories">
                     <li><span><a href="#" target="_blank">@Html.ActionLink(ViewRes.Resource.TitleMainPage, "Index", "Home")</a></span></li>
                     <li><span><a href="#" target="_blank">@Html.ActionLink(ViewRes.Resource.MenuNews, "News", "News")</a></span></li>
-                    <li><span><a href="#" target="_blank">@Html.ActionLink("Архив публикаций", "About", "Home")</a></span></li>
+                    @*<li><span><a href="#" target="_blank">@Html.ActionLink("Архив публикаций", "About", "Home")</a></span></li>*@
                     <li><span><a href="#" target="_blank">@Html.ActionLink(ViewRes.Resource.MenuTimeTable, "TimeTableView", "Home")</a></span></li>
-                    <li><span><a href="#" target="_blank">@Html.ActionLink(ViewRes.Resource.MenuStudents, "StudentsView", "Home")</a></span></li>
-                    <li><span><a href="#" target="_blank">@Html.ActionLink(ViewRes.Resource.MenuTeachers, "TeachersView", "Home")</a></span></li>
-                    <li><span><a href="#" target="_blank">@Html.ActionLink(ViewRes.Resource.MenuAbout, "About", "Home")</a></span></li>
-                    <li><span><a href="#" target="_blank">@Html.ActionLink(ViewRes.Resource.MenuSiteMap, "About", "Home")</a></span></li>
-                    <li class="last"><span><a href="#">Calendar</a></span></li>
+                    <!--Верный способ указывать--> @if (User.IsInRole("User, ContentManager")) {<li><span><a href="#" target="_blank">@Html.ActionLink(ViewRes.Resource.MenuStudents, "StudentsView", "Home")</a></span></li>}
+                    @if (User.IsInRole("User, ContentManager")) {<li><span><a href="#" target="_blank">@Html.ActionLink(ViewRes.Resource.MenuTeachers, "TeachersView", "Home")</a></span></li>}
+                    @if (User.IsInRole("ContentManager")) {<li><span><a href="#" target="_blank">@Html.ActionLink(ViewRes.Resource.MenuSiteMap, "About", "Home")</a></span></li>}
+                    <li class="last"><a href="#" target="_blank">@Html.ActionLink(ViewRes.Resource.MenuAbout, "About", "Home")</a></span></li>
                 </ul>
               <!--  <form action="" id="newsletter-form">
                     <fieldset>
@@ -97,7 +50,10 @@
                     </fieldset>
                 </form>-->
                 <h2>@ViewRes.Resource.Fresh<span>@ViewRes.Resource.news</span></h2>
-                @Html.Action("_PartialLayoutNews")
+                @{  
+                   
+                    @Html.Action("_PartialLayoutNews", "Home")
+                    }
             </aside>
             <!-- content -->
             <section id="content">

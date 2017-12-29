@@ -25,7 +25,7 @@ namespace Kurs_project_web.Controllers
         {
             
             ViewBag.Message = "Fking news";
-            var events = work.AllEvents();
+            var events = work.AllNews();
             if(events == null)
             {
                 return View();
@@ -37,7 +37,7 @@ namespace Kurs_project_web.Controllers
         {
             ViewBag.Message = "Полный список новостей";
             // Отстой. Дублированный код. Самому мерзко. 
-            var News = work.AllNews();
+            var News = work.AllNews2();
             return PartialView(News);
             //return PartialView();
         }

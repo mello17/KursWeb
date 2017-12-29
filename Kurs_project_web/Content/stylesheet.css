@@ -3,6 +3,8 @@
     background: #ffffff; /* Цвет фона */
     padding-top: 50px;
     padding-bottom: 20px;
+    min-width: 420px;
+    max-width: 1200px;
 }
 /* 
 .container {

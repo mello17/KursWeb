@@ -1,0 +1,27 @@
+﻿@{
+    <script src="@Url.Content("/Scripts/my_scr.js")"> </script>
+}
+
+<nav>
+    <ul>
+        <li id="login">
+            <a id="login-trigger" href="#">
+                Вход <span>&#x25BC;</span>
+            </a>
+            <div id="login-content">
+                <form>
+                    <fieldset id="inputs">
+                        <input id="username" type="email" name="_login" placeholder="Ваш email" required>
+                        <input id="password" type="password" name="_password" placeholder="Пароль" required>
+                    </fieldset>
+                    <fieldset id="actions">
+                        <input type="submit" id="submit" value="Войти" onclick="">
+                    </fieldset>
+                </form>
+            </div>
+        </li>
+        <li id="signup">
+            <a href="~/Home/Registration">Зарегистрироваться</a>
+        </li>
+    </ul>
+</nav>

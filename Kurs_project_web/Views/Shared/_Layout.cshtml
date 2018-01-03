@@ -58,9 +58,9 @@
                 <h1><a href="#" target="_blank">@Html.ActionLink(ViewRes.Resource.IndexTitle1, "Index", "Home")</a></h1>
                 <nav>
                     <ul>
-                        <li><a href="about-us.html" class="m2">About Us</a></li>
-                        <li><a href="contact-us.html" class="m4">Contact Us</a></li>
-                        <li class="last"><a href="sitemap.html" class="m5">Site Map</a></li>                 
+                        <li><a href="#" class="m2">About Us</a></li>
+                        <li><a href="#" class="m4">Contact Us</a></li>
+                        <li class="last"><a href="#" class="m5">Site Map</a></li>                 
                     </ul>
                     <form action="" id="search-form">
                         <fieldset>
@@ -127,9 +127,12 @@
     @RenderSection("scripts", required: false)
 </body>
 </html>
-
 <script>
-     function menuInit() {
+    log_visible();
+
+</script>
+    <script>
+        function menuInit() {
          var dropdown = document.getElementById("dropdown-item");
          var submenu = document.getElementById("submenu");
 
@@ -141,11 +144,11 @@
      }
 
      function popOutMenu() {
-         submenu.className = "show-submenu";
-     }
+            submenu.className = "show-submenu";
+        }
 
      function hideDropdown() {
-         submenu.className = "hide-submenu";
+            submenu.className = "hide-submenu";
      }
 </script>
 

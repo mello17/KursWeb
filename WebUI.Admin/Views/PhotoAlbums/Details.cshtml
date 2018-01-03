@@ -1,0 +1,42 @@
+﻿@model DAL.Web.Site.Models.PhotoAlbum
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>PhotoAlbum</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Path_To_Photo)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Path_To_Photo)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Alt)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Alt)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Gallery)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Gallery)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.Id }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

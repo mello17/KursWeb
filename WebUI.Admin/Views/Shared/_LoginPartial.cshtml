@@ -1,16 +1,22 @@
 ﻿@using Microsoft.AspNet.Identity
-@if (Request.IsAuthenticated)
+@if (User.Identity.IsAuthenticated)
 {
     using (Html.BeginForm("LogOff", "Account", FormMethod.Post, new { id = "logoutForm", @class = "navbar-right" }))
     {
-    @Html.AntiForgeryToken()
 
+        if (User.Identity.GetUserName() != String.Empty)
+        {
+   <ul class="nav navbar-nav">
+        <li>@Html.ActionLink("Менеджеры контента", "Index", "User")</li>
+    </ul>
     <ul class="nav navbar-nav navbar-right">
+
         <li>
             @Html.ActionLink("Здравствуйте, " + User.Identity.GetUserName() + "!", "Index", "Manage", routeValues: null, htmlAttributes: new { title = "Manage" })
         </li>
-        <li><a href="javascript:document.getElementById('logoutForm').submit()">Выйти</a></li>
+        <li>@Html.ActionLink("Выйти","LogOff","Account")</li>
     </ul>
+        }
     }
 }
 else

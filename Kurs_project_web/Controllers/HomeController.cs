@@ -9,7 +9,6 @@ using DAL.Web.Site.Repositories;
 using DAL.Web.Site.EF;
 using DAL.Web.Site.Models;
 using System.Globalization;
-using DAL;
 
 namespace Kurs_project_web.Controllers
 {
@@ -25,7 +24,6 @@ namespace Kurs_project_web.Controllers
             work = new UnitOfWork();
             admin_work = new UnitOfWorkAdmin();
         }
-      //  public NewsRepository repository = new NewsRepository(db);
 
         public ActionResult Index()
         {

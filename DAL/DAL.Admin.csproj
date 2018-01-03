@@ -115,6 +115,26 @@
     <Compile Include="Migrations\201712230143370_new.Designer.cs">
       <DependentUpon>201712230143370_new.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201712231558524_data-migration.cs" />
+    <Compile Include="Migrations\201712231558524_data-migration.Designer.cs">
+      <DependentUpon>201712231558524_data-migration.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201712231604204_data-migration1.cs" />
+    <Compile Include="Migrations\201712231604204_data-migration1.Designer.cs">
+      <DependentUpon>201712231604204_data-migration1.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201712231627158_data-migration2.cs" />
+    <Compile Include="Migrations\201712231627158_data-migration2.Designer.cs">
+      <DependentUpon>201712231627158_data-migration2.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201712232004465_fir.cs" />
+    <Compile Include="Migrations\201712232004465_fir.Designer.cs">
+      <DependentUpon>201712232004465_fir.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201712232017399_fir1.cs" />
+    <Compile Include="Migrations\201712232017399_fir1.Designer.cs">
+      <DependentUpon>201712232017399_fir1.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\Degree.cs" />
     <Compile Include="Models\Course.cs" />
@@ -158,6 +178,21 @@
   <ItemGroup>
     <EmbeddedResource Include="Migrations\201712230143370_new.resx">
       <DependentUpon>201712230143370_new.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201712231558524_data-migration.resx">
+      <DependentUpon>201712231558524_data-migration.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201712231604204_data-migration1.resx">
+      <DependentUpon>201712231604204_data-migration1.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201712231627158_data-migration2.resx">
+      <DependentUpon>201712231627158_data-migration2.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201712232004465_fir.resx">
+      <DependentUpon>201712232004465_fir.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201712232017399_fir1.resx">
+      <DependentUpon>201712232017399_fir1.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

@@ -35,8 +35,8 @@
             @Html.DisplayFor(modelItem => item.ScienceDirection)
         </td>
         <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.Id }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.Id })
+            <a href="/ScienceWorks/Edit?id=@item.Id">Edit</a> |
+            <a href="/ScienceWorks/Delete?id=@item.Id">Delete</a> 
         </td>
     </tr>
 }

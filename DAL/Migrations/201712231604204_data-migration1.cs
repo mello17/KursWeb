@@ -1,9 +1,9 @@
-namespace WebUI.Admin.Migrations
+namespace DAL.Migrations
 {
     using System;
     using System.Data.Entity.Migrations;
     
-    public partial class four : DbMigration
+    public partial class datamigration1 : DbMigration
     {
         public override void Up()
         {

@@ -1,0 +1,66 @@
+﻿@model DAL.Web.Site.Models.News
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>News</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Header)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Header)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Content)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Content)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.CurrentDate)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.CurrentDate)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Type)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Type)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.AuthorProfileId)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.AuthorProfileId)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.imgPath)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.imgPath)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.Id }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

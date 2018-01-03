@@ -8,11 +8,11 @@ using System.Web.Mvc;
 using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.Owin;
 using Microsoft.Owin.Security;
-using WebUI.Admin.Models;
+using Kurs_project_web.Models;
 
-namespace WebUI.Admin.Controllers
+namespace Kurs_project_web.Controllers
 {
-    [Authorize(Roles = "Admin")]
+    [Authorize]
     public class AccountController : Controller
     {
         private ApplicationSignInManager _signInManager;
@@ -72,14 +72,14 @@ namespace WebUI.Admin.Controllers
             {
                 return View(model);
             }
-            User user = await UserManager.FindAsync(model.Email, model.Password);
+
             // Сбои при входе не приводят к блокированию учетной записи
             // Чтобы ошибки при вводе пароля инициировали блокирование учетной записи, замените на shouldLockout: true
             var result = await SignInManager.PasswordSignInAsync(model.Email, model.Password, model.RememberMe, shouldLockout: false);
             switch (result)
             {
                 case SignInStatus.Success:
-                    return RedirectToAction("Index","Admin");
+                    return RedirectToLocal(returnUrl);
                 case SignInStatus.LockedOut:
                     return View("Lockout");
                 case SignInStatus.RequiresVerification:
@@ -141,6 +141,7 @@ namespace WebUI.Admin.Controllers
         {
             return View();
         }
+
         //
         // POST: /Account/Register
         [HttpPost]
@@ -150,7 +151,7 @@ namespace WebUI.Admin.Controllers
         {
             if (ModelState.IsValid)
             {
-                var user = new User { UserName = model.Email, Email = model.Email };
+                var user = new ApplicationUser { UserName = model.Email, Email = model.Email };
                 var result = await UserManager.CreateAsync(user, model.Password);
                 if (result.Succeeded)
                 {
@@ -366,7 +367,7 @@ namespace WebUI.Admin.Controllers
                 {
                     return View("ExternalLoginFailure");
                 }
-                var user = new User { UserName = model.Email, Email = model.Email };
+                var user = new ApplicationUser { UserName = model.Email, Email = model.Email };
                 var result = await UserManager.CreateAsync(user);
                 if (result.Succeeded)
                 {
@@ -386,11 +387,12 @@ namespace WebUI.Admin.Controllers
 
         //
         // POST: /Account/LogOff
-        [AllowAnonymous]
+        [HttpPost]
+        [ValidateAntiForgeryToken]
         public ActionResult LogOff()
         {
             AuthenticationManager.SignOut(DefaultAuthenticationTypes.ApplicationCookie);
-            return RedirectToAction("Login", "Account");
+            return RedirectToAction("Index", "Home");
         }
 
         //
@@ -478,15 +480,6 @@ namespace WebUI.Admin.Controllers
                 context.HttpContext.GetOwinContext().Authentication.Challenge(properties, LoginProvider);
             }
         }
-        #endregion
-
-        #region Взаимодействие с пользовательским представлением
-       /* public ActionResult _PartialLayoutNews()
-        {
-
-            return RedirectToAction("_PartialLayoutNews", "Home");
-
-        }*/
         #endregion
     }
 }

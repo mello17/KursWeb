@@ -23,8 +23,10 @@ namespace WebUI.Admin.Migrations
             var roleManager = new RoleManager<IdentityRole>(new RoleStore<IdentityRole>(context));
             var roleAdmin = new IdentityRole { Name = "Admin" };
             var roleContent = new IdentityRole { Name = "ContentManager" };
+            var roleUser = new IdentityRole { Name = "User" };
             roleManager.Create(roleAdmin);
             roleManager.Create(roleContent);
+            roleManager.Create(roleUser);
 
             var admin = new Models.User { Email = "zilmmz554@yandex.ru", UserName = "Admin" };
             string password = "1234567";

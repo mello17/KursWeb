@@ -66,7 +66,7 @@ namespace DAL.Web.Site
 
         public IQueryable<News> AllNews2()
         {
-            return site_db.Set<News>().Where(u => u.Id == 1);
+            return site_db.Set<News>().Where(u => u.Type == "Новость").Take(2);//Ура, корректный вывод новостей!
         }
 
         public IQueryable<News> AllEvents()
@@ -77,6 +77,10 @@ namespace DAL.Web.Site
         public IQueryable<News> AllArticle()
         {
             return site_db.Set<News>().Where(u => u.Type == "Статьи");
+        }
+        public IQueryable<News> AllArticle3()
+        {
+            return site_db.Set<News>().Where(u => u.Type == "Статьи").Take(3);
         }
 
     }

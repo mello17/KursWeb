@@ -9,6 +9,8 @@ using DAL.Web.Site.Repositories;
 using DAL.Web.Site.EF;
 using DAL.Web.Site.Models;
 using System.Globalization;
+using System.Collections;
+using System.Web.Security;
 
 namespace Kurs_project_web.Controllers
 {
@@ -102,7 +104,7 @@ namespace Kurs_project_web.Controllers
 
         public ActionResult _PartialIndexArticles()
         {
-            var News = work.AllArticle();
+            var News = work.AllArticle3();
             return PartialView(News);
            
         }
@@ -110,6 +112,7 @@ namespace Kurs_project_web.Controllers
         {  
             // var News = db.News.ToList(); 
             var News = work.AllNews2();
+
             return PartialView(News);
            
         }

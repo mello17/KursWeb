@@ -12,11 +12,13 @@ namespace WebUI.Admin.Migrations
         public Configuration()
         {
             AutomaticMigrationsEnabled = false;
+            ContextKey = "WebUI.Admin.Models.ApplicationDbContext";
         }
 
         protected override void Seed(WebUI.Admin.Models.ApplicationDbContext context)
         {
-            var userManager = new ApplicationUserManager(new UserStore<Models.ApplicationUser>(context));
+            
+            var userManager = new ApplicationUserManager(new UserStore<Models.User>(context));
 
             var roleManager = new RoleManager<IdentityRole>(new RoleStore<IdentityRole>(context));
             var roleAdmin = new IdentityRole { Name = "Admin" };
@@ -26,7 +28,7 @@ namespace WebUI.Admin.Migrations
             roleManager.Create(roleContent);
             roleManager.Create(roleUser);
 
-            var admin = new Models.ApplicationUser { Email = "zilmmz554@yandex.ua", UserName = "SupaAdmin" };
+            var admin = new Models.User { Email = "zilmmz554@yandex.ru", UserName = "Admin" };
             string password = "1234567";
             var result = userManager.Create(admin, password);
 

@@ -35,9 +35,8 @@
             @Html.DisplayFor(modelItem => item.Degree)
         </td>
         <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.Id }) |
-            
-            @Html.ActionLink("Delete", "Delete", new { id=item.Id })
+            <a href="/Teachers/Edit?id=@item.Id">Edit</a> |
+            <a href="/Teachers/Delete?id=@item.Id">Edit</a> 
         </td>
     </tr>
 }

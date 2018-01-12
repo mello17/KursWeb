@@ -82,9 +82,12 @@
     @RenderSection("scripts", required: false)
 </body>
 </html>
-
 <script>
-     function menuInit() {
+    log_visible();
+
+</script>
+    <script>
+        function menuInit() {
          var dropdown = document.getElementById("dropdown-item");
          var submenu = document.getElementById("submenu");
 
@@ -96,11 +99,11 @@
      }
 
      function popOutMenu() {
-         submenu.className = "show-submenu";
-     }
+            submenu.className = "show-submenu";
+        }
 
      function hideDropdown() {
-         submenu.className = "hide-submenu";
+            submenu.className = "hide-submenu";
      }
 </script>
 

@@ -15,9 +15,11 @@ namespace Kurs_project_web
 
             routes.MapRoute(
                 name: "Default",
-                url: "{controller}/{action}/{id}",
-                defaults: new { controller = "Home", action = "Index", id = UrlParameter.Optional }
+                url: "{controller}/{action}/",
+                namespaces:  new[]{ "Kurs_project_web.Controllers" },
+                defaults: new { controller = "Home", action = "Index" }
             );
+
         }
     }
 }

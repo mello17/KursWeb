@@ -16,6 +16,7 @@ namespace WebUI.Admin
             routes.MapRoute(
                 name: "Default",
                 url: "{controller}/{action}/",
+                 namespaces: new[] { "WebUI.Admin.Controllers" },
                 defaults: new { controller = "Account", action = "Login", id = UrlParameter.Optional }
             );
         }

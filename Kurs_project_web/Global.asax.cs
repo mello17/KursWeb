@@ -19,7 +19,8 @@ namespace Kurs_project_web
             GlobalConfiguration.Configure(WebApiConfig.Register);
             FilterConfig.RegisterGlobalFilters(GlobalFilters.Filters);
             RouteConfig.RegisterRoutes(RouteTable.Routes);
-            BundleConfig.RegisterBundles(BundleTable.Bundles);        
+            BundleConfig.RegisterBundles(BundleTable.Bundles);
+            ControllerBuilder.Current.DefaultNamespaces.Add("Kurs_project_web");
         }
 
         protected void Application_AcquireRequestState(object sender, EventArgs e)

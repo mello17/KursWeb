@@ -1,0 +1,26 @@
+﻿@model IEnumerable<DAL.Models.Schedule>
+
+@{
+    foreach (var item in Model)
+    {
+
+        for (int lesson = 1; lesson <= 6; lesson++)
+        {
+            <tr>
+                <th class="text-center">@item.TimeStartingSchedule - @item.TimeEndingSchedule </th>
+                @for (int day = 1; day <= 6; day++)
+                {
+                    if (lesson == item.NumberLesson && day == (int)item.Day)
+                    {
+                        <th class="text-center" name="lesson" day="@day" lesson="@lesson">@item.Course.Name  @item.Teacher.FIO @item.Auditory</th>
+                    }
+                    else
+                    {
+                        <th class="text-center" name="lesson" day="@day" lesson="@lesson"> </th>
+                    }
+                }
+            </tr>
+        }
+
+    }
+}

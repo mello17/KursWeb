@@ -7,12 +7,17 @@ namespace DAL.Migrations
     {
         public override void Up()
         {
-            AddColumn("dbo.Groups", "Count_Of_Student", c => c.Int(nullable: false));
+           DropColumn("dbo.Schedules", "Time");
+           AddColumn("dbo.Schedules", "TimeStartingSchedule", c=>c.DateTime(nullable: true));
+           AddColumn("dbo.Schedules", "TimeEndingSchedule", c => c.DateTime(nullable: true));
         }
         
         public override void Down()
         {
-            DropColumn("dbo.Groups", "Count_Of_Student");
+            AddColumn("dbo.Schedules", "Time", c=>c.DateTime(nullable: false));
+            DropColumn("dbo.Schedules", "TimeStartingSchedule");
+            DropColumn("dbo.Schedules", "TimeEndingSchedule");
+
         }
     }
 }

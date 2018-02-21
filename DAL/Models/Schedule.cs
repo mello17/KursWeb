@@ -1,7 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
@@ -12,79 +9,55 @@ namespace DAL.Models
         //Это не график. Это расписание занятий
         [Key]
         public int Id { get; set; }
+        [Required]
+        [Display(Name = "Преподаватель")]
         public int TeacherId { get; set; }
+        [Required]
+        [Display(Name = "Группа")]
         public int GroupId { get; set; }
+        [Display(Name = "Предмет")]
+        [Required]
         public int CourseId { get; set; }
 
         [Required]
-        public DateTime Time { get; set; }
+        [DataType(DataType.Time)]
+        [DisplayFormat(ApplyFormatInEditMode = true, DataFormatString = "{0:HH:mm}")]
+        [Display(Name = "Время начала")]
+        public string TimeStartingSchedule { get; set; }
+
         [Required]
+        [Display(Name ="Номер по порядку")]
+        [Range(1,7)]
+        public int NumberLesson { get; set; }
+
+
+        [Required]
+        [DataType(DataType.Time)]
+        [DisplayFormat(ApplyFormatInEditMode = true, DataFormatString = "{0:HH:mm}")]
+        [Display(Name = "Время окончания")]
+        public string TimeEndingSchedule { get; set; }
+
+        [Required]
+        [Display(Name = "День недели")]
+        public Days Day { get; set; }
+
+        [Required]
+        [Display(Name = "Аудитория")]
         public string Auditory { get; set; }
 
-        public Group Group { get; set; }
-        public Teacher Teacher { get; set; }
-        public Course Course { get; set; }
-
-    }
-    /*
-     <===========================Этот вариант мне кажется более логичным=================================>
-     
-      public class Schedule
-    {
-        //Это не график. Это расписание занятий
-        [Key]
-        public int Id { get; set; }
-        public int TeacherId { get; set; }
-        public int GroupId { get; set; }
-        public int CourseId { get; set; }
-
-        [Required]
-        public DateTime Time { get; set; }
-        [Required]
-        public string Auditory { get; set; }
         
         public Group Group { get; set; }
+       
         public Teacher Teacher { get; set; }
+        
         public Course Course { get; set; }
 
-        IEnumerable<Lesson> Lessons;//Множество уроков
+        public Schedule()
+        {
+            //TimeStartingSchedule = new DateTime().ToShortTimeString();
+            //TimeEndingSchedule = new DateTime().ToShortTimeString();
+        }
     }
-
-    public class LessonRequest
-    {
-        public string name { get; set; }
-        public string teacher { get; set; }
-    }
-
-    public class Lesson
-    {
-        [Key]
-        public int Id { get; set; }
-        [Required]
-        public int number { get; set; }
-        [Required]
-        public int day { get; set; }
-        [Required]
-        public string name { get; set; }//Название
-        [Required]
-        public int TimetableId { get; set; }
-
-        public string TeachersName { get; set; }
-        [ForeignKey("TimetableId")]
-        public Schedule timetable { get; set; }
-    }
-     
-     
-     
-     
-     
-     
-     
-     
-     
-     
-     
-     
-     
-     */
+    
 }
+  

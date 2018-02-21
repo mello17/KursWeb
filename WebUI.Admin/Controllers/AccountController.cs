@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Globalization;
+using System.Collections.Generic;
 using System.Linq;
 using System.Security.Claims;
 using System.Threading.Tasks;
@@ -57,6 +58,11 @@ namespace WebUI.Admin.Controllers
         [AllowAnonymous]
         public ActionResult Login(string returnUrl)
         {
+            if(User.Identity.IsAuthenticated && User.IsInRole("Admin"))
+            {
+              return  RedirectToAction("Index", "Admin");
+               
+            }
             ViewBag.ReturnUrl = returnUrl;
             return View();
         }
@@ -73,9 +79,9 @@ namespace WebUI.Admin.Controllers
                 return View(model);
             }
             User user = await UserManager.FindAsync(model.Email, model.Password);
-            // Сбои при входе не приводят к блокированию учетной записи
-            // Чтобы ошибки при вводе пароля инициировали блокирование учетной записи, замените на shouldLockout: true
+           
             var result = await SignInManager.PasswordSignInAsync(model.Email, model.Password, model.RememberMe, shouldLockout: false);
+           
             switch (result)
             {
                 case SignInStatus.Success:
@@ -84,11 +90,13 @@ namespace WebUI.Admin.Controllers
                     return View("Lockout");
                 case SignInStatus.RequiresVerification:
                     return RedirectToAction("SendCode", new { ReturnUrl = returnUrl, RememberMe = model.RememberMe });
+                    
                 case SignInStatus.Failure:
                 default:
                     ModelState.AddModelError("", "Неудачная попытка входа.");
                     return View(model);
             }
+
         }
 
         //
@@ -134,40 +142,48 @@ namespace WebUI.Admin.Controllers
             }
         }
 
+        private List<SelectListItem> GetRoles()
+        {
+            return (new ApplicationDbContext()).Roles.OrderBy(r => r.Name).ToList().Select(rr =>
+            new SelectListItem { Value = rr.Name.ToString(), Text = rr.Name }).ToList();
+        }
+
         //
         // GET: /Account/Register
-        [AllowAnonymous]
         public ActionResult Register()
         {
+            ViewBag.Roles = GetRoles();
             return View();
         }
         //
         // POST: /Account/Register
         [HttpPost]
-        [AllowAnonymous]
         [ValidateAntiForgeryToken]
-        public async Task<ActionResult> Register(RegisterViewModel model)
+        public async Task<ActionResult> Register(RegisterViewModel model, string Roles)
         {
+            model.RoleName = Roles;
             if (ModelState.IsValid)
             {
                 var user = new User { UserName = model.Email, Email = model.Email };
                 var result = await UserManager.CreateAsync(user, model.Password);
+                ViewBag.Roles = GetRoles();
+                
                 if (result.Succeeded)
                 {
                     await SignInManager.SignInAsync(user, isPersistent: false, rememberBrowser: false);
-
-                    // For more information on how to enable account confirmation and password reset please visit https://go.microsoft.com/fwlink/?LinkID=320771
-                    // Отправка сообщения электронной почты с этой ссылкой
+                    UserManager.AddToRole(user.Id, model.RoleName);
+                   
                     // string code = await UserManager.GenerateEmailConfirmationTokenAsync(user.Id);
                     // var callbackUrl = Url.Action("ConfirmEmail", "Account", new { userId = user.Id, code = code }, protocol: Request.Url.Scheme);
                     // await UserManager.SendEmailAsync(user.Id, "Подтверждение учетной записи", "Подтвердите вашу учетную запись, щелкнув <a href=\"" + callbackUrl + "\">здесь</a>");
 
-                    return RedirectToAction("Index", "Home");
+                    return RedirectToAction("Home", "Admin");
                 }
+               
                 AddErrors(result);
             }
-
-            // Появление этого сообщения означает наличие ошибки; повторное отображение формы
+            ViewBag.Roles = GetRoles();
+            
             return View(model);
         }
 

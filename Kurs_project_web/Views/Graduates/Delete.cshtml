@@ -1,0 +1,55 @@
+﻿@model DAL.Models.Graduate
+
+@{
+    ViewBag.Title = "Delete";
+}
+
+<h2>EУдалить</h2>
+
+<div>
+    <h4>Выпускники</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Group.Group_Name)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Group.Group_Name)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ScienceWork.Theme)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ScienceWork.Theme)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Teacher.FIO)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Teacher.FIO)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.FIO)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.FIO)
+        </dd>
+
+    </dl>
+
+    @using (Html.BeginForm()) {
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions no-color">
+            <input type="submit" value="Delete" class="btn btn-default" /> |
+            @Html.ActionLink("Back to List", "Index")
+        </div>
+    }
+</div>

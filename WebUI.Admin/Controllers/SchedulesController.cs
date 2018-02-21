@@ -49,8 +49,9 @@ namespace WebUI.Admin.Controllers
         // POST: Schedules/Create
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "Id,TeacherId,GroupId,CourseId,Time,Auditory")] Schedule schedule)
+        public ActionResult Create( Schedule schedule)
         {
+
             if (ModelState.IsValid)
             {
                 work.Schedules.Create(schedule);
@@ -85,7 +86,7 @@ namespace WebUI.Admin.Controllers
         // POST: Schedules/Edit/5
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "Id,TeacherId,GroupId,CourseId,Time,Auditory")] Schedule schedule)
+        public ActionResult Edit( Schedule schedule)
         {
             if (ModelState.IsValid)
             {

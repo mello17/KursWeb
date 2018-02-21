@@ -2,7 +2,8 @@
 using DAL.Web.Site;
 using System;
 using System.Collections.Generic;
-using System.Linq;
+using System.Net;
+using Microsoft.AspNet.Identity;
 using System.Web;
 using System.Web.Mvc;
 using DAL.Web.Site.EF;
@@ -14,11 +15,12 @@ namespace Kurs_project_web.Controllers
 {
     public class NewsController : Controller
     {
-        private SiteContext db = new SiteContext();
+        SiteContext db;
         UnitOfWork work;
         public NewsController()
         {
            work = new UnitOfWork();
+            db = new SiteContext();
         }
         // GET: News
         public ActionResult News()
@@ -33,13 +35,28 @@ namespace Kurs_project_web.Controllers
             return View(events);
         }
 
+       public ActionResult GetNews(int? id)
+        {
+
+            if (id == null)
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
+            News news = db.News.Find(id);
+
+            if (news == null)
+            {
+                return HttpNotFound();
+            }
+            return View(news);
+        }
+
         public ActionResult _PartialLayoutNews()
         {
             ViewBag.Message = "Полный список новостей";
-            // Отстой. Дублированный код. Самому мерзко. 
-            var News = work.AllNews2();
-            return PartialView(News);
-            //return PartialView();
+
+            return PartialView(work.AllNews2());
+
         }
 
         public ActionResult AddNews()

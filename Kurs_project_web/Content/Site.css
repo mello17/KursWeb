@@ -13,6 +13,7 @@ $background: #3498db;
 .dl-horizontal dt {
     white-space: normal;
 }
+
 /* Set width on the form input elements since they're 100% wide by default */
 input,
 select,
@@ -24,6 +25,7 @@ textarea {
     position: relative;
     width: 691px;
     height: 299px;
+    top:-150px;
     background: no-repeat left top;
 }
 .carousel-caption p {
@@ -54,3 +56,8 @@ textarea {
     }
 }
 
+#myCarousel {
+    position: relative;
+    left: 350px;
+    top: -120px;
+}

@@ -101,7 +101,9 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Global.asax" />
-    <Content Include="Web.config" />
+    <Content Include="Web.config">
+      <SubType>Designer</SubType>
+    </Content>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="App_Start\RouteConfig.cs" />
@@ -135,7 +137,40 @@
     <Compile Include="Migrations\201712232017399_fir1.Designer.cs">
       <DependentUpon>201712232017399_fir1.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201801162122587_fd.cs" />
+    <Compile Include="Migrations\201801162122587_fd.Designer.cs">
+      <DependentUpon>201801162122587_fd.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201801162222594_fd2.cs" />
+    <Compile Include="Migrations\201801162222594_fd2.Designer.cs">
+      <DependentUpon>201801162222594_fd2.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201802041251056_fdgg.cs" />
+    <Compile Include="Migrations\201802041251056_fdgg.Designer.cs">
+      <DependentUpon>201802041251056_fdgg.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201802041816593_sdd.cs" />
+    <Compile Include="Migrations\201802041816593_sdd.Designer.cs">
+      <DependentUpon>201802041816593_sdd.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201802042121477_sdd12.cs" />
+    <Compile Include="Migrations\201802042121477_sdd12.Designer.cs">
+      <DependentUpon>201802042121477_sdd12.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201802042230438_sdd123.cs" />
+    <Compile Include="Migrations\201802042230438_sdd123.Designer.cs">
+      <DependentUpon>201802042230438_sdd123.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201802080704353_dffdg.cs" />
+    <Compile Include="Migrations\201802080704353_dffdg.Designer.cs">
+      <DependentUpon>201802080704353_dffdg.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201802091120454_fffg.cs" />
+    <Compile Include="Migrations\201802091120454_fffg.Designer.cs">
+      <DependentUpon>201802091120454_fffg.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
+    <Compile Include="Models\Days.cs" />
     <Compile Include="Models\Degree.cs" />
     <Compile Include="Models\Course.cs" />
     <Compile Include="Models\Graduate.cs" />
@@ -193,6 +228,30 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201712232017399_fir1.resx">
       <DependentUpon>201712232017399_fir1.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201801162122587_fd.resx">
+      <DependentUpon>201801162122587_fd.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201801162222594_fd2.resx">
+      <DependentUpon>201801162222594_fd2.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201802041251056_fdgg.resx">
+      <DependentUpon>201802041251056_fdgg.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201802041816593_sdd.resx">
+      <DependentUpon>201802041816593_sdd.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201802042121477_sdd12.resx">
+      <DependentUpon>201802042121477_sdd12.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201802042230438_sdd123.resx">
+      <DependentUpon>201802042230438_sdd123.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201802080704353_dffdg.resx">
+      <DependentUpon>201802080704353_dffdg.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201802091120454_fffg.resx">
+      <DependentUpon>201802091120454_fffg.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

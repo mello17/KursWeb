@@ -6,12 +6,12 @@
     <h2>@ViewBag.Title.</h2>
     <h3>@ViewBag.Message</h3>
 
-    <p>Use this area to provide additional INFORMATION</p>
-    <h2>Тут должна быть карта</h2>
+    
+    <h2>@ViewRes.Resource.MapPlace</h2>
     <div>
         <div class="aboutYandexmap">
             <p>
-                <h3>Где мы находимся:</h3>
+                <h3>@ViewRes.Resource.HereTheAre</h3>
             </p>
             <script type="text/javascript"
                     charset="utf-8"
@@ -20,11 +20,11 @@
         </div>
 
         <div class="alert-info">
-            <h3>Контакты</h3>
+            <h3>@ViewRes.Resource.Contact</h3>
 
             <div class="alert-info">
                 <p>
-                    <strong>Адрес:&nbsp;</strong>г. Севастополь,<br>ул. Университетская, 33<br />
+                    <strong>@ViewRes.Resource.Address:&nbsp;</strong>@ViewRes.Resource.Place ,<br>@ViewRes.Resource.Street<br />
                 </p>
             </div>
         </div>

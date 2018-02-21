@@ -4,20 +4,17 @@
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>@ViewBag.Title – приложение ASP.NET</title>
+    <title>Title</title>
     @Styles.Render("~/Content/css")
     @Scripts.Render("~/bundles/modernizr")
-    @*Сюда нужно поместить регистрацию и логин @Html.Partial("_LoginPartial")*@
+    
 </head>
 @using WebUI;
 <body> 
     <div class="wrap">
         <!-- header -->   
         <header>
-            <div class="container">
-                <h1><a href="#" target="_blank">@Html.ActionLink(ViewRes.Resource.IndexTitle1, "Index", "Home")</a></h1>
-<form id="search-form">
-</form>         
+            <div class="container">            
                 <nav>
                     <ul>
                         <li class="m1">@Html.ActionLink("Русский", "ChangeCulture", "Home", new { lang = "ru", returnUrl = this.Request.RawUrl }, null)</a></li>
@@ -26,6 +23,7 @@
                 </nav>    
             @Html.Partial("_LoginPartialUser", "Account")</div>
         </header> 
+        @Html.Partial("_Carousel")
         <div class="container">
             <!--Боковое меню. Главное меню?-->
             <aside>
@@ -33,22 +31,15 @@
                 <ul class="categories">
                     <li><span><a href="#" target="_blank">@Html.ActionLink(ViewRes.Resource.TitleMainPage, "Index", "Home")</a></span></li>
                     <li><span><a href="#" target="_blank">@Html.ActionLink(ViewRes.Resource.MenuNews, "News", "News")</a></span></li>
-                    @*<li><span><a href="#" target="_blank">@Html.ActionLink("Архив публикаций", "About", "Home")</a></span></li>*@
                     <li><span><a href="#" target="_blank">@Html.ActionLink(ViewRes.Resource.MenuTimeTable, "TimeTableView", "Home")</a></span></li>
-                    <!--Верный способ указывать--> @if (User.IsInRole("User, ContentManager")) {<li><span><a href="#" target="_blank">@Html.ActionLink(ViewRes.Resource.MenuStudents, "StudentsView", "Home")</a></span></li>}
-                    @if (User.IsInRole("User, ContentManager")) {<li><span><a href="#" target="_blank">@Html.ActionLink(ViewRes.Resource.MenuTeachers, "TeachersView", "Home")</a></span></li>}
-                    @if (User.IsInRole("ContentManager")) {<li><span><a href="#" target="_blank">@Html.ActionLink(ViewRes.Resource.MenuSiteMap, "About", "Home")</a></span></li>}
+                    <!--Верный способ указывать--> @if (User.IsInRole("ContentManager") || User.IsInRole("Admin")) {<li><span><a href="#" target="_blank">@Html.ActionLink(ViewRes.Resource.MenuStudents, "Index", "Graduates")</a></span></li>}
+                   <li><span><a href="#" target="_blank">@Html.ActionLink(ViewRes.Resource.MenuTeachers, "TeachersView", "Home")</a></span></li>
+                    @if (User.IsInRole("ContentManager") || User.IsInRole("Admin"))
+                    {
+                    <li><span><a href="#" target="_blank">@Html.ActionLink("ВКР", "Index", "ScienceWorks")</a></span></li>}
                     <li class="last"><a href="#" target="_blank">@Html.ActionLink(ViewRes.Resource.MenuAbout, "About", "Home")</a></span></li>
                 </ul>
-              <!--  <form action="" id="newsletter-form">
-                    <fieldset>
-                        <div class="rowElem">
-                            <h2>Newsletter</h2>
-                            <input type="email" value="Enter Your Email Here" onFocus="if(this.value=='Enter Your Email Here'){this.value=''}" onBlur="if(this.value==''){this.value='Enter Your Email Here'}">
-                            <div class="clear"><a href="#" class="fleft">Unsubscribe</a><a href="#" class="fright" onClick="document.getElementById('newsletter-form').submit()">Submit</a></div>
-                        </div>
-                    </fieldset>
-                </form>-->
+           
                 <h2>@ViewRes.Resource.Fresh<span>@ViewRes.Resource.news</span></h2>
                 @{  
                    
@@ -69,8 +60,7 @@
                 <div class="wrapper">
                     <div class="fleft"><span>@DateTime.Now.Year</span></div>
                     <div class="aligncenter">
-                        <a rel="nofollow" href="http://www.templatemonster.com" class="new_window">Website template</a> designed by TemplateMonster.com<br>
-                        <a href="http://www.templates.com/product/3d-models/" class="new_window">3D Models</a> provided by Templates.com
+                       Project KafWebSite by Vasily
                     </div>
                 </div>
             </div>
@@ -79,37 +69,37 @@
     
     @Scripts.Render("~/bundles/jquery")
     @Scripts.Render("~/bundles/bootstrap")
+    @Scripts.Render("~/Scripts/jquery.unobtrusive-ajax.min.js")
     @RenderSection("scripts", required: false)
-</body>
-</html>
+    
+</body >
+</html >
 <script>
     log_visible();
 
-</script>
+</script >
     <script>
         function menuInit() {
-         var dropdown = document.getElementById("dropdown-item");
-         var submenu = document.getElementById("submenu");
+    var dropdown = document.getElementById("dropdown-item");
+    var submenu = document.getElementById("submenu");
 
-         dropdown.onmouseover = popOutMenu;
-         dropdown.onmouseout = hideDropdown;
+    dropdown.onmouseover = popOutMenu;
+    dropdown.onmouseout = hideDropdown;
 
-         submenu.onmouseover = popOutMenu;
-         submenu.onmouseout = hideDropdown;
-     }
+    submenu.onmouseover = popOutMenu;
+    submenu.onmouseout = hideDropdown;
+}
 
-     function popOutMenu() {
-            submenu.className = "show-submenu";
-        }
+function popOutMenu()
+{
+    submenu.className = "show-submenu";
+}
 
-     function hideDropdown() {
-            submenu.className = "hide-submenu";
-     }
-</script>
-
-
-
-
+function hideDropdown()
+{
+    submenu.className = "hide-submenu";
+}
+</script >
 
 
 
@@ -121,22 +111,3 @@
 
 
 
-
-
-
-
-
-@* <div class="navbar-header">
-        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-        </button>
-        @Html.ActionLink("Имя приложения", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
-    </div>
-    <div class="navbar-collapse collapse">
-        <ul class="nav navbar-nav">
-            <li>@Html.ActionLink("Домашняя страница", "Index", "Home")</li>
-            <li>@Html.ActionLink("О программе", "About", "Home")</li>
-            <li>@Html.ActionLink("Контакт", "Contact", "Home")</li>
-        </ul>*@

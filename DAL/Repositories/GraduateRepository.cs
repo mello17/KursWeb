@@ -44,7 +44,7 @@ namespace DAL.Repositories
 
         public IEnumerable<Graduate> GetAll()
         {
-            var graduates = _db.Graduates.Include(g => g.Group).Include(g => g.ScienceWork).Include(g => g.Teacher);
+            var graduates = _db.Graduates;//.Include(g => g.Group).Include(g => g.ScienceWork).Include(g => g.Teacher);
             return graduates;
         }
 

@@ -127,7 +127,7 @@
     <value>Таблица выпускников</value>
   </data>
   <data name="IndexFixedArticle" xml:space="preserve">
-    <value>Этот сайт был создан студентами Банашко Александром, Антипенко Василием, Гончаром Алексеем. 
+    <value>Этот сайт был создан студентами  Антипенко Василием, Гончаром Алексеем. 
 Сайт гипотетической кафедры магии и адаптирован под разрешения экрана от 900 до 1200 px.
 На сайте используется несколько страниц, используется фреймворк jquery, а так же Entity, Identity, и иные расширения, специфичные для платформы .Net</value>
   </data>
@@ -160,5 +160,23 @@
   </data>
   <data name="TitleMainPage" xml:space="preserve">
     <value>Главная страница</value>
+  </data>
+  <data name="Address" xml:space="preserve">
+    <value>Адрес</value>
+  </data>
+  <data name="Contact" xml:space="preserve">
+    <value>Контакты</value>
+  </data>
+  <data name="HereTheAre" xml:space="preserve">
+    <value>Где мы находимся:</value>
+  </data>
+  <data name="MapPlace" xml:space="preserve">
+    <value>Тут должна быть карта </value>
+  </data>
+  <data name="Place" xml:space="preserve">
+    <value>г. Севастополь</value>
+  </data>
+  <data name="Street" xml:space="preserve">
+    <value>ул. Университетская, 33</value>
   </data>
 </root>

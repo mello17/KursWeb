@@ -61,11 +61,38 @@ namespace ViewRes {
         }
         
         /// <summary>
+        ///   Ищет локализованную строку, похожую на Address.
+        /// </summary>
+        public static string Address {
+            get {
+                return ResourceManager.GetString("Address", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Ищет локализованную строку, похожую на Contact.
+        /// </summary>
+        public static string Contact {
+            get {
+                return ResourceManager.GetString("Contact", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Ищет локализованную строку, похожую на Site of coursework..
         /// </summary>
         public static string CourseWorkSite {
             get {
                 return ResourceManager.GetString("CourseWorkSite", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Ищет локализованную строку, похожую на .
+        /// </summary>
+        public static string d {
+            get {
+                return ResourceManager.GetString("d", resourceCulture);
             }
         }
         
@@ -88,7 +115,16 @@ namespace ViewRes {
         }
         
         /// <summary>
-        ///   Ищет локализованную строку, похожую на This site was created by students Banashko Alexander, Antipenko Vasily, Gonchar Alexei.
+        ///   Ищет локализованную строку, похожую на Where we are.
+        /// </summary>
+        public static string HereTheAre {
+            get {
+                return ResourceManager.GetString("HereTheAre", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Ищет локализованную строку, похожую на This site was created by students Antipenko Vasily, Gonchar Alexei.
         ///The site is a hypothetical department of magic and adapted for screen resolutions from 900 to 1200 px.
         ///The site uses several pages, uses the jquery framework, as well as Entity, Identity, and other extensions specific to the .Net platform.
         /// </summary>
@@ -104,6 +140,15 @@ namespace ViewRes {
         public static string IndexTitle1 {
             get {
                 return ResourceManager.GetString("IndexTitle1", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Ищет локализованную строку, похожую на There must be cartage.
+        /// </summary>
+        public static string MapPlace {
+            get {
+                return ResourceManager.GetString("MapPlace", resourceCulture);
             }
         }
         
@@ -167,6 +212,24 @@ namespace ViewRes {
         public static string news {
             get {
                 return ResourceManager.GetString("news", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Ищет локализованную строку, похожую на Sevastopol Town.
+        /// </summary>
+        public static string Place {
+            get {
+                return ResourceManager.GetString("Place", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Ищет локализованную строку, похожую на University Street, 33.
+        /// </summary>
+        public static string Street {
+            get {
+                return ResourceManager.GetString("Street", resourceCulture);
             }
         }
         

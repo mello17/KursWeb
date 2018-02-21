@@ -52,8 +52,16 @@ namespace WebUI.Admin.Controllers
         // POST: PhotoAlbums/Create
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "Id,Path_To_Photo,Alt,Gallery")] PhotoAlbum photoAlbum)
+        public ActionResult Create([Bind(Include = "Id,Path_To_Photo,Alt,Gallery")] PhotoAlbum photoAlbum, HttpPostedFileBase upload)
         {
+            if (upload != null)
+            {
+                // получаем имя файла
+                photoAlbum.Path_To_Photo = System.IO.Path.GetFileName(upload.FileName);
+                // сохраняем файл в папку Files в проекте
+                upload.SaveAs(Server.MapPath("~/Files/" + photoAlbum.Path_To_Photo));
+            }
+
             if (ModelState.IsValid)
             {
                 db.PhotoAlbums.Create(photoAlbum);
@@ -82,8 +90,17 @@ namespace WebUI.Admin.Controllers
         // POST: PhotoAlbums/Edit/5
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "Id,Path_To_Photo,Alt,Gallery")] PhotoAlbum photoAlbum)
+        public ActionResult Edit([Bind(Include = "Id,Path_To_Photo,Alt,Gallery")] PhotoAlbum photoAlbum, HttpPostedFileBase upload)
         {
+
+            if (upload != null)
+            {
+                // получаем имя файла
+                photoAlbum.Path_To_Photo = System.IO.Path.GetFileName(upload.FileName);
+                // сохраняем файл в папку Files в проекте
+                upload.SaveAs(Server.MapPath("~/Files/" + photoAlbum.Path_To_Photo));
+            }
+
             if (ModelState.IsValid)
             {
                 db.PhotoAlbums.Update(photoAlbum);

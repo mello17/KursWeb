@@ -6,7 +6,7 @@ using System.Web.Mvc;
 
 namespace WebUI.Admin.Controllers
 {
-    [Authorize]
+    [Authorize(Roles ="Admin")]
     public class AdminController : Controller
     {
         public ActionResult Index()

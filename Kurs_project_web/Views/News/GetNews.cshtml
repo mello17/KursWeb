@@ -1,0 +1,19 @@
+﻿@model DAL.Web.Site.Models.News
+
+@{
+    ViewBag.Title = "GetNews";
+}
+
+
+<div id="center">
+    <div id="text">
+
+        <div style="text-align: left">
+            <h3 style="margin-top: 12px">@Model.Header</h3>
+        </div>
+        <p>@Model.Content<br></p>
+        <div style="width: 500px; margin-top: 12px; text-align: right">
+            <i>@Model.CurrentDate.ToString("F")</i>
+        </div>
+    </div>
+</div>

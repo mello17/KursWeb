@@ -4,7 +4,7 @@
     ViewBag.Title = "Index";
 }
 
-<h2>Index</h2>
+<h2>Новости</h2>
 
 <p>
     @Html.ActionLink("Create New", "Create")
@@ -20,15 +20,7 @@
         <th>
             @Html.DisplayNameFor(model => model.CurrentDate)
         </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Type)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.AuthorProfileId)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.imgPath)
-        </th>
+       
         <th></th>
     </tr>
 
@@ -43,19 +35,10 @@
         <td>
             @Html.DisplayFor(modelItem => item.CurrentDate)
         </td>
+        
         <td>
-            @Html.DisplayFor(modelItem => item.Type)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.AuthorProfileId)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.imgPath)
-        </td>
-        <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.Id }) |
-            @Html.ActionLink("Details", "Details", new { id=item.Id }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.Id })
+            <a href="/News/Edit?id=@item.Id">Edit</a> |
+            <a href="/News/Delete?id=@item.Id">Delete</a> 
         </td>
     </tr>
 }

@@ -8,8 +8,8 @@ namespace DAL.Models
     public enum Degree
     {
          
-        Proffesor =1,
-        Associate,
+        Проффесор =1,
+        Кандидат_наук,
 
 
     }

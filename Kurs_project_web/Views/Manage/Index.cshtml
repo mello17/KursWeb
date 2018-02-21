@@ -1,0 +1,57 @@
+﻿@model WebUI.Admin.Models.IndexViewModel
+@{
+    ViewBag.Title = "Управление";
+}
+
+<h2>@ViewBag.Title.</h2>
+
+<p class="text-success">@ViewBag.StatusMessage</p>
+<div>
+    <h4>Изменение параметров учетной записи</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>Логин</dt>
+        <dd> @User.Identity.Name </dd>
+        <dt>Пароль:</dt>
+        <dd>
+            [
+            @if (Model.HasPassword)
+            {
+                @Html.ActionLink("Смена пароля", "ChangePassword")
+            }
+            else
+            {
+                @Html.ActionLink("Создать", "SetPassword")
+            }
+            ]
+        </dd>
+       
+      
+        <dt>Двухфакторная проверка подлинности:</dt>
+        <dd>
+            <p>
+                Disabled
+            </p>
+            @*@if (Model.TwoFactor)
+                {
+                    using (Html.BeginForm("DisableTwoFactorAuthentication", "Manage", FormMethod.Post, new { @class = "form-horizontal", role = "form" }))
+                    {
+                        @Html.AntiForgeryToken()
+                        <text>Включено
+                        <input type="submit" value="Отключить" class="btn btn-link" />
+                        </text>
+                    }
+                }
+                else
+                {
+                    using (Html.BeginForm("EnableTwoFactorAuthentication", "Manage", FormMethod.Post, new { @class = "form-horizontal", role = "form" }))
+                    {
+                        @Html.AntiForgeryToken()
+                        <text>Отключено
+                        <input type="submit" value="Включить" class="btn btn-link" />
+                        </text>
+                    }
+                }*@
+        </dd>
+    </dl>
+</div>

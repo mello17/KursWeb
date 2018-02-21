@@ -127,7 +127,7 @@
     <value>Table of graduates</value>
   </data>
   <data name="IndexFixedArticle" xml:space="preserve">
-    <value>This site was created by students Banashko Alexander, Antipenko Vasily, Gonchar Alexei.
+    <value>This site was created by students Antipenko Vasily, Gonchar Alexei.
 The site is a hypothetical department of magic and adapted for screen resolutions from 900 to 1200 px.
 The site uses several pages, uses the jquery framework, as well as Entity, Identity, and other extensions specific to the .Net platform</value>
   </data>
@@ -160,5 +160,26 @@ The site uses several pages, uses the jquery framework, as well as Entity, Ident
   </data>
   <data name="TitleMainPage" xml:space="preserve">
     <value>Home Page</value>
+  </data>
+  <data name="MapPlace" xml:space="preserve">
+    <value>There must be cartage</value>
+  </data>
+  <data name="Address" xml:space="preserve">
+    <value>Address</value>
+  </data>
+  <data name="Contact" xml:space="preserve">
+    <value>Contact</value>
+  </data>
+  <data name="d" xml:space="preserve">
+    <value />
+  </data>
+  <data name="HereTheAre" xml:space="preserve">
+    <value>Where we are</value>
+  </data>
+  <data name="Place" xml:space="preserve">
+    <value>Sevastopol Town</value>
+  </data>
+  <data name="Street" xml:space="preserve">
+    <value>University Street, 33</value>
   </data>
 </root>

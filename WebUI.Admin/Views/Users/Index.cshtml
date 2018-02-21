@@ -4,10 +4,10 @@
     ViewBag.Title = "Index";
 }
 
-<h2>Index</h2>
+<h2>Пользователи</h2>
 
 <p>
-    @Html.ActionLink("Create New", "Create")
+    @Html.ActionLink("Create New", "Register", "Account")
 </p>
 <table class="table">
     <tr>
@@ -17,6 +17,9 @@
         
         <th>
             @Html.DisplayNameFor(model => model.UserName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Roles)
         </th>
         <th></th>
     </tr>
@@ -30,8 +33,11 @@
             @Html.DisplayFor(modelItem => item.UserName)
         </td>
         <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.Id }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.Id })
+            @Html.DisplayNameFor(modelItem => modelItem.Roles)
+        </td>
+        <td>
+            <a href="/Users/Edit?id=@item.Id">Edit</a> |
+            <a href="/Users/Delete?id=@item.Id">Delete</a> 
         </td>
     </tr>
 }

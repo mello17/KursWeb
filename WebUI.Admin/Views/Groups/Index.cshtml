@@ -14,9 +14,7 @@
         <th>
             @Html.DisplayNameFor(model => model.Group_Name)
         </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Count_Of_Student)
-        </th>
+      
         <th></th>
     </tr>
 
@@ -25,9 +23,7 @@
         <td>
             @Html.DisplayFor(modelItem => item.Group_Name)
         </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Count_Of_Student)
-        </td>
+        
         <td>
             <a href="/Groups/Edit?id=@item.Id">Edit</a> |
             <a href="/Groups/Delete?id=@item.Id">Delete</a> 
@@ -35,4 +31,6 @@
     </tr>
 }
 
+
 </table>
+

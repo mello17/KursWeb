@@ -22,6 +22,7 @@ namespace DAL.Repositories
         {
             if (item == null)
                 throw new NullReferenceException();
+            
             _db.Groups.Add(item);
         }
 

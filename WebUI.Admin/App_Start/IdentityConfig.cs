@@ -50,6 +50,7 @@ namespace WebUI.Admin
                 RequireUniqueEmail = true
             };
 
+
             // Настройка логики проверки паролей
             manager.PasswordValidator = new PasswordValidator
             {

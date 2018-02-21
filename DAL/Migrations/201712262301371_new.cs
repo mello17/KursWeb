@@ -11,14 +11,14 @@ namespace DAL.Migrations
             DropForeignKey("dbo.Teachers", "JobId", "dbo.Jobs");
             DropIndex("dbo.Teachers", new[] { "JobId" });
             DropIndex("dbo.Teachers", new[] { "DegreeId" });
-            AddColumn("dbo.Teachers", "Job", c => c.Int(nullable: false));
-            AddColumn("dbo.Teachers", "Degree", c => c.Int(nullable: false));
-            AddColumn("dbo.Teachers", "imgPath", c => c.String());
-            AddColumn("dbo.Teachers", "Information", c => c.String());
-            DropColumn("dbo.Teachers", "JobId");
-            DropColumn("dbo.Teachers", "DegreeId");
-            DropTable("dbo.Degrees");
-            DropTable("dbo.Jobs");
+           // AddColumn("dbo.Teachers", "Job", c => c.Int(nullable: false));
+           // AddColumn("dbo.Teachers", "Degree", c => c.Int(nullable: false));
+           // AddColumn("dbo.Teachers", "imgPath", c => c.String());
+           // AddColumn("dbo.Teachers", "Information", c => c.String());
+           // DropColumn("dbo.Teachers", "JobId");
+           // DropColumn("dbo.Teachers", "DegreeId");
+            //DropTable("dbo.Degrees");
+            //DropTable("dbo.Jobs");
         }
         
         public override void Down()

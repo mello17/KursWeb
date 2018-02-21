@@ -5,7 +5,8 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 <body>
-    <h2>TeachersView</h2>
+   
+    <h2>Сотрудники кафедры</h2>
 
     <br />
     <br />
@@ -14,25 +15,40 @@
     <div class="row">
         @foreach (var item in Model)
         {
+            
+                var fio = item.FIO.Split(' ');
+                string middlename = "", lastname = "";
+                if (fio.Length == 2) { middlename = fio[1]; }
+                if (fio.Length == 3) { lastname = fio[2]; }
+            
+            <div>
+                <div>
+                    <span id="staff29" style="float: left; margin-left: 30px">
+                        <div id="staff">
+                            <div id="photo">
+                                <a href="/Home/GetTeacher?id=@item.Id">
+                                    <img src="item.imgPath" width="80" height="100" border="0"
+                                         alt=@item.FIO>
+                                </a>
+                            </div>
+                            <div id="text">
+                                <table>
+                                    <tr id="a">
+                                        <td>
+                                            <a href="/Home/GetTeacher?id=@item.Id">@fio[0]<br>@middlename<br>@lastname</a>
+                                            <p style="padding-top: 3px; font-size: 8pt"><i>@item.Degree</i></p>
+                                        </td>
+                                    </tr>
+                                </table>
+                            </div>
 
-            <div class="col-md-12 table-bordered">
-                <div class="col-md-2"></div>
-                <div class="col-md-4 text-center">
-                    <img src="@Html.DisplayFor(modelItem => item.imgPath)" height="300" />
+                        </div>
+                    </span>
                 </div>
-                <div class="col-md-4">
-                    @Html.DisplayFor(modelItem => item.FIO)
-                    <br />
-                    <p>Учёная степень: @Html.DisplayFor(modelItem => item.Degree) </p>
-                    <p>Должность: @Html.DisplayFor(modelItem => item.Job)</p>
-                    @Html.DisplayFor(modelItem => item.Information)
-                </div>
-                <div class="col-md-2"></div>
-
             </div>
-            <br />
-            <br /><br />
-            <br />
-        }
+
+
+
+         }
     </div>
 </body>

@@ -82,6 +82,9 @@
     <Reference Include="Microsoft.Owin.Security.Twitter, Version=2.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <HintPath>..\packages\Microsoft.Owin.Security.Twitter.2.1.0\lib\net45\Microsoft.Owin.Security.Twitter.dll</HintPath>
     </Reference>
+    <Reference Include="Newtonsoft.Json, Version=10.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <HintPath>..\packages\Newtonsoft.Json.10.0.3\lib\net45\Newtonsoft.Json.dll</HintPath>
+    </Reference>
     <Reference Include="PagedList, Version=1.17.0.0, Culture=neutral, PublicKeyToken=abbb863e9397c5e1, processorArchitecture=MSIL">
       <HintPath>..\packages\PagedList.1.17.0.0\lib\net40\PagedList.dll</HintPath>
     </Reference>
@@ -91,9 +94,6 @@
     <Reference Include="System" />
     <Reference Include="System.Data" />
     <Reference Include="System.Drawing" />
-    <Reference Include="System.Net.Http.Formatting, Version=5.2.2.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
-      <HintPath>..\packages\Microsoft.AspNet.WebApi.Client.5.2.2\lib\net45\System.Net.Http.Formatting.dll</HintPath>
-    </Reference>
     <Reference Include="System.Spatial, Version=5.6.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <HintPath>..\packages\System.Spatial.5.6.0\lib\net40\System.Spatial.dll</HintPath>
     </Reference>
@@ -163,9 +163,6 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Reference Include="Newtonsoft.Json">
-      <HintPath>..\packages\Newtonsoft.Json.6.0.4\lib\net45\Newtonsoft.Json.dll</HintPath>
-    </Reference>
     <Reference Include="EntityFramework">
       <HintPath>..\packages\EntityFramework.6.1.3\lib\net45\EntityFramework.dll</HintPath>
     </Reference>
@@ -230,6 +227,18 @@
     <Compile Include="Migrations\201712242000593_miga.cs" />
     <Compile Include="Migrations\201712242000593_miga.Designer.cs">
       <DependentUpon>201712242000593_miga.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201802042039328_sdd1.cs" />
+    <Compile Include="Migrations\201802042039328_sdd1.Designer.cs">
+      <DependentUpon>201802042039328_sdd1.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201802042120013_sdd12.cs" />
+    <Compile Include="Migrations\201802042120013_sdd12.Designer.cs">
+      <DependentUpon>201802042120013_sdd12.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201802080701033_dff.cs" />
+    <Compile Include="Migrations\201802080701033_dff.Designer.cs">
+      <DependentUpon>201802080701033_dff.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
@@ -651,11 +660,6 @@
     <Content Include="Views\Courses\Details.cshtml" />
     <Content Include="Views\Courses\Edit.cshtml" />
     <Content Include="Views\Courses\Index.cshtml" />
-    <Content Include="Views\Graduates\Create.cshtml" />
-    <Content Include="Views\Graduates\Delete.cshtml" />
-    <Content Include="Views\Graduates\Details.cshtml" />
-    <Content Include="Views\Graduates\Edit.cshtml" />
-    <Content Include="Views\Graduates\Index.cshtml" />
     <Content Include="Views\Groups\Create.cshtml" />
     <Content Include="Views\Groups\Delete.cshtml" />
     <Content Include="Views\Groups\Details.cshtml" />
@@ -666,11 +670,6 @@
     <Content Include="Views\Schedules\Details.cshtml" />
     <Content Include="Views\Schedules\Edit.cshtml" />
     <Content Include="Views\Schedules\Index.cshtml" />
-    <Content Include="Views\ScienceWorks\Create.cshtml" />
-    <Content Include="Views\ScienceWorks\Delete.cshtml" />
-    <Content Include="Views\ScienceWorks\Details.cshtml" />
-    <Content Include="Views\ScienceWorks\Edit.cshtml" />
-    <Content Include="Views\ScienceWorks\Index.cshtml" />
     <Content Include="Views\Teachers\Create.cshtml" />
     <Content Include="Views\Teachers\Delete.cshtml" />
     <Content Include="Views\Teachers\Details.cshtml" />
@@ -693,9 +692,12 @@
     <Content Include="Views\PhotoAlbums\Details.cshtml" />
     <Content Include="Views\PhotoAlbums\Edit.cshtml" />
     <Content Include="Views\PhotoAlbums\Index.cshtml" />
+    <Content Include="Views\Manage\Delete.cshtml" />
+    <Content Include="Views\Manage\Edit.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="NewFolder1\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff" />
@@ -725,6 +727,15 @@
   <ItemGroup>
     <EmbeddedResource Include="Migrations\201712242000593_miga.resx">
       <DependentUpon>201712242000593_miga.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201802042039328_sdd1.resx">
+      <DependentUpon>201802042039328_sdd1.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201802042120013_sdd12.resx">
+      <DependentUpon>201802042120013_sdd12.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201802080701033_dff.resx">
+      <DependentUpon>201802080701033_dff.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

@@ -11,6 +11,7 @@ using DAL.Models;
 
 namespace WebUI.Admin.Controllers
 {
+    [Authorize(Roles = "Admin, ContentManager")]
     public class GraduatesController : Controller
     {
         private UnitOfWorkAdmin work = new UnitOfWorkAdmin();
@@ -40,7 +41,7 @@ namespace WebUI.Admin.Controllers
         public ActionResult Create()
         {
             ViewBag.GroupId = new SelectList(work.Groups.GetAll(), "Id", "Group_Name");
-            ViewBag.Id = new SelectList(work.ScienceWorks.GetAll(), "Id", "Theme");
+            ViewBag.ScienceWorkId = new SelectList(work.ScienceWorks.GetAll(), "Id", "Theme");
             ViewBag.TeacherId = new SelectList(work.Teachers.GetAll(), "Id", "FIO");
             return View();
         }
@@ -48,8 +49,10 @@ namespace WebUI.Admin.Controllers
         // POST: Graduates/Create
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "Id,FIO,TeacherId,GroupId")] Graduate graduate)
+        public ActionResult Create([Bind(Include = "Id,FIO,TeacherId,GroupId")] Graduate graduate, string theme)
         {
+            
+
             if (ModelState.IsValid)
             {
                 work.Graduates.Create(graduate);
@@ -57,8 +60,9 @@ namespace WebUI.Admin.Controllers
                 return RedirectToAction("Index");
             }
 
+
             ViewBag.GroupId = new SelectList(work.Groups.GetAll(), "Id", "Group_Name");
-            ViewBag.Id = new SelectList(work.ScienceWorks.GetAll(), "Id", "Theme");
+            ViewBag.ScienceWorkId = new SelectList(work.ScienceWorks.GetAll(), "Id", "Theme");
             ViewBag.TeacherId = new SelectList(work.Teachers.GetAll(), "Id", "FIO");
             return View(graduate);
         }
@@ -75,9 +79,9 @@ namespace WebUI.Admin.Controllers
             {
                 return HttpNotFound();
             }
-            ViewBag.GroupId = new SelectList(work.Groups.GetAll(), "Id", "Group_Name", graduate.GroupId);
-            ViewBag.Id = new SelectList(work.ScienceWorks.GetAll(), "Id", "Theme", graduate.Id);
-            ViewBag.TeacherId = new SelectList(work.Teachers.GetAll(), "Id", "FIO", graduate.TeacherId);
+           // ViewBag.GroupId = new SelectList(work.Groups.GetAll(), "Id", "Group_Name", graduate.GroupId);
+            ViewBag.ScienceWorkId = new SelectList(work.ScienceWorks.GetAll(), "Id", "Theme");
+            //ViewBag.TeacherId = new SelectList(work.Teachers.GetAll(), "Id", "FIO", graduate.TeacherId);
             return View(graduate);
         }
 
@@ -92,9 +96,9 @@ namespace WebUI.Admin.Controllers
                 work.Save();
                 return RedirectToAction("Index");
             }
-            ViewBag.GroupId = new SelectList(work.Groups.GetAll(), "Id", "Group_Name", graduate.GroupId);
-            ViewBag.Id = new SelectList(work.ScienceWorks.GetAll(), "Id", "Theme", graduate.Id);
-            ViewBag.TeacherId = new SelectList(work.Teachers.GetAll(), "Id", "FIO", graduate.TeacherId);
+          //  ViewBag.GroupId = new SelectList(work.Groups.GetAll(), "Id", "Group_Name", graduate.GroupId);
+            ViewBag.ScienceWorkId = new SelectList(work.ScienceWorks.GetAll(), "Id", "Theme");
+           // ViewBag.TeacherId = new SelectList(work.Teachers.GetAll(), "Id", "FIO", graduate.TeacherId);
             return View(graduate);
         }
 

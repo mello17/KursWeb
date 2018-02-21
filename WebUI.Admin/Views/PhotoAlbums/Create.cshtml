@@ -6,7 +6,7 @@
 
 <h2>Create</h2>
 
-@using (Html.BeginForm()) 
+@using (Html.BeginForm("Create", "PhotoAlbum", FormMethod.Post, new { enctype = "multipart/form-data" }))
 {
     @Html.AntiForgeryToken()
     
@@ -17,8 +17,7 @@
         <div class="form-group">
             @Html.LabelFor(model => model.Path_To_Photo, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
-                @Html.EditorFor(model => model.Path_To_Photo, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.Path_To_Photo, "", new { @class = "text-danger" })
+                <input type="file" name="upload" accept="jpg, jpeg,png, gif" /><br>
             </div>
         </div>
 

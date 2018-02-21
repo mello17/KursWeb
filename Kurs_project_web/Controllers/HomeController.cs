@@ -5,6 +5,7 @@ using System.Web;
 using System.Web.Mvc;
 using DAL.Web.Site;
 using DAL;
+using DAL.Models;
 using DAL.Web.Site.Repositories;
 using DAL.Web.Site.EF;
 using DAL.Web.Site.Models;
@@ -25,6 +26,17 @@ namespace Kurs_project_web.Controllers
         {
             work = new UnitOfWork();
             admin_work = new UnitOfWorkAdmin();
+        }
+
+        public ActionResult GetTeacher(int id)
+        {
+            Teacher teacher = admin_work.Teachers.Get(id);
+
+            if (teacher == null)
+            {
+                return HttpNotFound();
+            }
+            return View(teacher);
         }
 
         public ActionResult Index()
@@ -48,9 +60,22 @@ namespace Kurs_project_web.Controllers
             return View();
         }
 
+        public ActionResult GetSchedules(string group)
+        {
+            IEnumerable<Schedule> list = null;
+
+            if (Request.IsAjaxRequest() && group != String.Empty)
+            {
+                list = admin_work.Schedules.GetAll().Where(p => p.Group.Group_Name == group);
+            }
+
+            return PartialView(list);
+
+        }
+
         public ActionResult StudentsView()
         {
-            
+
             var students = admin_work.Graduates.GetAll();
             return View(students);
         }
@@ -64,14 +89,21 @@ namespace Kurs_project_web.Controllers
 
         public ActionResult TimeTableView()
         {
-           
-           // var  = db.Teacher.ToList();
+            ViewBag.GroupId = new SelectList(admin_work.Groups.GetAll(), "Id", "Group_Name");
+            var schedules = admin_work.Schedules.GetAll().OrderBy(e=>e.TimeStartingSchedule);   
+            return View(schedules);
+        }
+
+        [HttpPost]
+        public ActionResult TimeTableView(string group)
+        {
+            if (Request.IsAjaxRequest()) { }
+
             return View();
         }
 
         // GET: News
 
-        //private NewsRepository newsRepos = new NewsRepository(_db);
 
         public ActionResult News()
         {
@@ -81,21 +113,21 @@ namespace Kurs_project_web.Controllers
                 Id = 1,
                 Header = "Новость 1",
                 Content = "Описание новости 1",
-                Type = "Новость"
+               
             };
                 new News
                 {
                     Id = 2,
                     Header = "Мероприятие 1",
                     Content = "Описание мероприятия 2",
-                    Type = "Мероприятия"
+                   
                 };
             new News
             {
                 Id = 3,
                 Header = "Объявление 1",
                 Content = "Описание объявления 3",
-                Type = "Объявления"
+               
             };
                 var News = db.News.ToList();
             return View(News);
@@ -104,7 +136,7 @@ namespace Kurs_project_web.Controllers
 
         public ActionResult _PartialIndexArticles()
         {
-            var News = work.AllArticle3();
+            var News = work.AllNews2();
             return PartialView(News);
            
         }

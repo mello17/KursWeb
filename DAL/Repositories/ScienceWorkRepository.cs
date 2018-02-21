@@ -44,8 +44,7 @@ namespace DAL.Repositories
 
         public IEnumerable<ScienceWork> GetAll()
         {
-            var scienceWorks = _db.ScienceWorks.Include(s => s.Graduate);
-            return scienceWorks;
+            return _db.ScienceWorks;
         }
 
         public void Update(ScienceWork item)

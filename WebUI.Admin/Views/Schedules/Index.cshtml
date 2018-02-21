@@ -4,7 +4,7 @@
     ViewBag.Title = "Index";
 }
 
-<h2>Index</h2>
+<h2>Занятия</h2>
 
 <p>
     @Html.ActionLink("Create New", "Create")
@@ -21,7 +21,10 @@
             @Html.DisplayNameFor(model => model.Teacher.FIO)
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.Time)
+            @Html.DisplayNameFor(model => model.TimeStartingSchedule)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.TimeEndingSchedule)
         </th>
         <th>
             @Html.DisplayNameFor(model => model.Auditory)
@@ -41,7 +44,10 @@
             @Html.DisplayFor(modelItem => item.Teacher.FIO)
         </td>
         <td>
-            @Html.DisplayFor(modelItem => item.Time)
+            @Html.DisplayFor(modelItem => item.TimeStartingSchedule)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.TimeEndingSchedule)
         </td>
         <td>
             @Html.DisplayFor(modelItem => item.Auditory)

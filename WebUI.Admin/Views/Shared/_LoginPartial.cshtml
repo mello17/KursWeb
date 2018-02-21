@@ -7,7 +7,10 @@
         if (User.Identity.GetUserName() != String.Empty)
         {
    <ul class="nav navbar-nav">
-        <li>@Html.ActionLink("Менеджеры контента", "Index", "User")</li>
+       @if (User.IsInRole("Admin"))
+       {
+        <li>@Html.ActionLink("Менеджеры контента", "Index", "Users")</li>
+       }
     </ul>
     <ul class="nav navbar-nav navbar-right">
 

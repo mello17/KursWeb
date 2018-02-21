@@ -50,8 +50,13 @@ namespace WebUI.Admin.Controllers
         // POST: News/Create
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "Id,Header,Content,CurrentDate,Type,AuthorProfileId,imgPath")] News news)
+        public ActionResult Create([Bind(Include = "Id,Header,Content,CurrentDate,Type,AuthorProfileId,imgPath")] News news, HttpPostedFileBase upload)
         {
+            if (upload != null)
+            {
+                news.imgPath = System.IO.Path.GetFileName(upload.FileName);
+                upload.SaveAs(Server.MapPath("~/Files/" + news.imgPath));
+            }
             if (ModelState.IsValid)
             {
                 db.News.Create(news);
@@ -81,8 +86,12 @@ namespace WebUI.Admin.Controllers
       
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "Id,Header,Content,CurrentDate,Type,AuthorProfileId,imgPath")] News news)
+        public ActionResult Edit([Bind(Include = "Id,Header,Content,CurrentDate,Type,AuthorProfileId,imgPath")] News news, HttpPostedFileBase upload)
         {
+
+            GetFileName(upload, out string filename);
+            news.imgPath = filename;
+
             if (ModelState.IsValid)
             {
                 db.News.Update(news);
@@ -91,6 +100,18 @@ namespace WebUI.Admin.Controllers
             }
             return View(news);
         }
+
+        #region utils
+        void GetFileName(HttpPostedFileBase upload, out string filename)
+        {
+            if (upload != null)
+            {
+                filename = System.IO.Path.GetFileName(upload.FileName);
+                upload.SaveAs(Server.MapPath("~/Files/" + filename));
+            }
+            else filename = String.Empty;
+        }
+        #endregion
 
         // GET: News/Delete/5
         public ActionResult Delete(int? id)

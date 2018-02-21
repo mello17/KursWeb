@@ -4,19 +4,19 @@
     ViewBag.Title = "Delete";
 }
 
-<h2>Delete</h2>
+<h2>Удаление</h2>
 
-<h3>Are you sure you want to delete this?</h3>
+<h3>Вы действительно хотите удалить пльзователя?</h3>
 <div>
     <h4>User</h4>
     <hr />
     <dl class="dl-horizontal">
         <dt>
-            @Html.DisplayNameFor(model => model.Email)
+            @Html.DisplayNameFor(model => model.Roles)
         </dt>
 
         <dd>
-            @Html.DisplayFor(model => model.Email)
+            @Html.DisplayFor(model => model.Roles)
         </dd>
 
 
@@ -35,8 +35,8 @@
 
         <div class="form-actions no-color">
             <input type="submit" value="Delete" class="btn btn-default" /> |
-            @Html.ActionLink("Back to List", "Index") |
-            @Html.ActionLink("Главное меню", "Index", "Admin")
+            @Html.ActionLink("Back to List", "Index") 
+            
         </div>
     }
 </div>

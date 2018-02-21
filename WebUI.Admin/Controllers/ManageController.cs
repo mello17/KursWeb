@@ -57,6 +57,7 @@ namespace WebUI.Admin.Controllers
 
         //
         // GET: /Manage/Index
+        [AllowAnonymous]
         public async Task<ActionResult> Index(ManageMessageId? message)
         {
             ViewBag.StatusMessage =
@@ -230,9 +231,10 @@ namespace WebUI.Admin.Controllers
                 await SignInManager.SignInAsync(user, isPersistent: false, rememberBrowser: false);
             }
             return RedirectToAction("Index", "Manage");
-        }       
-        
+        }
+
         // GET: /Manage/ChangePassword
+        [AllowAnonymous]
         public ActionResult ChangePassword()
         {
             return View();
@@ -241,6 +243,7 @@ namespace WebUI.Admin.Controllers
         //
         // POST: /Manage/ChangePassword
         [HttpPost]
+        [AllowAnonymous]
         [ValidateAntiForgeryToken]
         public async Task<ActionResult> ChangePassword(ChangePasswordViewModel model)
         {
@@ -264,6 +267,7 @@ namespace WebUI.Admin.Controllers
 
         //
         // GET: /Manage/SetPassword
+        [AllowAnonymous]
         public ActionResult SetPassword()
         {
             return View();
@@ -273,6 +277,7 @@ namespace WebUI.Admin.Controllers
         // POST: /Manage/SetPassword
         [HttpPost]
         [ValidateAntiForgeryToken]
+        [AllowAnonymous]
         public async Task<ActionResult> SetPassword(SetPasswordViewModel model)
         {
             if (ModelState.IsValid)

@@ -4,6 +4,8 @@ using System.Data;
 using System.Data.Entity;
 using System.Linq;
 using System.Net;
+using Microsoft.AspNet.Identity;
+using Microsoft.AspNet.Identity.EntityFramework;
 using System.Web;
 using System.Web.Mvc;
 using WebUI.Admin.Models;
@@ -13,6 +15,7 @@ namespace WebUI.Admin.Controllers
     public class UsersController : Controller
     {
         private ApplicationDbContext db = new ApplicationDbContext();
+  
 
         // GET: Users
         public ActionResult Index()
@@ -23,11 +26,14 @@ namespace WebUI.Admin.Controllers
         // GET: Users/Details/5
         public ActionResult Details(string id)
         {
+           
+            
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
             User user = db.Users.Find(id);
+            
             if (user == null)
             {
                 return HttpNotFound();
@@ -35,9 +41,18 @@ namespace WebUI.Admin.Controllers
             return View(user);
         }
 
+        private List<SelectListItem> GetRoles()
+        {
+            var rolesLisT = (new ApplicationDbContext()).Roles.OrderBy(r => r.Name).ToList().Select(rr =>
+                    new SelectListItem { Value = rr.Name.ToString(), Text = rr.Name }).ToList();
+            return rolesLisT;
+        }
+
         // GET: Users/Create
         public ActionResult Create()
         {
+           
+            ViewBag.Roles = GetRoles();
             return View();
         }
 
@@ -46,12 +61,15 @@ namespace WebUI.Admin.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult Create( User user)
         {
+            ViewBag.Roles = GetRoles();
             if (ModelState.IsValid)
             {
+              
                 db.Users.Add(user);
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
+            ViewBag.Roles = GetRoles();
 
             return View(user);
         }
@@ -59,6 +77,7 @@ namespace WebUI.Admin.Controllers
         // GET: Users/Edit/5
         public ActionResult Edit(string id)
         {
+            ViewBag.Roles = GetRoles();
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
@@ -77,6 +96,7 @@ namespace WebUI.Admin.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult Edit( User user)
         {
+            ViewBag.Roles = GetRoles();
             if (ModelState.IsValid)
             {
                 db.Entry(user).State = EntityState.Modified;

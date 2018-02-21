@@ -3,8 +3,11 @@
     ViewBag.Title = "TimeTableView";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
+@model IEnumerable<DAL.Models.Schedule>
 <body>
-    <h2>TimeTableView</h2>
+    <h2>Расписание кафедры групп кафедры ИС</h2>
+    <br/>
+    
     <table class="table table-bordered text-center" id="timetable" style="table-layout: fixed;">
         <thead>
             <tr>
@@ -17,28 +20,26 @@
                 <th class="text-center" style="width: 14%">Суббота</th>
             </tr>
         </thead>
-        <tbody>
-            <tr>
-                <th class="text-center">08.30 - 10.00 </th>
-                <th class="text-center" name="lesson" day="1" lesson="1"></th>
-                <th class="text-center" name="lesson" day="2" lesson="1"></th>
-                <th class="text-center" name="lesson" day="3" lesson="1"></th>
-                <th class="text-center" name="lesson" day="4" lesson="1"></th>
-                <th class="text-center" name="lesson" day="5" lesson="1"></th>
-                <th class="text-center" name="lesson" day="6" lesson="1"></th>
+@{
+    var select = Model.Select(s=>s.Group.Group_Name).Distinct().ToList();
+    for (int i=0; i< select.Count(); i++)
+    {
+        <tr>
+            <th>@Ajax.ActionLink(select[i], "GetSchedules", new { group = select[i] },
+               new AjaxOptions
+               {
+                   UpdateTargetId = "tableBody",
+                   Url = Url.Action("GetSchedules", new { group = select[i] })
+               })
+            </th>
+        </tr>
+        }
+    }
+        <tbody id="tableBody">
 
-            </tr>
-            <tr>
-                <th class="text-center">10.10 - 11.40 </th>
-                <th class="text-center" name="lesson" day="1" lesson="2"></th>
-                <th class="text-center" name="lesson" day="2" lesson="2"></th>
-                <th class="text-center" name="lesson" day="3" lesson="2"></th>
-                <th class="text-center" name="lesson" day="4" lesson="2"></th>
-                <th class="text-center" name="lesson" day="5" lesson="2"></th>
-                <th class="text-center" name="lesson" day="6" lesson="2"></th>
-
-            </tr>
-            <tr>
+           
+          
+            @*<tr>
                 <th class="text-center">11.50 - 13.20 </th>
                 <th class="text-center" name="lesson" day="1" lesson="3"></th>
                 <th class="text-center" name="lesson" day="2" lesson="3"></th>
@@ -86,7 +87,7 @@
                 <th class="text-center" name="lesson" day="4" lesson="7"></th>
                 <th class="text-center" name="lesson" day="5" lesson="7"></th>
                 <th class="text-center" name="lesson" day="6" lesson="7"></th>
-            </tr>
+            </tr>*@
         </tbody>
     </table>
 </body>

@@ -8,8 +8,8 @@ namespace DAL.Web.Site.Interfaces
 {
     public interface INewsRepository 
     {
-        IQueryable<News> AllNews();
-        IQueryable<News> AllEvents();
-        IQueryable<News> AllArticle();
+        IEnumerable<News> AllNews();
+        IEnumerable<News> AllEvents();
+        IEnumerable<News> AllArticle();
     }
 }

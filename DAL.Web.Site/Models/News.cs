@@ -9,19 +9,22 @@ namespace DAL.Web.Site.Models
     public class News
     {
         [Key]
-        public int Id { get; set; }//С чего бы это у новости нет ID?      
+        public int Id { get; set; }   
+        [Display(Name ="Заголовок")]
+        [Required]
         public string Header { get; set; }
+        [Display(Name = "Cодержимое")]
+        [Required]
         public string Content { get; set; }
         public DateTime CurrentDate { get; set; }//Дата создания?
-        public string Type { get; set; }//Тип - новость/статья/объявление     
-        public string AuthorProfileId { get; set; } // Автор новости
+       
         public News()
         {
             CurrentDate = DateTime.Now;
         }
 
+        [Display(Name = "Изображение")]
         public string imgPath { get; set; }//путь к изображению-заголовку. Это надо.
 
-        public IEnumerable<string> Items { get; set; }
     }
 }

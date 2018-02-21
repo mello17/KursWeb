@@ -110,6 +110,18 @@
     <Compile Include="Migrations\201712182118223_newmigration.Designer.cs">
       <DependentUpon>201712182118223_newmigration.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201801302049072_gfdf.cs" />
+    <Compile Include="Migrations\201801302049072_gfdf.Designer.cs">
+      <DependentUpon>201801302049072_gfdf.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201802032118443_fff.cs" />
+    <Compile Include="Migrations\201802032118443_fff.Designer.cs">
+      <DependentUpon>201802032118443_fff.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201802050927238_wff.cs" />
+    <Compile Include="Migrations\201802050927238_wff.Designer.cs">
+      <DependentUpon>201802050927238_wff.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\News.cs" />
     <Compile Include="Models\PhotoAlbum.cs" />
@@ -139,6 +151,15 @@
   <ItemGroup>
     <EmbeddedResource Include="Migrations\201712182118223_newmigration.resx">
       <DependentUpon>201712182118223_newmigration.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201801302049072_gfdf.resx">
+      <DependentUpon>201801302049072_gfdf.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201802032118443_fff.resx">
+      <DependentUpon>201802032118443_fff.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201802050927238_wff.resx">
+      <DependentUpon>201802050927238_wff.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

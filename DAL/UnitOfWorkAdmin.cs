@@ -75,9 +75,9 @@ namespace DAL
         {
             get
             {
-                if (_scienceRepository == null)
+                if (_scheduleRepository == null)
                     _scheduleRepository = new ScheduleRepository(admin_db);
-                return (IRepository<Schedule>)_scienceRepository;
+                return (IRepository<Schedule>)_scheduleRepository;
             }
         }
 

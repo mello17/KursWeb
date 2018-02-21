@@ -7,9 +7,9 @@ namespace DAL.Models
 {
     public enum Job
     {
-        Proffesor = 1,
-        Associate,
-        SeniorLecture,
-        Assistent
+        Проффесор = 1,
+        Доцент,
+        Старший_преп,
+        Ассистент
     }
 }
